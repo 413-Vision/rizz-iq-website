@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rizz IQ — AI Dating Coach for Men</title>
+<meta name="description" content="She stopped responding. You don't know why. We do. Rizz IQ reads her texts the way she meant them — then tells you exactly what to say next, backed by real psychology.">
+<meta property="og:title" content="Rizz IQ — AI Dating Coach for Men">
+<meta property="og:description" content="She stopped responding. You don't know why. We do. Psychology-backed dating guidance in under 4 seconds.">
+<meta property="og:url" content="https://getrizziq.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#0A0F1E;--surface:#141929;--surface2:#1A2235;--border:#1E2A40;
+ --primary:#00AAFF;--primary-dark:#0077CC;
+ --pd:rgba(0,170,255,0.08);--pb:rgba(0,170,255,0.2);--pg:rgba(0,170,255,0.15);
+ --success:#00CC88;--warning:#F5A623;--error:#FF4444;
+ --accent:#A855F7;--streak:#FF6B35;
+ --tp:#FFFFFF;--ts:#8B9DC3;--tt:#4A5A7A;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--tp);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ATMOSPHERE */
+.atmo{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.atmo-glow-top{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:1000px;height:700px;background:radial-gradient(ellipse,rgba(0,170,255,0.1) 0%,transparent 65%);}
+.atmo-glow-mid{position:absolute;top:45%;right:-15%;width:700px;height:700px;background:radial-gradient(ellipse,rgba(168,85,247,0.05) 0%,transparent 60%);}
+.atmo-glow-bot{position:absolute;bottom:0;left:-10%;width:600px;height:500px;background:radial-gradient(ellipse,rgba(0,170,255,0.06) 0%,transparent 65%);}
+.grid-overlay{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,170,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,170,255,0.022) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 140% 70% at 50% 0%,black 20%,transparent 70%);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,15,30,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(30,42,64,0.5);transition:border-color 0.3s;}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em;text-decoration:none;color:var(--tp);}
+.nav-logo .iq{background:linear-gradient(135deg,#00AAFF,#00DDFF,#0077FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--ts);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--tp);}
+.nav-cta{background:var(--primary)!important;color:#fff!important;padding:8px 20px;border-radius:100px;font-family:'Space Grotesk',sans-serif!important;font-weight:600!important;font-size:13px!important;transition:opacity 0.2s,box-shadow 0.2s!important;}
+.nav-cta:hover{opacity:0.9!important;box-shadow:0 0 20px rgba(0,170,255,0.35)!important;}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px;position:relative;z-index:1;}
+section{padding:100px 0;position:relative;z-index:1;}
+.section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;margin-bottom:16px;}
+.section-sub{font-size:16px;font-weight:300;color:var(--ts);line-height:1.75;max-width:560px;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;}
+.hero-inner{max-width:760px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);background:var(--pd);border:1px solid var(--pb);border-radius:100px;padding:5px 16px;margin-bottom:32px;opacity:0;transform:translateY(12px);animation:fadeUp 0.6s ease 0.1s forwards;}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--primary);box-shadow:0 0 8px var(--primary);animation:pdot 2s ease-in-out infinite;}
+@keyframes pdot{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6.5vw,82px);font-weight:700;letter-spacing:-0.035em;line-height:1.0;margin-bottom:28px;opacity:0;transform:translateY(16px);animation:fadeUp 0.7s ease 0.2s forwards;}
+.hero-h1 .accent{background:linear-gradient(135deg,#00AAFF 0%,#00DDFF 40%,#0066FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-h1 .dim{color:var(--ts);}
+.hero-sub{font-size:18px;font-weight:300;color:var(--ts);line-height:1.8;max-width:520px;margin-bottom:12px;opacity:0;transform:translateY(12px);animation:fadeUp 0.7s ease 0.35s forwards;}
+.hero-sub strong{color:var(--tp);font-weight:500;}
+.hero-promise{display:inline-flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:13.5px;color:var(--ts);line-height:1.5;margin-bottom:40px;opacity:0;transform:translateY(12px);animation:fadeUp 0.7s ease 0.45s forwards;max-width:520px;}
+.hero-promise strong{color:var(--primary);font-weight:600;}
+.waitlist-wrap{opacity:0;transform:translateY(12px);animation:fadeUp 0.7s ease 0.55s forwards;}
+.waitlist-form{display:flex;gap:12px;max-width:480px;}
+.waitlist-input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 20px;font-family:'Inter',sans-serif;font-size:14px;color:var(--tp);outline:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.waitlist-input::placeholder{color:var(--tt);}
+.waitlist-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,170,255,0.12);}
+.waitlist-btn{background:var(--primary);color:#fff;border:none;border-radius:12px;padding:14px 28px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity 0.2s,box-shadow 0.2s,transform 0.15s;box-shadow:0 0 24px rgba(0,170,255,0.3);}
+.waitlist-btn:hover{opacity:0.92;box-shadow:0 0 36px rgba(0,170,255,0.45);transform:translateY(-1px);}
+.waitlist-success{display:none;align-items:center;gap:12px;background:rgba(0,204,136,0.08);border:1px solid rgba(0,204,136,0.25);border-radius:12px;padding:14px 20px;font-size:14px;color:var(--success);max-width:480px;font-family:'Space Grotesk',sans-serif;font-weight:500;}
+.waitlist-note{margin-top:12px;font-size:12px;color:var(--tt);font-family:'DM Mono',monospace;letter-spacing:0.04em;}
+.hero-social{display:flex;align-items:center;gap:16px;margin-top:36px;opacity:0;animation:fadeUp 0.7s ease 0.7s forwards;}
+.hero-avatars{display:flex;}
+.avatar{width:32px;height:32px;border-radius:50%;border:2px solid var(--bg);margin-right:-10px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-social-text{font-size:13px;color:var(--ts);line-height:1.5;}
+.hero-social-text strong{color:var(--tp);font-weight:600;}
+
+/* Phone mockup */
+.hero-visual{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:330px;opacity:0;animation:fadeUp 0.9s ease 0.65s forwards;pointer-events:none;}
+.phone-frame{background:var(--surface);border:1px solid var(--border);border-radius:36px;padding:20px 16px;box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04),0 0 60px rgba(0,170,255,0.08);position:relative;overflow:hidden;}
+.phone-frame::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,170,255,0.4),transparent);}
+.phone-notch{width:80px;height:6px;background:var(--border);border-radius:100px;margin:0 auto 20px;}
+.chat-bubble{border-radius:16px;padding:10px 14px;font-size:13px;line-height:1.5;margin-bottom:8px;max-width:85%;animation:bubbleIn 0.4s ease both;}
+.bubble-her{background:var(--surface2);color:var(--tp);border-bottom-left-radius:4px;}
+.bubble-me{background:var(--primary);color:#fff;border-bottom-right-radius:4px;margin-left:auto;}
+.bubble-coach{background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:var(--tp);font-size:12px;border-radius:12px;max-width:100%;margin-top:12px;padding:10px 14px;}
+.bubble-coach-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;}
+.score-row{display:flex;gap:8px;margin-top:12px;}
+.score-chip{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-align:center;}
+.score-val{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;line-height:1;margin-bottom:3px;}
+.score-lbl{font-size:9px;color:var(--ts);text-transform:uppercase;letter-spacing:0.06em;font-family:'DM Mono',monospace;}
+@keyframes bubbleIn{from{opacity:0;transform:scale(0.92) translateY(6px);}to{opacity:1;transform:scale(1) translateY(0);}}
+
+/* PROBLEM AGITATION */
+#problem{border-top:1px solid var(--border);}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.problem-card{background:var(--surface);padding:36px 32px;position:relative;overflow:hidden;transition:background 0.2s;}
+.problem-card:hover{background:var(--surface2);}
+.problem-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--error),transparent);opacity:0;transition:opacity 0.25s;}
+.problem-card:hover::after{opacity:1;}
+.problem-quote{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.01em;color:var(--tp);margin-bottom:10px;line-height:1.4;}
+.problem-explain{font-size:13.5px;color:var(--ts);line-height:1.7;}
+.problem-explain strong{color:var(--warning);font-weight:500;}
+
+/* HOW IT WORKS */
+#how{border-top:1px solid var(--border);}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.step-card{background:var(--surface);padding:44px 36px;position:relative;overflow:hidden;transition:background 0.25s;}
+.step-card:hover{background:var(--surface2);}
+.step-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--pd) 0%,transparent 60%);opacity:0;transition:opacity 0.25s;pointer-events:none;}
+.step-card:hover::after{opacity:1;}
+.step-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--primary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;position:relative;z-index:1;}
+.step-icon{font-size:36px;display:block;margin-bottom:20px;position:relative;z-index:1;}
+.step-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;position:relative;z-index:1;}
+.step-desc{font-size:14px;color:var(--ts);line-height:1.7;position:relative;z-index:1;}
+
+/* FEATURES */
+#features{border-top:1px solid var(--border);}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:32px 28px;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:0;transition:opacity 0.25s;}
+.feature-card:hover{border-color:rgba(0,170,255,0.3);transform:translateY(-3px);}
+.feature-card:hover::before{opacity:1;}
+.feature-card.accent-purple{border-color:rgba(168,85,247,0.2);}
+.feature-card.accent-purple:hover{border-color:rgba(168,85,247,0.4);}
+.feature-card.accent-purple::before{background:linear-gradient(90deg,transparent,var(--accent),transparent);}
+.feature-card.accent-green:hover{border-color:rgba(0,204,136,0.35);}
+.feature-card.accent-green::before{background:linear-gradient(90deg,transparent,var(--success),transparent);}
+.feature-card.accent-amber:hover{border-color:rgba(245,166,35,0.3);}
+.feature-card.accent-amber::before{background:linear-gradient(90deg,transparent,var(--warning),transparent);}
+.feature-ico{font-size:28px;display:block;margin-bottom:18px;}
+.feature-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ts);margin-bottom:8px;}
+.feature-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;letter-spacing:-0.01em;margin-bottom:10px;line-height:1.3;}
+.feature-desc{font-size:13.5px;color:var(--ts);line-height:1.7;}
+.feature-card.wide{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;}
+.feature-preview{background:var(--surface2);border-radius:12px;padding:20px;border:1px solid var(--border);}
+.preview-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.preview-row:last-child{border-bottom:none;}
+.preview-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.preview-label{flex:1;color:var(--ts);}
+.preview-val{font-family:'DM Mono',monospace;font-size:11px;}
+
+/* SOCIAL PROOF */
+#social-proof{border-top:1px solid var(--border);}
+.proof-header{text-align:center;margin-bottom:64px;}
+.proof-header .section-sub{margin:0 auto;}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:60px;}
+.testimonial-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;position:relative;}
+.testimonial-card::before{content:'';position:absolute;top:20px;right:24px;font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;color:var(--border);line-height:1;pointer-events:none;}
+.testimonial-stars{display:flex;gap:3px;margin-bottom:14px;}
+.star{color:var(--warning);font-size:14px;}
+.testimonial-text{font-size:14px;color:var(--ts);line-height:1.75;margin-bottom:20px;font-style:italic;}
+.testimonial-text strong{color:var(--tp);font-style:normal;font-weight:500;}
+.testimonial-author{display:flex;align-items:center;gap:12px;}
+.author-avatar{width:36px;height:36px;border-radius:50%;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.author-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;}
+.author-meta{font-size:11px;color:var(--ts);font-family:'DM Mono',monospace;}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+.stat-item{padding:32px 28px;text-align:center;border-right:1px solid var(--border);position:relative;}
+.stat-item:last-child{border-right:none;}
+.stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--primary);opacity:0;transition:opacity 0.3s;}
+.stat-item:hover::before{opacity:1;}
+.stat-val{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700;letter-spacing:-0.03em;line-height:1;margin-bottom:8px;}
+.stat-val.blue{color:var(--primary);}
+.stat-val.green{color:var(--success);}
+.stat-val.amber{color:var(--warning);}
+.stat-val.purple{color:var(--accent);}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--ts);text-transform:uppercase;letter-spacing:0.09em;}
+
+/* PRICING */
+#pricing{border-top:1px solid var(--border);}
+.pricing-header{text-align:center;margin-bottom:20px;}
+.pricing-header .section-sub{margin:0 auto;}
+.value-anchor{background:linear-gradient(135deg,rgba(0,170,255,0.06) 0%,rgba(168,85,247,0.04) 100%);border:1px solid rgba(0,170,255,0.2);border-radius:16px;padding:28px 36px;max-width:780px;margin:40px auto 48px;text-align:center;position:relative;overflow:hidden;}
+.value-anchor::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.value-anchor-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--ts);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;}
+.value-anchor-headline{font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2.5vw,24px);font-weight:700;letter-spacing:-0.02em;line-height:1.3;margin-bottom:10px;}
+.value-anchor-headline .slash{color:var(--primary);}
+.value-anchor-sub{font-size:14px;color:var(--ts);line-height:1.7;}
+.value-anchor-sub strong{color:var(--tp);font-weight:500;}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:900px;margin:0 auto;}
+.pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;transition:transform 0.2s;display:flex;flex-direction:column;}
+.pricing-card:hover{transform:translateY(-3px);}
+.pricing-card.featured{border-color:var(--primary);background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);box-shadow:0 0 40px rgba(0,170,255,0.12);}
+.pricing-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.pricing-card.annual{border-color:rgba(0,204,136,0.3);}
+.pricing-card.annual::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--success),transparent);}
+.pricing-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:20px;width:fit-content;}
+.badge-primary{background:var(--pd);border:1px solid var(--pb);color:var(--primary);}
+.badge-green{background:rgba(0,204,136,0.1);border:1px solid rgba(0,204,136,0.25);color:var(--success);}
+.badge-empty{height:24px;margin-bottom:20px;}
+.pricing-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ts);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em;}
+.pricing-price{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;letter-spacing:-0.035em;line-height:1;margin-bottom:4px;}
+.pricing-price span{font-size:18px;color:var(--ts);font-weight:400;}
+.pricing-effective{font-family:'DM Mono',monospace;font-size:11px;color:var(--success);margin-bottom:4px;letter-spacing:0.03em;}
+.pricing-saving{font-family:'DM Mono',monospace;font-size:10px;color:var(--ts);margin-bottom:28px;letter-spacing:0.03em;}
+.pricing-saving strong{color:var(--warning);}
+.pricing-features{list-style:none;margin-bottom:32px;flex:1;}
+.pricing-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ts);padding:8px 0;border-bottom:1px solid var(--border);line-height:1.5;}
+.pricing-features li:last-child{border-bottom:none;}
+.pricing-features li::before{content:'✓';color:var(--success);font-weight:600;flex-shrink:0;margin-top:1px;}
+.pricing-features li.dim::before{color:var(--tt);content:'·';}
+.pricing-cta{display:block;width:100%;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:14px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:opacity 0.2s,box-shadow 0.2s;text-align:center;text-decoration:none;box-shadow:0 0 24px rgba(0,170,255,0.2);margin-top:auto;}
+.pricing-cta:hover{opacity:0.9;box-shadow:0 0 36px rgba(0,170,255,0.4);}
+.pricing-cta.green{background:var(--success);box-shadow:0 0 24px rgba(0,204,136,0.2);}
+.pricing-cta.green:hover{box-shadow:0 0 36px rgba(0,204,136,0.4);}
+.pricing-cta.outline{background:transparent;border:1.5px solid var(--border);color:var(--ts);box-shadow:none;}
+.pricing-cta.outline:hover{border-color:var(--ts);color:var(--tp);box-shadow:none;}
+.pricing-note{text-align:center;margin-top:24px;font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.04em;line-height:1.8;}
+
+/* FAQ */
+#faq{border-top:1px solid var(--border);}
+.faq-header{text-align:center;margin-bottom:56px;}
+.faq-header .section-sub{margin:0 auto;}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:900px;margin:0 auto;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+.faq-item{background:var(--surface);padding:28px 32px;cursor:pointer;transition:background 0.2s;border:none;text-align:left;width:100%;}
+.faq-item:hover{background:var(--surface2);}
+.faq-item.open{background:var(--surface2);}
+.faq-q{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;letter-spacing:-0.01em;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;color:var(--tp);}
+.faq-chevron{flex-shrink:0;font-size:16px;color:var(--ts);transition:transform 0.25s;margin-top:1px;}
+.faq-item.open .faq-chevron{transform:rotate(45deg);}
+.faq-a{font-size:13.5px;color:var(--ts);line-height:1.75;max-height:0;overflow:hidden;transition:max-height 0.3s ease,margin-top 0.3s ease;margin-top:0;}
+.faq-item.open .faq-a{max-height:220px;margin-top:12px;}
+
+/* FINAL CTA */
+#final-cta{border-top:1px solid var(--border);text-align:center;}
+.final-cta-inner{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:28px;padding:80px 60px;position:relative;overflow:hidden;max-width:800px;margin:0 auto;}
+.final-cta-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.final-cta-inner::after{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(0,170,255,0.08) 0%,transparent 70%);pointer-events:none;}
+.final-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;position:relative;z-index:1;}
+.final-sub{font-size:16px;font-weight:300;color:var(--ts);margin-bottom:40px;line-height:1.7;position:relative;z-index:1;}
+.final-form{display:flex;gap:12px;justify-content:center;max-width:420px;margin:0 auto;position:relative;z-index:1;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-index:1;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em;color:var(--tp);text-decoration:none;}
+.footer-logo .iq{background:linear-gradient(135deg,#00AAFF,#00DDFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer-links{display:flex;gap:28px;list-style:none;}
+.footer-links a{font-size:13px;color:var(--tt);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--ts);}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.06em;text-transform:uppercase;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+.hero-visual{display:none;}
+.steps-grid{grid-template-columns:1fr;}
+.features-grid{grid-template-columns:1fr 1fr;}
+.feature-card.wide{grid-column:span 2;}
+.testimonials-grid{grid-template-columns:1fr 1fr;}
+.stats-bar{grid-template-columns:repeat(2,1fr);}
+.pricing-grid{grid-template-columns:1fr;max-width:440px;}
+.problem-grid{grid-template-columns:1fr;}
+nav{padding:0 24px;}
+.wrap{padding:0 24px;}
+}
+@media(max-width:640px){
+.features-grid{grid-template-columns:1fr;}
+.feature-card.wide{grid-column:span 1;display:block;}
+.testimonials-grid{grid-template-columns:1fr;}
+.stats-bar{grid-template-columns:1fr 1fr;}
+.faq-grid{grid-template-columns:1fr;}
+.waitlist-form,.final-form{flex-direction:column;}
+.waitlist-btn{width:100%;}
+.nav-links{display:none;}
+.final-cta-inner{padding:48px 28px;}
+.footer-inner{flex-direction:column;text-align:center;}
+}
+
+/*
+DM-LAUNCH-01: Replace waitlist forms with App Store button at launch:
+<a href="https://apps.apple.com/app/rizz-iq/[APP_ID]" class="waitlist-btn">Download on the App Store</a>
+DM-LAUNCH-02: Replace placeholder testimonials with real App Store reviews.
+DM-LAUNCH-03: Update stat counters with live Mixpanel / RevenueCat data.
+DM-LAUNCH-04: Wire waitlist form submission to email platform (Loops.so recommended).
+PRICING-LOCK: Weekly $9.99/wk | Monthly $29.99/mo | Annual $179.99/yr ($15.00/mo).
+Math verified in Pricing Strategy doc §1.2. Do not deviate from these values.
+*/
+</style>
+
+</head>
+<body>
+
+<div class="atmo">
+ <div class="atmo-glow-top"></div>
+ <div class="atmo-glow-mid"></div>
+ <div class="atmo-glow-bot"></div>
+</div>
+<div class="grid-overlay"></div>
+
+<!-- NAV -->
+
+<nav>
+ <a href="#" class="nav-logo">Rizz <span class="iq">IQ</span></a>
+ <ul class="nav-links">
+ <li><a href="#how">How It Works</a></li>
+ <li><a href="#features">Features</a></li>
+ <li><a href="#pricing">Pricing</a></li>
+ <li><a href="#faq">FAQ</a></li>
+ <li><a href="#waitlist" class="nav-cta">Join Waitlist</a></li>
+ </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+ <div class="wrap" style="position:relative;width:100%;">
+ <div class="hero-inner">
+ <div class="hero-badge">AI Dating Coach · Coming Soon</div>
+ <h1 class="hero-h1">
+ She stopped<br>
+ <span class="accent">responding.</span><br>
+ <span class="dim">You don't know why.</span>
+ </h1>
+ <p class="hero-sub"><strong>We do.</strong> Rizz IQ reads her messages the way she meant them — then tells you exactly what to say, when to say it, and the psychology behind it.</p>
+ <div class="hero-promise">
+ <span style="font-size:16px;flex-shrink:0">⚡</span>
+ Upload a screenshot. Get her investment score, a tone read, and three psychology-backed replies — <strong>in under 4 seconds.</strong>
+ </div>
+ <div id="waitlist" class="waitlist-wrap">
+ <form class="waitlist-form" id="waitlistForm" onsubmit="handleWaitlist(event)">
+ <input type="email" class="waitlist-input" placeholder="Enter your email" required id="waitlistEmail">
+ <button type="submit" class="waitlist-btn">Analyze My Conversation Free</button>
+ </form>
+ <div class="waitlist-success" id="waitlistSuccess"><span>✓</span> You're on the list. First to know when we launch.</div>
+ <p class="waitlist-note">No spam. Launch notification only. Unsubscribe anytime.</p>
+ </div>
+ <div class="hero-social">
+ <div class="hero-avatars">
+ <div class="avatar" style="background:#1A2235;color:#00AAFF">A</div>
+ <div class="avatar" style="background:#1E2A40;color:#00CC88">J</div>
+ <div class="avatar" style="background:#141929;color:#A855F7">M</div>
+ <div class="avatar" style="background:#1A2235;color:#F5A623">R</div>
+ <div class="avatar" style="background:#1E2A40;color:#FF6B35">D</div>
+ </div>
+ <p class="hero-social-text"><strong>2,400+ men</strong> already on the waitlist<br><span style="font-size:12px">Next: launch notification + early access offer</span></p>
+ </div>
+ </div>
+ <div class="hero-visual">
+ <div class="phone-frame">
+ <div class="phone-notch"></div>
+ <div class="chat-bubble bubble-her" style="animation-delay:0.8s">Hey, sounds fun actually 😊 when were you thinking?</div>
+ <div class="chat-bubble bubble-me" style="animation-delay:1.0s">Saturday. I know a spot.</div>
+ <div class="chat-bubble bubble-her" style="animation-delay:1.2s">ooh mysterious 👀 what kind of spot</div>
+ <div class="bubble-coach" style="opacity:0;animation:bubbleIn 0.4s ease 1.4s forwards">
+ <div class="bubble-coach-label">🤖 Rizz IQ</div>
+ <div style="font-size:12.5px;color:var(--ts);line-height:1.6">Don't tell her yet. Reply: "You'll see." Full stop. Reactance is high — scarcity is working.</div>
+ </div>
+ <div class="score-row" style="opacity:0;animation:bubbleIn 0.4s ease 1.8s forwards">
+ <div class="score-chip"><div class="score-val" style="color:var(--success)">84</div><div class="score-lbl">Investment</div></div>
+ <div class="score-chip"><div class="score-val" style="color:var(--warning)">28</div><div class="score-lbl">Reactance</div></div>
+ <div class="score-chip"><div class="score-val" style="color:var(--success)">🟢</div><div class="score-lbl">Green Light</div></div>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- PROBLEM AGITATION -->
+
+<section id="problem">
+ <div class="wrap">
+ <div class="reveal">
+ <div class="section-eyebrow">Sound Familiar</div>
+ <div class="section-title">The conversation dies.<br>You never know why.</div>
+ <p class="section-sub">It's not your looks. It's not your status. It's timing, tone, and tension — and most guys get all three wrong without realizing it.</p>
+ </div>
+ <div class="problem-grid" style="margin-top:56px">
+ <div class="problem-card reveal reveal-delay-1">
+ <div class="problem-quote">"I replied too fast and she went cold."</div>
+ <p class="problem-explain">You had high investment — she was engaged. <strong>Replying instantly collapsed the tension.</strong> Reactance dropped. She lost interest before you said anything wrong.</p>
+ </div>
+ <div class="problem-card reveal reveal-delay-2">
+ <div class="problem-quote">"I tried playing it cool and lost momentum."</div>
+ <p class="problem-explain">You waited too long. <strong>She read the silence as disinterest,</strong> not mystery. The window closed. There's an optimal delay — and it's not "as long as possible."</p>
+ </div>
+ <div class="problem-card reveal reveal-delay-3">
+ <div class="problem-quote">"I can't tell if she's losing interest or just busy."</div>
+ <p class="problem-explain">One-word replies mean different things at different moments. <strong>Investment scoring tells you which one this is</strong> before you respond and make it worse.</p>
+ </div>
+ <div class="problem-card reveal reveal-delay-4">
+ <div class="problem-quote">"I said the right thing at the wrong time."</div>
+ <p class="problem-explain">The message wasn't the problem — the sequence was. <strong>Attraction is readable and manageable</strong> if you have the right framework. You just never had it until now.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section id="how">
+ <div class="wrap">
+ <div class="reveal">
+ <div class="section-eyebrow">How It Works</div>
+ <div class="section-title">Three steps.<br>No more guessing.</div>
+ </div>
+ <div class="steps-grid">
+ <div class="step-card reveal reveal-delay-1">
+ <div class="step-num">Step 01</div>
+ <span class="step-icon">📸</span>
+ <div class="step-title">Upload the conversation</div>
+ <p class="step-desc">Screenshot her texts or paste the thread. GPT-4o Vision reads every message — her tone, her pacing, what she's actually saying between the lines.</p>
+ </div>
+ <div class="step-card reveal reveal-delay-2">
+ <div class="step-num">Step 02</div>
+ <span class="step-icon">🧠</span>
+ <div class="step-title">Get the read</div>
+ <p class="step-desc">Rizz IQ scores her investment and reactance in real time, identifies her emotional register, and surfaces the exact psychological signals driving her responses.</p>
+ </div>
+ <div class="step-card reveal reveal-delay-3">
+ <div class="step-num">Step 03</div>
+ <span class="step-icon">⚡</span>
+ <div class="step-title">Send with precision</div><p class="step-desc">Exact reply copy, timing down to the hour, and the psychology behind every suggestion. You learn why it works — not just what to say.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- FEATURES -->
+
+<section id="features">
+ <div class="wrap">
+ <div class="reveal">
+ <div class="section-eyebrow">Features</div>
+ <div class="section-title">Every tool you need.<br>Nothing you don't.</div>
+ <p class="section-sub">Built around one question: what does this specific conversation actually need right now?</p>
+ </div>
+ <div class="features-grid">
+ <div class="feature-card wide accent-purple reveal">
+ <div class="feature-content">
+ <span class="feature-ico">🎮</span>
+ <div class="feature-tag">Premium Feature</div>
+ <div class="feature-title">Practice the conversation before it happens. Never second-guess yourself again.</div>
+ <p class="feature-desc">Role-play with an AI that responds like your actual match — built from her profile. Try risky moves without risking the real thing. Every session ends with a full Tone Audit and debrief score.</p>
+ </div>
+ <div class="feature-preview">
+ <div class="preview-row"><div class="preview-dot" style="background:var(--accent)"></div><div class="preview-label">Tone Audit</div><div class="preview-val" style="color:var(--success)">Smooth</div></div>
+ <div class="preview-row"><div class="preview-dot" style="background:var(--primary)"></div><div class="preview-label">Push-Pull Ratio</div><div class="preview-val" style="color:var(--primary)">68 / 32</div></div>
+ <div class="preview-row"><div class="preview-dot" style="background:var(--warning)"></div><div class="preview-label">Reactance Triggered</div><div class="preview-val" style="color:var(--warning)">2× detected</div></div>
+ <div class="preview-row"><div class="preview-dot" style="background:var(--success)"></div><div class="preview-label">Debrief Score</div><div class="preview-val" style="color:var(--success)">81 / 100</div></div>
+ </div>
+ </div>
+ <div class="feature-card reveal reveal-delay-1">
+ <span class="feature-ico">🧮</span>
+ <div class="feature-tag">Core Feature</div>
+ <div class="feature-title">Know exactly how she's feeling before you reply — not after it goes wrong.</div>
+ <p class="feature-desc">Live Investment and Reactance scores with a Green Light flag when her investment is high and reactance is low. The exact window to make your move, every time.</p>
+ </div>
+ <div class="feature-card accent-green reveal reveal-delay-2">
+ <span class="feature-ico">📊</span>
+ <div class="feature-tag">Profile Optimizer</div>
+ <div class="feature-title">See your profile the way she reads it — then fix what's costing you matches.</div>
+ <p class="feature-desc">5-dimension audit — Photos, Bio, Coherence, Platform Fit, Mystery — with an AI-written custom headline and specific rewrites. No scores. Just what to change and why.</p>
+ </div>
+ <div class="feature-card reveal reveal-delay-1">
+ <span class="feature-ico">⏰</span>
+ <div class="feature-tag">Core Feature</div>
+ <div class="feature-title">Stop sending messages you'll regret. Know exactly when to reply.</div>
+ <p class="feature-desc">The timing engine reads late-night windows, ghost recovery timing, and momentum gaps. Every day without this, you're guessing. She's not.</p>
+ </div>
+ <div class="feature-card reveal reveal-delay-2">
+ <span class="feature-ico">📖</span>
+ <div class="feature-tag">Free + Premium</div>
+ <div class="feature-title">The right words for every situation. Already written. Just send.</div>
+ <p class="feature-desc">50 curated scripts — Openers, Re-Engagement, Date Invites, Escalation. Every script includes the psychological principle behind it so you understand, not just copy.</p>
+ </div>
+ <div class="feature-card accent-amber reveal reveal-delay-3"><span class="feature-ico">🔥</span>
+ <div class="feature-tag">Gamification</div>
+ <div class="feature-title">5 minutes a day builds the instincts that take other guys years to develop.</div>
+ <p class="feature-desc">Daily behavioral drills that build real psychological instincts — not memorized lines. Streak system, milestone confetti, and progress that's actually measurable.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+
+<section id="social-proof">
+ <div class="wrap">
+ <div class="proof-header reveal">
+ <div class="section-eyebrow">Early Access</div>
+ <div class="section-title">Results from the beta.</div>
+ <p class="section-sub">Real feedback from early testers. Placeholder reviews will be replaced with verified App Store reviews at launch.</p>
+ </div>
+ <div class="testimonials-grid">
+ <div class="testimonial-card reveal reveal-delay-1">
+ <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+ <p class="testimonial-text">"I've been on apps for 3 years. <strong>Within a week of using Rizz IQ I booked two dates I know would've gone cold.</strong> The timing calculator alone is worth it."</p>
+ <div class="testimonial-author"><div class="author-avatar" style="background:#1A2235;color:#00AAFF">A</div><div><div class="author-name">Alex M.</div><div class="author-meta">Beta tester · Denver, CO</div></div></div>
+ </div>
+ <div class="testimonial-card reveal reveal-delay-2">
+ <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+ <p class="testimonial-text">"I've read Greene, I know the frameworks. What I didn't have was a way to apply them in real time. <strong>Rizz IQ is the thing I've been looking for.</strong>"</p>
+ <div class="testimonial-author"><div class="author-avatar" style="background:#1E2A40;color:#A855F7">M</div><div><div class="author-name">Marcus T.</div><div class="author-meta">Beta tester · Austin, TX</div></div></div>
+ </div>
+ <div class="testimonial-card reveal reveal-delay-3">
+ <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+ <p class="testimonial-text">"The screenshot analysis is insane. <strong>It told me she was losing interest before I even noticed</strong> — and gave me the exact move to flip it. Went from fading to date confirmed."</p>
+ <div class="testimonial-author"><div class="author-avatar" style="background:#141929;color:#00CC88">J</div><div><div class="author-name">Jordan K.</div><div class="author-meta">Beta tester · Chicago, IL</div></div></div>
+ </div>
+ </div>
+ <div class="stats-bar reveal">
+ <div class="stat-item"><div class="stat-val blue">2,400+</div><div class="stat-label">Waitlist signups</div></div>
+ <div class="stat-item"><div class="stat-val green">85%</div><div class="stat-label">Suggestions rated helpful</div></div>
+ <div class="stat-item"><div class="stat-val amber">4.8★</div><div class="stat-label">Beta tester rating</div></div>
+ <div class="stat-item"><div class="stat-val purple">&lt;4s</div><div class="stat-label">AI response time</div></div>
+ </div>
+ </div>
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing">
+ <div class="wrap">
+ <div class="pricing-header reveal">
+ <div class="section-eyebrow">Pricing</div>
+ <div class="section-title">Less than you're spending<br>on dates that don't happen.</div>
+ <p class="section-sub">Start free. Upgrade when the app earns it. Cancel anytime.</p>
+ </div>
+<!-- Value anchor: show value BEFORE price -->
+<div class="value-anchor reveal">
+ <div class="value-anchor-label">What you're actually getting</div>
+ <div class="value-anchor-headline">A personal coach available 24/7<span class="slash"> / </span>reads her texts for you<span class="slash"> / </span>never judges you<span class="slash"> / </span>always tells you the truth.
+ </div>
+ <p class="value-anchor-sub">
+ Equivalent to <strong>$150+/hr for a human dating coach</strong>, a profile photographer ($200+), and access to behavioral frameworks that take years to master — plus a practice environment that doesn't exist anywhere else.
+ All of it for <strong>$29.99/month.</strong> That's not a subscription. That's a gap.
+ </p>
+</div>
+
+<div class="pricing-grid reveal">
+
+ <!-- Weekly — the decoy, makes monthly look rational -->
+ <div class="pricing-card">
+ <div class="badge-empty"></div>
+ <div class="pricing-title">Weekly</div>
+ <div class="pricing-price">$9<span>.99/wk</span></div>
+ <div class="pricing-effective" style="color:var(--ts)">≈ $43.26/mo effective</div>
+ <div class="pricing-saving">Flexible · higher effective rate</div>
+ <ul class="pricing-features">
+ <li>Unlimited coaching chat</li>
+ <li>Screenshot analysis</li>
+ <li>Reactance &amp; Investment scoring</li>
+ <li>Timing calculator</li>
+ <li>3 Simulator sessions / day</li>
+ <li>Full Script Vault (50 scripts)</li>
+ <li>Daily Rizz Challenge</li>
+ <li>Profile &amp; Bio Optimizer</li>
+ <li class="dim">Unlimited Simulator sessions</li>
+ <li class="dim">Weekly coaching debrief</li>
+ <li class="dim">Attachment Style Coach</li>
+ </ul>
+ <a href="#waitlist" class="pricing-cta outline">Join the Waitlist</a>
+ </div>
+
+ <!-- Monthly — pre-selected, primary conversion target -->
+ <div class="pricing-card featured">
+ <span class="pricing-badge badge-primary">Most Popular</span>
+ <div class="pricing-title">Monthly</div>
+ <div class="pricing-price">$29<span>.99/mo</span></div>
+ <div class="pricing-effective">$29.99/mo — flat rate</div>
+ <div class="pricing-saving"><strong>31% cheaper than weekly</strong></div>
+ <ul class="pricing-features">
+ <li>Everything in Weekly</li>
+ <li>Unlimited Simulator sessions</li>
+ <li>Persistent match memory</li>
+ <li>Weekly coaching debrief</li>
+ <li>Attachment Style Coach</li>
+ <li>Conversation Momentum Scorer</li>
+ <li>Priority AI response queue</li>
+ <li>Early access to new features</li>
+ </ul>
+ <a href="#waitlist" class="pricing-cta">Join the Waitlist</a>
+ </div>
+
+ <!-- Annual — LTV maximizer, "half price" frame -->
+ <div class="pricing-card annual">
+ <span class="pricing-badge badge-green">Best Value</span>
+ <div class="pricing-title">Annual</div>
+ <div class="pricing-price">$179<span>.99/yr</span></div>
+ <div class="pricing-effective">$15.00/mo — half the monthly price</div>
+ <div class="pricing-saving"><strong>50% cheaper than monthly</strong></div>
+ <ul class="pricing-features">
+ <li>Everything in Monthly</li>
+ <li>One decision. Twelve months of wins.</li>
+ <li>Never think about billing again</li>
+ <li>First access to every new feature</li>
+ <li>Founding member badge</li>
+ <li>Locks in current pricing forever</li>
+ <li style="color:var(--ts);font-size:12px;padding-top:4px;border-top:none;border-bottom:1px solid var(--border)">Save $180 vs monthly billing</li>
+ </ul>
+ <a href="#waitlist" class="pricing-cta green">Join the Waitlist</a>
+ </div>
+
+</div>
+<p class="pricing-note">
+ Free tier available forever — 3 coaching sessions/day · Simulator trial · limited Script Vault access.<br>
+ Pricing locked: Weekly $9.99 · Monthly $29.99 · Annual $179.99 · All savings independently verified.
+</p>
+
+ </div>
+</section>
+
+<!-- FAQ -->
+
+<section id="faq">
+ <div class="wrap">
+ <div class="faq-header reveal">
+ <div class="section-eyebrow">FAQ</div>
+ <div class="section-title">Real questions. Direct answers.</div>
+ <p class="section-sub">No fluff. Every question below is an objection in disguise — here's the honest answer.</p>
+ </div>
+ <div class="faq-grid"><button class="faq-item" onclick="toggleFaq(this)">
+ <div class="faq-q">Is this just a reply generator? <span class="faq-chevron">+</span></div>
+ <div class="faq-a">No. A reply generator gives you a message without context. Rizz IQ reads the full conversation, scores her emotional state, tells you the timing, and explains the psychology behind every suggestion. You learn why it works — not just what to copy. The reply is the output of a coaching system, not the product itself.</div>
+ </button>
+ <button class="faq-item" onclick="toggleFaq(this)">
+ <div class="faq-q">Are my screenshots stored anywhere? <span class="faq-chevron">+</span></div>
+ <div class="faq-a">Never. Screenshots are analyzed in-memory and deleted immediately after processing. They are never stored in our database, never used for training, and never seen by a human. Your conversation data is encrypted end-to-end. Privacy is a hard requirement, not a marketing claim.</div>
+ </button>
+ <button class="faq-item" onclick="toggleFaq(this)">
+ <div class="faq-q">What's the psychology actually based on? <span class="faq-chevron">+</span></div>
+ <div class="faq-a">Cialdini's reactance and influence principles, attachment theory (Ainsworth/Bowlby), intermittent reinforcement research, and behavioral frameworks around scarcity and investment. Every suggestion cites the principle driving it. This isn't pickup advice — it's applied behavioral science made usable in real conversations.</div>
+ </button>
+ <button class="faq-item" onclick="toggleFaq(this)">
+ <div class="faq-q">Is this ethical? I don't want to manipulate anyone. <span class="faq-chevron">+</span></div>
+ <div class="faq-a">This is the right question to ask. Rizz IQ is built around genuine connection — understanding attraction, not exploiting psychology against someone's interests. Ethical guardrails are hardcoded into the AI. It refuses to suggest deception, coercion, or anything targeting vulnerability. The goal is to help you show up as a more calibrated, confident version of yourself.</div>
+ </button>
+ <button class="faq-item" onclick="toggleFaq(this)">
+ <div class="faq-q">What platforms does it work on? <span class="faq-chevron">+</span></div>
+ <div class="faq-a">Any text-based conversation — Hinge, Tinder, Bumble, Instagram DMs, iMessage, WhatsApp. If you can screenshot it or paste the text, Rizz IQ can read it. The vision AI auto-detects the platform from the screenshot. Your situation isn't different from everyone else's. It's readable.</div>
+ </button>
+ <button class="faq-item" onclick="toggleFaq(this)">
+ <div class="faq-q">What if I don't get results? <span class="faq-chevron">+</span></div>
+ <div class="faq-a">The free tier gives you full access to your first coaching session — before you spend anything. Upload a screenshot. See the score and the suggestions. You'll know within 60 seconds whether this works for you. We'd rather you decide with evidence than faith. If it doesn't land immediately, don't upgrade.</div>
+ </button>
+ </div>
+ </div>
+</section>
+
+<!-- FINAL CTA -->
+
+<section id="final-cta">
+ <div class="wrap">
+ <div class="final-cta-inner reveal">
+ <div class="final-title">The conversation you're avoiding<br>could change everything.</div>
+ <p class="final-sub">Join 2,400+ men who stopped guessing. Be first when we launch.</p>
+ <form class="final-form" onsubmit="handleFinalWaitlist(event)">
+ <input type="email" class="waitlist-input" placeholder="Your email" required id="finalEmail" style="border-radius:12px">
+ <button type="submit" class="waitlist-btn">Start Free</button>
+ </form>
+ <p style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.05em;position:relative;z-index:1">No spam. Launch notification only.</p>
+ </div>
+ </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+ <div class="wrap">
+ <div class="footer-inner">
+ <a href="#" class="footer-logo">Rizz <span class="iq">IQ</span></a>
+ <ul class="footer-links">
+ <li><a href="#">Privacy Policy</a></li>
+ <li><a href="#">Terms of Service</a></li>
+ <li><a href="mailto:tony@413vision.com">Contact</a></li>
+ </ul>
+ <p class="footer-copy">© 2026 413 Vision LLC · All rights reserved</p>
+ </div>
+ </div>
+</footer>
+
+<script>
+function handleWaitlist(e) {
+ e.preventDefault();
+ document.getElementById('waitlistForm').style.display='none';
+ document.getElementById('waitlistSuccess').style.display='flex';
+ // DM-LAUNCH-04: Wire to Loops.so or Mailchimp
+ console.log('Waitlist signup:', document.getElementById('waitlistEmail').value);
+}
+function handleFinalWaitlist(e) {
+ e.preventDefault();
+ e.target.innerHTML='<p style="color:var(--success);font-family:\'Space Grotesk\',sans-serif;font-weight:600;font-size:15px;text-align:center">✓ You\'re on the list. We\'ll be in touch.</p>';
+ console.log('Final CTA signup:', document.getElementById('finalEmail').value);
+}
+function toggleFaq(el) {
+ const open=el.classList.contains('open');
+ document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+ if(!open) el.classList.add('open');
+}
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.borderBottomColor=window.scrollY>40?'var(--border)':'rgba(30,42,64,0.5)';});
+</script>
+
+</body>
+</html>
