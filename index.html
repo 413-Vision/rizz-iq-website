@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg:#0A0F1E;--surface:#141929;--surface2:#1A2235;--border:#1E2A40;
- --primary:#00AAFF;--primary-dark:#0077CC;
- --pd:rgba(0,170,255,0.08);--pb:rgba(0,170,255,0.2);--pg:rgba(0,170,255,0.15);
- --success:#00CC88;--warning:#F5A623;--error:#FF4444;
- --accent:#A855F7;--streak:#FF6B35;
- --tp:#FFFFFF;--ts:#8B9DC3;--tt:#4A5A7A;
+  --bg:#0A0F1E;--surface:#141929;--surface2:#1A2235;--border:#1E2A40;
+  --primary:#00AAFF;--primary-dark:#0077CC;
+  --pd:rgba(0,170,255,0.08);--pb:rgba(0,170,255,0.2);--pg:rgba(0,170,255,0.15);
+  --success:#00CC88;--warning:#F5A623;--error:#FF4444;
+  --accent:#A855F7;--streak:#FF6B35;
+  --tp:#FFFFFF;--ts:#8B9DC3;--tt:#4A5A7A;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -76,21 +76,279 @@ section{padding:100px 0;position:relative;z-index:1;}
 .hero-social-text{font-size:13px;color:var(--ts);line-height:1.5;}
 .hero-social-text strong{color:var(--tp);font-weight:600;}
 
-/* Phone mockup */
-.hero-visual{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:330px;opacity:0;animation:fadeUp 0.9s ease 0.65s forwards;pointer-events:none;}
-.phone-frame{background:var(--surface);border:1px solid var(--border);border-radius:36px;padding:20px 16px;box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04),0 0 60px rgba(0,170,255,0.08);position:relative;overflow:hidden;}
-.phone-frame::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,170,255,0.4),transparent);}
-.phone-notch{width:80px;height:6px;background:var(--border);border-radius:100px;margin:0 auto 20px;}
-.chat-bubble{border-radius:16px;padding:10px 14px;font-size:13px;line-height:1.5;margin-bottom:8px;max-width:85%;animation:bubbleIn 0.4s ease both;}
-.bubble-her{background:var(--surface2);color:var(--tp);border-bottom-left-radius:4px;}
-.bubble-me{background:var(--primary);color:#fff;border-bottom-right-radius:4px;margin-left:auto;}
-.bubble-coach{background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);color:var(--tp);font-size:12px;border-radius:12px;max-width:100%;margin-top:12px;padding:10px 14px;}
-.bubble-coach-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;}
-.score-row{display:flex;gap:8px;margin-top:12px;}
-.score-chip{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;text-align:center;}
-.score-val{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;line-height:1;margin-bottom:3px;}
-.score-lbl{font-size:9px;color:var(--ts);text-transform:uppercase;letter-spacing:0.06em;font-family:'DM Mono',monospace;}
-@keyframes bubbleIn{from{opacity:0;transform:scale(0.92) translateY(6px);}to{opacity:1;transform:scale(1) translateY(0);}}
+/* ── CINEMATIC 3D PHONE ── */
+.hero-visual{
+  position:absolute;right:-20px;top:50%;
+  width:285px;
+  opacity:0;
+  animation:phoneEntrance 1.1s cubic-bezier(0.22,1,0.36,1) 0.7s forwards;
+  pointer-events:none;
+  perspective:1200px;
+}
+@keyframes phoneEntrance{
+  from{opacity:0;transform:translateY(-44%) rotateY(-22deg) rotateX(5deg) scale(0.88);}
+  to{opacity:1;transform:translateY(-50%) rotateY(-14deg) rotateX(3deg) scale(1);}
+}
+.phone-glow-wrap{
+  position:relative;transform-style:preserve-3d;
+  animation:phoneFloat 7s ease-in-out infinite;
+}
+@keyframes phoneFloat{
+  0%,100%{transform:rotateY(-14deg) rotateX(3deg) translateY(0);}
+  50%{transform:rotateY(-11deg) rotateX(5deg) translateY(-8px);}
+}
+.phone-glow-blue{
+  position:absolute;inset:-50px;
+  background:radial-gradient(ellipse at 30% 40%,rgba(0,170,255,0.30) 0%,transparent 65%);
+  filter:blur(22px);pointer-events:none;
+  animation:glowPulse 4s ease-in-out infinite;
+}
+.phone-glow-purple{
+  position:absolute;inset:-60px;
+  background:radial-gradient(ellipse at 70% 70%,rgba(168,85,247,0.18) 0%,transparent 60%);
+  filter:blur(28px);pointer-events:none;
+  animation:glowPulse 4s ease-in-out infinite 2s;
+}
+@keyframes glowPulse{0%,100%{opacity:0.7;}50%{opacity:1;}}
+.phone-frame{
+  background:linear-gradient(160deg,#1E2A40 0%,#141929 60%,#0E1623 100%);
+  border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:40px;padding:0;
+  box-shadow:
+    0 60px 120px rgba(0,0,0,0.75),
+    0 0 0 1px rgba(255,255,255,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    0 0 80px rgba(0,170,255,0.10),
+    -20px 0 60px rgba(0,0,0,0.35);
+  position:relative;overflow:hidden;
+}
+.phone-frame::after{
+  content:'';position:absolute;left:-2px;top:100px;
+  width:3px;height:38px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04));
+  border-radius:2px 0 0 2px;
+}
+.phone-glare{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  background:linear-gradient(115deg,rgba(255,255,255,0.055) 0%,rgba(255,255,255,0.015) 25%,transparent 55%);
+  border-radius:40px;pointer-events:none;z-index:10;
+}
+/* ── STATUS BAR — no notch, clean flat bar ── */
+.phone-status-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 18px 8px;
+  position:relative;z-index:5;flex-shrink:0;
+}
+.phone-status-time{
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  color:rgba(255,255,255,0.8);letter-spacing:0.04em;
+}
+.phone-status-icons{display:flex;align-items:center;gap:5px;}
+.sbar-batt{width:17px;height:8px;border:1.5px solid rgba(255,255,255,0.45);border-radius:2px;position:relative;}
+.sbar-batt::before{content:'';position:absolute;left:2px;top:1.5px;bottom:1.5px;width:60%;background:rgba(255,255,255,0.65);border-radius:1px;}
+.sbar-batt::after{content:'';position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:2px;height:5px;background:rgba(255,255,255,0.3);border-radius:1px;}
+.phone-screen{padding:6px 13px 0;position:relative;z-index:2;}
+.hs-header{display:flex;justify-content:space-between;align-items:center;padding:2px 0 12px;}
+.hs-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em;color:#fff;}
+.hs-streak-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(255,107,53,0.10);border:1px solid rgba(255,107,53,0.25);
+  border-radius:100px;padding:3px 9px;
+}
+.hs-streak-text{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:#FF6B35;}
+
+/* RizzScoreCard — exact token values */
+.hs-score-card{
+  background:#141929;border:1px solid #1E2A40;border-radius:20px;
+  padding:14px 14px 12px;margin-bottom:8px;
+  position:relative;
+  /* No opacity animation here — score num animates independently to avoid JS conflict */
+}
+.hs-score-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:#00AAFF;
+  border-radius:20px 20px 0 0;
+}
+.hs-eyebrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.hs-eyebrow-label{font-family:'Inter',sans-serif;font-size:9px;font-weight:500;color:#8B9DC3;letter-spacing:1.2px;text-transform:uppercase;}
+.hs-eyebrow-link{font-family:'Inter',sans-serif;font-size:9px;color:#00AAFF;}
+.hs-score-row{display:flex;align-items:center;margin-bottom:8px;gap:10px;}
+.hs-score-num{font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:700;letter-spacing:-2px;color:#fff;line-height:1;}
+.hs-score-right{display:flex;flex-direction:column;gap:3px;}
+.hs-tier-badge{background:rgba(0,170,255,0.12);border:1px solid rgba(0,170,255,0.4);border-radius:20px;padding:3px 8px;display:inline-flex;align-items:center;align-self:flex-start;width:auto;max-width:max-content;white-space:nowrap;}
+.hs-tier-text{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:#00AAFF;}
+.hs-delta{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:#00CC88;}
+.hs-progress-dots{display:flex;gap:3px;margin-bottom:3px;}
+.hs-pdot{width:20px;height:5px;border-radius:3px;flex-shrink:0;background:rgba(139,157,195,0.2);}
+.hs-progress-label{font-family:'Inter',sans-serif;font-size:9px;color:#8B9DC3;margin-bottom:6px;}
+.hs-divider{height:1px;background:#1E2A40;margin:8px 0;}
+.hs-insights{display:flex;gap:6px;margin-bottom:8px;}
+.hs-insight-pill{flex:1;background:#0D1525;border:1px solid #1E2A40;border-radius:12px;padding:7px 8px;}
+.hs-insight-label{font-family:'Inter',sans-serif;font-size:8px;font-weight:500;color:#8B9DC3;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px;}
+.hs-insight-val{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:#fff;}
+.hs-streak-row{display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:2px;}
+.hs-streak-row-text{font-family:'Inter',sans-serif;font-size:9px;color:#00CC88;font-weight:500;}
+.hs-streak-row-dot{width:3px;height:3px;border-radius:50%;background:#1E2A40;}
+.hs-streak-row-sub{font-family:'Inter',sans-serif;font-size:9px;color:#8B9DC3;}
+.hs-subcopy{font-family:'Inter',sans-serif;font-size:9px;color:#8B9DC3;text-align:center;}
+
+/* Section header */
+.hs-section-header{display:flex;justify-content:space-between;align-items:center;margin:10px 0 7px;}
+.hs-section-title{font-family:'Inter',sans-serif;font-size:9px;font-weight:500;color:#8B9DC3;letter-spacing:0.8px;text-transform:uppercase;}
+.hs-section-link{font-family:'Inter',sans-serif;font-size:9px;color:#00AAFF;}
+
+/* MatchListCard — exact token values */
+.hs-matches-list{margin-bottom:6px;}
+.hs-match{
+  background:#141929;border:1px solid #1E2A40;border-radius:14px;
+  padding:10px 11px;display:flex;align-items:center;gap:9px;
+  margin-bottom:6px;opacity:0;
+}
+.hs-match:nth-child(1){animation:cardIn 0.45s ease 1.75s forwards;}
+.hs-match:nth-child(2){animation:cardIn 0.45s ease 1.95s forwards;}
+.hs-avatar{
+  width:36px;height:36px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:500;
+  color:#8B9DC3;flex-shrink:0;position:relative;
+}
+/* Platform dot — bottom-right, 10×10, border 2px surface */
+.hs-platform-dot{position:absolute;bottom:-1px;right:-1px;width:10px;height:10px;border-radius:5px;border:2px solid #141929;}
+.hs-match-info{flex:1;min-width:0;}
+.hs-match-name-row{display:flex;align-items:center;gap:5px;margin-bottom:2px;}
+.hs-match-name{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:#fff;}
+/* VibePill — exact: border-radius 20, border 1, padding 1px 7px */
+.hs-vibe-pill{border-radius:20px;border-width:1px;border-style:solid;padding:1px 6px;font-family:'Inter',sans-serif;font-size:9px;font-weight:500;}
+.hs-match-preview{font-family:'Inter',sans-serif;font-size:10px;color:#8B9DC3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px;}
+.hs-match-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.hs-day-count{font-family:'Inter',sans-serif;font-size:9px;color:#8B9DC3;}
+/* Unread: 18×18 border-radius 9 — exact from code */
+.hs-unread{width:15px;height:15px;border-radius:8px;background:#FF4444;font-family:'Inter',sans-serif;font-size:9px;font-weight:500;color:#fff;display:flex;align-items:center;justify-content:center;}
+
+/* Daily Challenge — streakBg + streakBorder */
+.hs-challenge{
+  background:rgba(255,107,53,0.10);border:1px solid rgba(255,107,53,0.25);
+  border-radius:12px;padding:9px 11px;
+  display:flex;align-items:center;gap:8px;margin-bottom:0;
+  opacity:0;animation:cardIn 0.45s ease 2.15s forwards;
+}
+.hs-challenge-ico{font-size:16px;flex-shrink:0;}
+.hs-challenge-label{font-family:'DM Mono',monospace;font-size:8px;color:#FF6B35;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;}
+.hs-challenge-title{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:600;color:#fff;line-height:1.35;}
+
+/* Tab bar */
+.phone-tabbar{
+  display:flex;justify-content:space-around;
+  padding:8px 0 12px;
+  border-top:1px solid #1E2A40;
+  background:rgba(10,15,30,0.95);
+  margin:8px -13px 0;
+  border-radius:0 0 38px 38px;
+}
+.ptab{display:flex;flex-direction:column;align-items:center;gap:2px;font-family:'Inter',sans-serif;font-size:7.5px;color:#4A5A7A;padding:3px 8px;}
+.ptab.active{color:#00AAFF;}
+.ptab-ico{font-size:15px;line-height:1;position:relative;}
+.ptab-badge{position:absolute;top:-2px;right:-4px;width:5px;height:5px;border-radius:50%;background:#FF4444;border:1.5px solid #0A0F1E;}
+
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ── SCREEN MOTION EFFECTS ── */
+
+/* Score glow pulse when count-up lands */
+@keyframes scoreLand{
+  0%{text-shadow:none;}
+  40%{text-shadow:0 0 20px rgba(0,170,255,0.8),0 0 40px rgba(0,170,255,0.4);}
+  100%{text-shadow:0 0 8px rgba(0,170,255,0.25);}
+}
+/* score-landed removed */
+
+/* Progress dots stagger-fill */
+@keyframes dotFill{
+  from{background:rgba(139,157,195,0.2);}
+  to{background:#00AAFF;}
+}
+.hs-pdot.fill{animation:dotFill 0.18s ease forwards;}
+
+/* Unread badge breathe — Sofia */
+@keyframes badgeBreathe{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,68,68,0);}
+  50%{transform:scale(1.18);box-shadow:0 0 0 3px rgba(255,68,68,0.2);}
+}
+.hs-unread{animation:badgeBreathe 2.4s ease-in-out infinite 2.5s;}
+
+/* Match card activity streak — sweeps down left border */
+@keyframes borderStreak{
+  0%{top:-100%;opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:1;}
+  100%{top:100%;opacity:0;}
+}
+.hs-match{position:relative;}
+.hs-match::before{
+  content:'';
+  position:absolute;left:-1px;
+  width:2px;height:40%;
+  background:linear-gradient(180deg,transparent,#00AAFF,transparent);
+  border-radius:2px;
+  top:-100%;
+  animation:borderStreak 2.8s ease-in-out infinite;
+}
+.hs-match:nth-child(1)::before{animation-delay:2.8s;}
+.hs-match:nth-child(2)::before{animation-delay:3.8s;}
+
+/* Challenge card shimmer sweep */
+@keyframes challengeShimmer{
+  0%{transform:translateX(-100%);}
+  100%{transform:translateX(300%);}
+}
+.hs-challenge{position:relative;overflow:hidden;}
+.hs-challenge::after{
+  content:'';
+  position:absolute;top:0;left:0;
+  width:40%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,107,53,0.12),transparent);
+  transform:translateX(-100%);
+  animation:challengeShimmer 3.5s ease-in-out infinite 3s;
+}
+
+/* Floating notification pill — slides in from top, holds, fades */
+@keyframes notifIn{
+  0%{opacity:0;transform:translateX(-50%) translateY(-24px);}
+  12%{opacity:1;transform:translateX(-50%) translateY(0);}
+  75%{opacity:1;transform:translateX(-50%) translateY(0);}
+  100%{opacity:0;transform:translateX(-50%) translateY(-8px);}
+}
+.phone-notif{
+  position:absolute;
+  top:70px;left:50%;transform:translateX(-50%) translateY(-24px);
+  background:rgba(20,25,41,0.95);
+  border:1px solid rgba(0,170,255,0.3);
+  border-radius:100px;
+  padding:5px 14px 5px 10px;
+  display:flex;align-items:center;gap:6px;
+  white-space:nowrap;
+  z-index:20;
+  opacity:0;
+  box-shadow:0 4px 20px rgba(0,0,0,0.5),0 0 12px rgba(0,170,255,0.1);
+  animation:notifIn 3.8s cubic-bezier(0.22,1,0.36,1) 3.2s forwards;
+  pointer-events:none;
+}
+.phone-notif-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#00AAFF;
+  box-shadow:0 0 6px rgba(0,170,255,0.8);
+  flex-shrink:0;
+}
+.phone-notif-text{
+  font-family:'DM Mono',monospace;font-size:8.5px;
+  color:rgba(255,255,255,0.85);letter-spacing:0.03em;
+}
+
+
 
 /* PROBLEM AGITATION */
 #problem{border-top:1px solid var(--border);}
@@ -147,7 +405,7 @@ section{padding:100px 0;position:relative;z-index:1;}
 .proof-header .section-sub{margin:0 auto;}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:60px;}
 .testimonial-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px;position:relative;}
-.testimonial-card::before{content:'';position:absolute;top:20px;right:24px;font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;color:var(--border);line-height:1;pointer-events:none;}
+.testimonial-card::before{content:'"';position:absolute;top:20px;right:24px;font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;color:var(--border);line-height:1;pointer-events:none;}
 .testimonial-stars{display:flex;gap:3px;margin-bottom:14px;}
 .star{color:var(--warning);font-size:14px;}
 .testimonial-text{font-size:14px;color:var(--ts);line-height:1.75;margin-bottom:20px;font-style:italic;}
@@ -253,455 +511,644 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
 
 /* RESPONSIVE */
 @media(max-width:960px){
-.hero-visual{display:none;}
-.steps-grid{grid-template-columns:1fr;}
-.features-grid{grid-template-columns:1fr 1fr;}
-.feature-card.wide{grid-column:span 2;}
-.testimonials-grid{grid-template-columns:1fr 1fr;}
-.stats-bar{grid-template-columns:repeat(2,1fr);}
-.pricing-grid{grid-template-columns:1fr;max-width:440px;}
-.problem-grid{grid-template-columns:1fr;}
-nav{padding:0 24px;}
-.wrap{padding:0 24px;}
+  .hero-visual{display:none;}
+  .hero-inner{max-width:100%;}
+  .steps-grid{grid-template-columns:1fr;}
+  .features-grid{grid-template-columns:1fr 1fr;}
+  .feature-card.wide{grid-column:span 2;}
+  .testimonials-grid{grid-template-columns:1fr 1fr;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .pricing-grid{grid-template-columns:1fr;max-width:440px;}
+  .problem-grid{grid-template-columns:1fr;}
+  nav{padding:0 24px;}
+  .wrap{padding:0 24px;}
 }
 @media(max-width:640px){
-.features-grid{grid-template-columns:1fr;}
-.feature-card.wide{grid-column:span 1;display:block;}
-.testimonials-grid{grid-template-columns:1fr;}
-.stats-bar{grid-template-columns:1fr 1fr;}
-.faq-grid{grid-template-columns:1fr;}
-.waitlist-form,.final-form{flex-direction:column;}
-.waitlist-btn{width:100%;}
-.nav-links{display:none;}
-.final-cta-inner{padding:48px 28px;}
-.footer-inner{flex-direction:column;text-align:center;}
+  .features-grid{grid-template-columns:1fr;}
+  .feature-card.wide{grid-column:span 1;display:block;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+  .faq-grid{grid-template-columns:1fr;}
+  .waitlist-form,.final-form{flex-direction:column;}
+  .waitlist-btn{width:100%;}
+  .nav-links{display:none;}
+  .final-cta-inner{padding:48px 28px;}
+  .footer-inner{flex-direction:column;text-align:center;}
 }
 
 /*
-DM-LAUNCH-01: Replace waitlist forms with App Store button at launch:
-<a href="https://apps.apple.com/app/rizz-iq/[APP_ID]" class="waitlist-btn">Download on the App Store</a>
-DM-LAUNCH-02: Replace placeholder testimonials with real App Store reviews.
-DM-LAUNCH-03: Update stat counters with live Mixpanel / RevenueCat data.
-DM-LAUNCH-04: Wire waitlist form submission to email platform (Loops.so recommended).
-PRICING-LOCK: Weekly $9.99/wk | Monthly $29.99/mo | Annual $179.99/yr ($15.00/mo).
-Math verified in Pricing Strategy doc §1.2. Do not deviate from these values.
+  DM-LAUNCH-01: Replace waitlist forms with App Store button at launch:
+  <a href="https://apps.apple.com/app/rizz-iq/[APP_ID]" class="waitlist-btn">Download on the App Store</a>
+  DM-LAUNCH-02: Replace placeholder testimonials with real App Store reviews.
+  DM-LAUNCH-03: Update stat counters with live Mixpanel / RevenueCat data.
+  DM-LAUNCH-04: Wire waitlist form submission to email platform (Loops.so recommended).
+  PRICING-LOCK: Weekly $9.99/wk | Monthly $29.99/mo | Annual $179.99/yr ($15.00/mo).
+  Math verified in Pricing Strategy doc §1.2. Do not deviate from these values.
 */
 </style>
-
 </head>
 <body>
 
 <div class="atmo">
- <div class="atmo-glow-top"></div>
- <div class="atmo-glow-mid"></div>
- <div class="atmo-glow-bot"></div>
+  <div class="atmo-glow-top"></div>
+  <div class="atmo-glow-mid"></div>
+  <div class="atmo-glow-bot"></div>
 </div>
 <div class="grid-overlay"></div>
 
 <!-- NAV -->
-
 <nav>
- <a href="#" class="nav-logo">Rizz <span class="iq">IQ</span></a>
- <ul class="nav-links">
- <li><a href="#how">How It Works</a></li>
- <li><a href="#features">Features</a></li>
- <li><a href="#pricing">Pricing</a></li>
- <li><a href="#faq">FAQ</a></li>
- <li><a href="#waitlist" class="nav-cta">Join Waitlist</a></li>
- </ul>
+  <a href="#" class="nav-logo">Rizz <span class="iq">IQ</span></a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#waitlist" class="nav-cta">Join Waitlist</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
-
 <section id="hero">
- <div class="wrap" style="position:relative;width:100%;">
- <div class="hero-inner">
- <div class="hero-badge">AI Dating Coach · Coming Soon</div>
- <h1 class="hero-h1">
- She stopped<br>
- <span class="accent">responding.</span><br>
- <span class="dim">You don't know why.</span>
- </h1>
- <p class="hero-sub"><strong>We do.</strong> Rizz IQ reads her messages the way she meant them — then tells you exactly what to say, when to say it, and the psychology behind it.</p>
- <div class="hero-promise">
- <span style="font-size:16px;flex-shrink:0">⚡</span>
- Upload a screenshot. Get her investment score, a tone read, and three psychology-backed replies — <strong>in under 4 seconds.</strong>
- </div>
- <div id="waitlist" class="waitlist-wrap">
- <form class="waitlist-form" id="waitlistForm" onsubmit="handleWaitlist(event)">
- <input type="email" class="waitlist-input" placeholder="Enter your email" required id="waitlistEmail">
- <button type="submit" class="waitlist-btn">Analyze My Conversation Free</button>
- </form>
- <div class="waitlist-success" id="waitlistSuccess"><span>✓</span> You're on the list. First to know when we launch.</div>
- <p class="waitlist-note">No spam. Launch notification only. Unsubscribe anytime.</p>
- </div>
- <div class="hero-social">
- <div class="hero-avatars">
- <div class="avatar" style="background:#1A2235;color:#00AAFF">A</div>
- <div class="avatar" style="background:#1E2A40;color:#00CC88">J</div>
- <div class="avatar" style="background:#141929;color:#A855F7">M</div>
- <div class="avatar" style="background:#1A2235;color:#F5A623">R</div>
- <div class="avatar" style="background:#1E2A40;color:#FF6B35">D</div>
- </div>
- <p class="hero-social-text"><strong>2,400+ men</strong> already on the waitlist<br><span style="font-size:12px">Next: launch notification + early access offer</span></p>
- </div>
- </div>
- <div class="hero-visual">
- <div class="phone-frame">
- <div class="phone-notch"></div>
- <div class="chat-bubble bubble-her" style="animation-delay:0.8s">Hey, sounds fun actually 😊 when were you thinking?</div>
- <div class="chat-bubble bubble-me" style="animation-delay:1.0s">Saturday. I know a spot.</div>
- <div class="chat-bubble bubble-her" style="animation-delay:1.2s">ooh mysterious 👀 what kind of spot</div>
- <div class="bubble-coach" style="opacity:0;animation:bubbleIn 0.4s ease 1.4s forwards">
- <div class="bubble-coach-label">🤖 Rizz IQ</div>
- <div style="font-size:12.5px;color:var(--ts);line-height:1.6">Don't tell her yet. Reply: "You'll see." Full stop. Reactance is high — scarcity is working.</div>
- </div>
- <div class="score-row" style="opacity:0;animation:bubbleIn 0.4s ease 1.8s forwards">
- <div class="score-chip"><div class="score-val" style="color:var(--success)">84</div><div class="score-lbl">Investment</div></div>
- <div class="score-chip"><div class="score-val" style="color:var(--warning)">28</div><div class="score-lbl">Reactance</div></div>
- <div class="score-chip"><div class="score-val" style="color:var(--success)">🟢</div><div class="score-lbl">Green Light</div></div>
- </div>
- </div>
- </div>
- </div>
+  <div class="wrap" style="position:relative;width:100%;">
+    <div class="hero-inner">
+      <div class="hero-badge">AI Dating Coach · Coming Soon</div>
+      <h1 class="hero-h1">
+        She stopped<br>
+        <span class="accent">responding.</span><br>
+        <span class="dim">You don't know why.</span>
+      </h1>
+      <p class="hero-sub"><strong>We do.</strong> Rizz IQ reads her messages the way she meant them — then tells you exactly what to say, when to say it, and the psychology behind it.</p>
+      <div class="hero-promise">
+        <span style="font-size:16px;flex-shrink:0">⚡</span>
+        Upload a screenshot. Get her investment score, a tone read, and three psychology-backed replies — <strong>in under 4 seconds.</strong>
+      </div>
+      <div id="waitlist" class="waitlist-wrap">
+        <form class="waitlist-form" id="waitlistForm" onsubmit="handleWaitlist(event)">
+          <input type="email" class="waitlist-input" placeholder="Enter your email" required id="waitlistEmail">
+          <button type="submit" class="waitlist-btn">Analyze My Conversation Free</button>
+        </form>
+        <div class="waitlist-success" id="waitlistSuccess"><span>✓</span> You're on the list. First to know when we launch.</div>
+        <p class="waitlist-note">No spam. Launch notification only. Unsubscribe anytime.</p>
+      </div>
+      <div class="hero-social">
+        <div class="hero-avatars">
+          <div class="avatar" style="background:#1A2235;color:#00AAFF">A</div>
+          <div class="avatar" style="background:#1E2A40;color:#00CC88">J</div>
+          <div class="avatar" style="background:#141929;color:#A855F7">M</div>
+          <div class="avatar" style="background:#1A2235;color:#F5A623">R</div>
+          <div class="avatar" style="background:#1E2A40;color:#FF6B35">D</div>
+        </div>
+        <p class="hero-social-text"><strong>2,400+ men</strong> already on the waitlist<br><span style="font-size:12px">Next: launch notification + early access offer</span></p>
+      </div>
+    </div>
+    <!-- CINEMATIC 3D PHONE — Pixel-Perfect Home Screen -->
+    <div class="hero-visual">
+      <div class="phone-glow-wrap">
+        <div class="phone-glow-blue"></div>
+        <div class="phone-glow-purple"></div>
+        <div class="phone-frame">
+          <div class="phone-glare"></div>
+
+          <!-- Clean status bar — no notch -->
+          <div class="phone-status-bar">
+            <span class="phone-status-time">9:41</span>
+            <div class="phone-status-icons">
+              <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
+                <rect x="5.5" y="7" width="2" height="3" rx="1" fill="rgba(255,255,255,0.85)"/>
+                <rect x="3.5" y="5" width="6" height="2" rx="1" fill="rgba(255,255,255,0.6)"/>
+                <path d="M1 3C3.2 1 9.8 1 12 3" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <div class="sbar-batt"></div>
+            </div>
+          </div>
+
+          <!-- Floating notification pill (appears after 3.2s) -->
+          <div class="phone-notif">
+            <div class="phone-notif-dot"></div>
+            <span class="phone-notif-text">⚡ Reply window open — Sofia</span>
+          </div>
+
+          <!-- Screen content -->
+          <div class="phone-screen">
+
+            <!-- Header: title + streak pill (exact: SpaceGrotesk_700Bold 22px, streakBg/streakBorder) -->
+            <div class="hs-header">
+              <div class="hs-title">Rizz IQ</div>
+              <div class="hs-streak-pill">
+                <span style="font-size:11px">🔥</span>
+                <span class="hs-streak-text">3</span>
+              </div>
+            </div>
+
+            <!-- RizzScoreCard (exact: border-radius 20, padding 18, 3px primary accent bar) -->
+            <div class="hs-score-card">
+              <!-- Eyebrow row: YOUR RIZZ IQ + Full report link -->
+              <div class="hs-eyebrow">
+                <span class="hs-eyebrow-label">Your Rizz IQ</span>
+                <span class="hs-eyebrow-link">Full report ›</span>
+              </div>
+              <!-- Score row: SpaceGrotesk 52px -2 letterSpacing, tier badge, delta -->
+              <div class="hs-score-row">
+                <span class="hs-score-num">72</span>
+                <div class="hs-score-right">
+                  <!-- Tier badge: primarySelectionBg rgba(0,170,255,0.12) + primarySelectionBorder rgba(0,170,255,0.4) -->
+                  <div class="hs-tier-badge">
+                    <span class="hs-tier-text">Rising Player</span>
+                  </div>
+                  <!-- Delta: success #00CC88 -->
+                  <span class="hs-delta">+4 this week</span>
+                </div>
+              </div>
+              <!-- Progress: 10 dots 22×5 radius 3, filled=#00AAFF, empty=rgba(139,157,195,0.2) -->
+              <div class="hs-progress-dots">
+                <div class="hs-pdot" style="background:#00AAFF"></div>
+                <div class="hs-pdot" style="background:#00AAFF"></div>
+                <div class="hs-pdot" style="background:#00AAFF"></div>
+                <div class="hs-pdot" style="background:#00AAFF"></div>
+                <div class="hs-pdot" style="background:#00AAFF"></div>
+                <div class="hs-pdot" style="background:#00AAFF"></div>
+                <div class="hs-pdot" style="background:#00AAFF"></div>
+                <div class="hs-pdot"></div>
+                <div class="hs-pdot"></div>
+                <div class="hs-pdot"></div>
+              </div>
+              <div class="hs-progress-label">13 pts to Smooth Operator</div>
+              <!-- Divider -->
+              <div class="hs-divider"></div>
+              <!-- Insight pills: surfaceMuted #0D1525, border #1E2A40, radius 12 -->
+              <div class="hs-insights">
+                <div class="hs-insight-pill">
+                  <div class="hs-insight-label">Strength</div>
+                  <div class="hs-insight-val">Opening Lines</div>
+                </div>
+                <div class="hs-insight-pill">
+                  <div class="hs-insight-label">Weak Spot</div>
+                  <div class="hs-insight-val">Timing</div>
+                </div>
+              </div>
+              <!-- Streak + sub-copy -->
+              <div class="hs-streak-row">
+                <span class="hs-streak-row-text">3-day streak</span>
+                <div class="hs-streak-row-dot"></div>
+                <span class="hs-streak-row-sub">Keep coaching to level up</span>
+              </div>
+              <div class="hs-subcopy">Based on your last 12 coaching turns</div>
+            </div>
+
+            <!-- Section header: ACTIVE MATCHES -->
+            <div class="hs-section-header">
+              <span class="hs-section-title">Active Matches</span>
+              <span class="hs-section-link">See all</span>
+            </div>
+
+            <!-- Match cards -->
+            <div class="hs-matches-list">
+
+              <!-- Sofia: Hinge #E8453C, Warm vibe (vibeWarmBg/Border/Text) -->
+              <div class="hs-match">
+                <div class="hs-avatar" style="background:rgba(0,170,255,0.12);">
+                  S
+                  <!-- Platform dot: Hinge = #E8453C -->
+                  <div class="hs-platform-dot" style="background:#E8453C"></div>
+                </div>
+                <div class="hs-match-info">
+                  <div class="hs-match-name-row">
+                    <span class="hs-match-name">Sofia</span>
+                    <!-- VibePill Warm: bg rgba(0,170,255,0.12) border rgba(0,170,255,0.3) text #00AAFF -->
+                    <span class="hs-vibe-pill" style="background:rgba(0,170,255,0.12);border-color:rgba(0,170,255,0.3);color:#00AAFF">Warm</span>
+                  </div>
+                  <div class="hs-match-preview">Coach: Lead with curiosity, she's testing...</div>
+                </div>
+                <div class="hs-match-meta">
+                  <span class="hs-day-count">Day 3</span>
+                  <!-- Unread badge: border-radius 9, bg #FF4444 -->
+                  <div class="hs-unread">2</div>
+                </div>
+              </div>
+
+              <!-- Maya: Tinder #FF6B6B, Curious vibe (vibeCuriousBg/Border/Text) -->
+              <div class="hs-match">
+                <div class="hs-avatar" style="background:rgba(245,166,35,0.12);">
+                  M
+                  <!-- Platform dot: Tinder = #FF6B6B -->
+                  <div class="hs-platform-dot" style="background:#FF6B6B"></div>
+                </div>
+                <div class="hs-match-info">
+                  <div class="hs-match-name-row">
+                    <span class="hs-match-name">Maya</span>
+                    <!-- VibePill Curious: bg rgba(245,166,35,0.12) border rgba(245,166,35,0.3) text #F5A623 -->
+                    <span class="hs-vibe-pill" style="background:rgba(245,166,35,0.12);border-color:rgba(245,166,35,0.3);color:#F5A623">Curious</span>
+                  </div>
+                  <div class="hs-match-preview">You: Hey! What's your go-to weekend...</div>
+                </div>
+                <div class="hs-match-meta">
+                  <span class="hs-day-count">Day 1</span>
+                </div>
+              </div>
+
+            </div><!-- /matches-list -->
+
+            <!-- Daily Challenge (streakBg + streakBorder, exact challenge text) -->
+            <div class="hs-challenge">
+              <span class="hs-challenge-ico">⚡</span>
+              <div>
+                <div class="hs-challenge-label">Daily Challenge</div>
+                <div class="hs-challenge-title">Apply a 4-hr delay on your most active match today</div>
+              </div>
+            </div>
+
+          </div><!-- /phone-screen -->
+
+          <!-- Tab bar (exact: 4 tabs, Home active #00AAFF, Coach has unread dot) -->
+          <div class="phone-tabbar">
+            <div class="ptab active">
+              <span class="ptab-ico">🏠</span>
+              <span>Home</span>
+            </div>
+            <div class="ptab">
+              <span class="ptab-ico" style="position:relative">
+                ✨
+                <div class="ptab-badge"></div>
+              </span>
+              <span>Coach</span>
+            </div>
+            <div class="ptab">
+              <span class="ptab-ico">📖</span>
+              <span>Learn</span>
+            </div>
+            <div class="ptab">
+              <span class="ptab-ico">👤</span>
+              <span>Profile</span>
+            </div>
+          </div>
+
+        </div><!-- /phone-frame -->
+      </div><!-- /phone-glow-wrap -->
+    </div><!-- /hero-visual -->
+
+  </div>
 </section>
 
 <!-- PROBLEM AGITATION -->
-
 <section id="problem">
- <div class="wrap">
- <div class="reveal">
- <div class="section-eyebrow">Sound Familiar</div>
- <div class="section-title">The conversation dies.<br>You never know why.</div>
- <p class="section-sub">It's not your looks. It's not your status. It's timing, tone, and tension — and most guys get all three wrong without realizing it.</p>
- </div>
- <div class="problem-grid" style="margin-top:56px">
- <div class="problem-card reveal reveal-delay-1">
- <div class="problem-quote">"I replied too fast and she went cold."</div>
- <p class="problem-explain">You had high investment — she was engaged. <strong>Replying instantly collapsed the tension.</strong> Reactance dropped. She lost interest before you said anything wrong.</p>
- </div>
- <div class="problem-card reveal reveal-delay-2">
- <div class="problem-quote">"I tried playing it cool and lost momentum."</div>
- <p class="problem-explain">You waited too long. <strong>She read the silence as disinterest,</strong> not mystery. The window closed. There's an optimal delay — and it's not "as long as possible."</p>
- </div>
- <div class="problem-card reveal reveal-delay-3">
- <div class="problem-quote">"I can't tell if she's losing interest or just busy."</div>
- <p class="problem-explain">One-word replies mean different things at different moments. <strong>Investment scoring tells you which one this is</strong> before you respond and make it worse.</p>
- </div>
- <div class="problem-card reveal reveal-delay-4">
- <div class="problem-quote">"I said the right thing at the wrong time."</div>
- <p class="problem-explain">The message wasn't the problem — the sequence was. <strong>Attraction is readable and manageable</strong> if you have the right framework. You just never had it until now.</p>
- </div>
- </div>
- </div>
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-eyebrow">Sound Familiar</div>
+      <div class="section-title">The conversation dies.<br>You never know why.</div>
+      <p class="section-sub">It's not your looks. It's not your status. It's timing, tone, and tension — and most guys get all three wrong without realizing it.</p>
+    </div>
+    <div class="problem-grid" style="margin-top:56px">
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-quote">"I replied too fast and she went cold."</div>
+        <p class="problem-explain">You had high investment — she was engaged. <strong>Replying instantly collapsed the tension.</strong> Reactance dropped. She lost interest before you said anything wrong.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-quote">"I tried playing it cool and lost momentum."</div>
+        <p class="problem-explain">You waited too long. <strong>She read the silence as disinterest,</strong> not mystery. The window closed. There's an optimal delay — and it's not "as long as possible."</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <div class="problem-quote">"I can't tell if she's losing interest or just busy."</div>
+        <p class="problem-explain">One-word replies mean different things at different moments. <strong>Investment scoring tells you which one this is</strong> before you respond and make it worse.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-4">
+        <div class="problem-quote">"I said the right thing at the wrong time."</div>
+        <p class="problem-explain">The message wasn't the problem — the sequence was. <strong>Attraction is readable and manageable</strong> if you have the right framework. You just never had it until now.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- HOW IT WORKS -->
-
 <section id="how">
- <div class="wrap">
- <div class="reveal">
- <div class="section-eyebrow">How It Works</div>
- <div class="section-title">Three steps.<br>No more guessing.</div>
- </div>
- <div class="steps-grid">
- <div class="step-card reveal reveal-delay-1">
- <div class="step-num">Step 01</div>
- <span class="step-icon">📸</span>
- <div class="step-title">Upload the conversation</div>
- <p class="step-desc">Screenshot her texts or paste the thread. GPT-4o Vision reads every message — her tone, her pacing, what she's actually saying between the lines.</p>
- </div>
- <div class="step-card reveal reveal-delay-2">
- <div class="step-num">Step 02</div>
- <span class="step-icon">🧠</span>
- <div class="step-title">Get the read</div>
- <p class="step-desc">Rizz IQ scores her investment and reactance in real time, identifies her emotional register, and surfaces the exact psychological signals driving her responses.</p>
- </div>
- <div class="step-card reveal reveal-delay-3">
- <div class="step-num">Step 03</div>
- <span class="step-icon">⚡</span>
- <div class="step-title">Send with precision</div><p class="step-desc">Exact reply copy, timing down to the hour, and the psychology behind every suggestion. You learn why it works — not just what to say.</p>
- </div>
- </div>
- </div>
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-eyebrow">How It Works</div>
+      <div class="section-title">Three steps.<br>No more guessing.</div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">Step 01</div>
+        <span class="step-icon">📸</span>
+        <div class="step-title">Upload the conversation</div>
+        <p class="step-desc">Screenshot her texts or paste the thread. GPT-4o Vision reads every message — her tone, her pacing, what she's actually saying between the lines.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">Step 02</div>
+        <span class="step-icon">🧠</span>
+        <div class="step-title">Get the read</div>
+        <p class="step-desc">Rizz IQ scores her investment and reactance in real time, identifies her emotional register, and surfaces the exact psychological signals driving her responses.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">Step 03</div>
+        <span class="step-icon">⚡</span>
+        <div class="step-title">Send with precision</div>
+        <p class="step-desc">Exact reply copy, timing down to the hour, and the psychology behind every suggestion. You learn why it works — not just what to say.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FEATURES -->
-
 <section id="features">
- <div class="wrap">
- <div class="reveal">
- <div class="section-eyebrow">Features</div>
- <div class="section-title">Every tool you need.<br>Nothing you don't.</div>
- <p class="section-sub">Built around one question: what does this specific conversation actually need right now?</p>
- </div>
- <div class="features-grid">
- <div class="feature-card wide accent-purple reveal">
- <div class="feature-content">
- <span class="feature-ico">🎮</span>
- <div class="feature-tag">Premium Feature</div>
- <div class="feature-title">Practice the conversation before it happens. Never second-guess yourself again.</div>
- <p class="feature-desc">Role-play with an AI that responds like your actual match — built from her profile. Try risky moves without risking the real thing. Every session ends with a full Tone Audit and debrief score.</p>
- </div>
- <div class="feature-preview">
- <div class="preview-row"><div class="preview-dot" style="background:var(--accent)"></div><div class="preview-label">Tone Audit</div><div class="preview-val" style="color:var(--success)">Smooth</div></div>
- <div class="preview-row"><div class="preview-dot" style="background:var(--primary)"></div><div class="preview-label">Push-Pull Ratio</div><div class="preview-val" style="color:var(--primary)">68 / 32</div></div>
- <div class="preview-row"><div class="preview-dot" style="background:var(--warning)"></div><div class="preview-label">Reactance Triggered</div><div class="preview-val" style="color:var(--warning)">2× detected</div></div>
- <div class="preview-row"><div class="preview-dot" style="background:var(--success)"></div><div class="preview-label">Debrief Score</div><div class="preview-val" style="color:var(--success)">81 / 100</div></div>
- </div>
- </div>
- <div class="feature-card reveal reveal-delay-1">
- <span class="feature-ico">🧮</span>
- <div class="feature-tag">Core Feature</div>
- <div class="feature-title">Know exactly how she's feeling before you reply — not after it goes wrong.</div>
- <p class="feature-desc">Live Investment and Reactance scores with a Green Light flag when her investment is high and reactance is low. The exact window to make your move, every time.</p>
- </div>
- <div class="feature-card accent-green reveal reveal-delay-2">
- <span class="feature-ico">📊</span>
- <div class="feature-tag">Profile Optimizer</div>
- <div class="feature-title">See your profile the way she reads it — then fix what's costing you matches.</div>
- <p class="feature-desc">5-dimension audit — Photos, Bio, Coherence, Platform Fit, Mystery — with an AI-written custom headline and specific rewrites. No scores. Just what to change and why.</p>
- </div>
- <div class="feature-card reveal reveal-delay-1">
- <span class="feature-ico">⏰</span>
- <div class="feature-tag">Core Feature</div>
- <div class="feature-title">Stop sending messages you'll regret. Know exactly when to reply.</div>
- <p class="feature-desc">The timing engine reads late-night windows, ghost recovery timing, and momentum gaps. Every day without this, you're guessing. She's not.</p>
- </div>
- <div class="feature-card reveal reveal-delay-2">
- <span class="feature-ico">📖</span>
- <div class="feature-tag">Free + Premium</div>
- <div class="feature-title">The right words for every situation. Already written. Just send.</div>
- <p class="feature-desc">50 curated scripts — Openers, Re-Engagement, Date Invites, Escalation. Every script includes the psychological principle behind it so you understand, not just copy.</p>
- </div>
- <div class="feature-card accent-amber reveal reveal-delay-3"><span class="feature-ico">🔥</span>
- <div class="feature-tag">Gamification</div>
- <div class="feature-title">5 minutes a day builds the instincts that take other guys years to develop.</div>
- <p class="feature-desc">Daily behavioral drills that build real psychological instincts — not memorized lines. Streak system, milestone confetti, and progress that's actually measurable.</p>
- </div>
- </div>
- </div>
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-eyebrow">Features</div>
+      <div class="section-title">Every tool you need.<br>Nothing you don't.</div>
+      <p class="section-sub">Built around one question: what does this specific conversation actually need right now?</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card wide accent-purple reveal">
+        <div class="feature-content">
+          <span class="feature-ico">🎮</span>
+          <div class="feature-tag">Premium Feature</div>
+          <div class="feature-title">Practice the conversation before it happens. Never second-guess yourself again.</div>
+          <p class="feature-desc">Role-play with an AI that responds like your actual match — built from her profile. Try risky moves without risking the real thing. Every session ends with a full Tone Audit and debrief score.</p>
+        </div>
+        <div class="feature-preview">
+          <div class="preview-row"><div class="preview-dot" style="background:var(--accent)"></div><div class="preview-label">Tone Audit</div><div class="preview-val" style="color:var(--success)">Smooth</div></div>
+          <div class="preview-row"><div class="preview-dot" style="background:var(--primary)"></div><div class="preview-label">Push-Pull Ratio</div><div class="preview-val" style="color:var(--primary)">68 / 32</div></div>
+          <div class="preview-row"><div class="preview-dot" style="background:var(--warning)"></div><div class="preview-label">Reactance Triggered</div><div class="preview-val" style="color:var(--warning)">2× detected</div></div>
+          <div class="preview-row"><div class="preview-dot" style="background:var(--success)"></div><div class="preview-label">Debrief Score</div><div class="preview-val" style="color:var(--success)">81 / 100</div></div>
+        </div>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <span class="feature-ico">🧮</span>
+        <div class="feature-tag">Core Feature</div>
+        <div class="feature-title">Know exactly how she's feeling before you reply — not after it goes wrong.</div>
+        <p class="feature-desc">Live Investment and Reactance scores with a Green Light flag when her investment is high and reactance is low. The exact window to make your move, every time.</p>
+      </div>
+      <div class="feature-card accent-green reveal reveal-delay-2">
+        <span class="feature-ico">📊</span>
+        <div class="feature-tag">Profile Optimizer</div>
+        <div class="feature-title">See your profile the way she reads it — then fix what's costing you matches.</div>
+        <p class="feature-desc">5-dimension audit — Photos, Bio, Coherence, Platform Fit, Mystery — with an AI-written custom headline and specific rewrites. No scores. Just what to change and why.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <span class="feature-ico">⏰</span>
+        <div class="feature-tag">Core Feature</div>
+        <div class="feature-title">Stop sending messages you'll regret. Know exactly when to reply.</div>
+        <p class="feature-desc">The timing engine reads late-night windows, ghost recovery timing, and momentum gaps. Every day without this, you're guessing. She's not.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <span class="feature-ico">📖</span>
+        <div class="feature-tag">Free + Premium</div>
+        <div class="feature-title">The right words for every situation. Already written. Just send.</div>
+        <p class="feature-desc">50 curated scripts — Openers, Re-Engagement, Date Invites, Escalation. Every script includes the psychological principle behind it so you understand, not just copy.</p>
+      </div>
+      <div class="feature-card accent-amber reveal reveal-delay-3">
+        <span class="feature-ico">🔥</span>
+        <div class="feature-tag">Gamification</div>
+        <div class="feature-title">5 minutes a day builds the instincts that take other guys years to develop.</div>
+        <p class="feature-desc">Daily behavioral drills that build real psychological instincts — not memorized lines. Streak system, milestone confetti, and progress that's actually measurable.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- SOCIAL PROOF -->
-
 <section id="social-proof">
- <div class="wrap">
- <div class="proof-header reveal">
- <div class="section-eyebrow">Early Access</div>
- <div class="section-title">Results from the beta.</div>
- <p class="section-sub">Real feedback from early testers. Placeholder reviews will be replaced with verified App Store reviews at launch.</p>
- </div>
- <div class="testimonials-grid">
- <div class="testimonial-card reveal reveal-delay-1">
- <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
- <p class="testimonial-text">"I've been on apps for 3 years. <strong>Within a week of using Rizz IQ I booked two dates I know would've gone cold.</strong> The timing calculator alone is worth it."</p>
- <div class="testimonial-author"><div class="author-avatar" style="background:#1A2235;color:#00AAFF">A</div><div><div class="author-name">Alex M.</div><div class="author-meta">Beta tester · Denver, CO</div></div></div>
- </div>
- <div class="testimonial-card reveal reveal-delay-2">
- <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
- <p class="testimonial-text">"I've read Greene, I know the frameworks. What I didn't have was a way to apply them in real time. <strong>Rizz IQ is the thing I've been looking for.</strong>"</p>
- <div class="testimonial-author"><div class="author-avatar" style="background:#1E2A40;color:#A855F7">M</div><div><div class="author-name">Marcus T.</div><div class="author-meta">Beta tester · Austin, TX</div></div></div>
- </div>
- <div class="testimonial-card reveal reveal-delay-3">
- <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
- <p class="testimonial-text">"The screenshot analysis is insane. <strong>It told me she was losing interest before I even noticed</strong> — and gave me the exact move to flip it. Went from fading to date confirmed."</p>
- <div class="testimonial-author"><div class="author-avatar" style="background:#141929;color:#00CC88">J</div><div><div class="author-name">Jordan K.</div><div class="author-meta">Beta tester · Chicago, IL</div></div></div>
- </div>
- </div>
- <div class="stats-bar reveal">
- <div class="stat-item"><div class="stat-val blue">2,400+</div><div class="stat-label">Waitlist signups</div></div>
- <div class="stat-item"><div class="stat-val green">85%</div><div class="stat-label">Suggestions rated helpful</div></div>
- <div class="stat-item"><div class="stat-val amber">4.8★</div><div class="stat-label">Beta tester rating</div></div>
- <div class="stat-item"><div class="stat-val purple">&lt;4s</div><div class="stat-label">AI response time</div></div>
- </div>
- </div>
+  <div class="wrap">
+    <div class="proof-header reveal">
+      <div class="section-eyebrow">Early Access</div>
+      <div class="section-title">Results from the beta.</div>
+      <p class="section-sub">Real feedback from early testers. Placeholder reviews will be replaced with verified App Store reviews at launch.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-text">"I've been on apps for 3 years. <strong>Within a week of using Rizz IQ I booked two dates I know would've gone cold.</strong> The timing calculator alone is worth it."</p>
+        <div class="testimonial-author"><div class="author-avatar" style="background:#1A2235;color:#00AAFF">A</div><div><div class="author-name">Alex M.</div><div class="author-meta">Beta tester · Denver, CO</div></div></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-text">"I've read Greene, I know the frameworks. What I didn't have was a way to apply them in real time. <strong>Rizz IQ is the thing I've been looking for.</strong>"</p>
+        <div class="testimonial-author"><div class="author-avatar" style="background:#1E2A40;color:#A855F7">M</div><div><div class="author-name">Marcus T.</div><div class="author-meta">Beta tester · Austin, TX</div></div></div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-text">"The screenshot analysis is insane. <strong>It told me she was losing interest before I even noticed</strong> — and gave me the exact move to flip it. Went from fading to date confirmed."</p>
+        <div class="testimonial-author"><div class="author-avatar" style="background:#141929;color:#00CC88">J</div><div><div class="author-name">Jordan K.</div><div class="author-meta">Beta tester · Chicago, IL</div></div></div>
+      </div>
+    </div>
+    <div class="stats-bar reveal">
+      <div class="stat-item"><div class="stat-val blue">2,400+</div><div class="stat-label">Waitlist signups</div></div>
+      <div class="stat-item"><div class="stat-val green">85%</div><div class="stat-label">Suggestions rated helpful</div></div>
+      <div class="stat-item"><div class="stat-val amber">4.8★</div><div class="stat-label">Beta tester rating</div></div>
+      <div class="stat-item"><div class="stat-val purple">&lt;4s</div><div class="stat-label">AI response time</div></div>
+    </div>
+  </div>
 </section>
 
 <!-- PRICING -->
-
 <section id="pricing">
- <div class="wrap">
- <div class="pricing-header reveal">
- <div class="section-eyebrow">Pricing</div>
- <div class="section-title">Less than you're spending<br>on dates that don't happen.</div>
- <p class="section-sub">Start free. Upgrade when the app earns it. Cancel anytime.</p>
- </div>
-<!-- Value anchor: show value BEFORE price -->
-<div class="value-anchor reveal">
- <div class="value-anchor-label">What you're actually getting</div>
- <div class="value-anchor-headline">A personal coach available 24/7<span class="slash"> / </span>reads her texts for you<span class="slash"> / </span>never judges you<span class="slash"> / </span>always tells you the truth.
- </div>
- <p class="value-anchor-sub">
- Equivalent to <strong>$150+/hr for a human dating coach</strong>, a profile photographer ($200+), and access to behavioral frameworks that take years to master — plus a practice environment that doesn't exist anywhere else.
- All of it for <strong>$29.99/month.</strong> That's not a subscription. That's a gap.
- </p>
-</div>
+  <div class="wrap">
+    <div class="pricing-header reveal">
+      <div class="section-eyebrow">Pricing</div>
+      <div class="section-title">Less than you're spending<br>on dates that don't happen.</div>
+      <p class="section-sub">Start free. Upgrade when the app earns it. Cancel anytime.</p>
+    </div>
 
-<div class="pricing-grid reveal">
+    <!-- Value anchor: show value BEFORE price -->
+    <div class="value-anchor reveal">
+      <div class="value-anchor-label">What you're actually getting</div>
+      <div class="value-anchor-headline">
+        A personal coach available 24/7<span class="slash"> / </span>reads her texts for you<span class="slash"> / </span>never judges you<span class="slash"> / </span>always tells you the truth.
+      </div>
+      <p class="value-anchor-sub">
+        Equivalent to <strong>$150+/hr for a human dating coach</strong>, a profile photographer ($200+), and access to behavioral frameworks that take years to master — plus a practice environment that doesn't exist anywhere else.
+        All of it for <strong>$29.99/month.</strong> That's not a subscription. That's a gap.
+      </p>
+    </div>
 
- <!-- Weekly — the decoy, makes monthly look rational -->
- <div class="pricing-card">
- <div class="badge-empty"></div>
- <div class="pricing-title">Weekly</div>
- <div class="pricing-price">$9<span>.99/wk</span></div>
- <div class="pricing-effective" style="color:var(--ts)">≈ $43.26/mo effective</div>
- <div class="pricing-saving">Flexible · higher effective rate</div>
- <ul class="pricing-features">
- <li>Unlimited coaching chat</li>
- <li>Screenshot analysis</li>
- <li>Reactance &amp; Investment scoring</li>
- <li>Timing calculator</li>
- <li>3 Simulator sessions / day</li>
- <li>Full Script Vault (50 scripts)</li>
- <li>Daily Rizz Challenge</li>
- <li>Profile &amp; Bio Optimizer</li>
- <li class="dim">Unlimited Simulator sessions</li>
- <li class="dim">Weekly coaching debrief</li>
- <li class="dim">Attachment Style Coach</li>
- </ul>
- <a href="#waitlist" class="pricing-cta outline">Join the Waitlist</a>
- </div>
+    <div class="pricing-grid reveal">
 
- <!-- Monthly — pre-selected, primary conversion target -->
- <div class="pricing-card featured">
- <span class="pricing-badge badge-primary">Most Popular</span>
- <div class="pricing-title">Monthly</div>
- <div class="pricing-price">$29<span>.99/mo</span></div>
- <div class="pricing-effective">$29.99/mo — flat rate</div>
- <div class="pricing-saving"><strong>31% cheaper than weekly</strong></div>
- <ul class="pricing-features">
- <li>Everything in Weekly</li>
- <li>Unlimited Simulator sessions</li>
- <li>Persistent match memory</li>
- <li>Weekly coaching debrief</li>
- <li>Attachment Style Coach</li>
- <li>Conversation Momentum Scorer</li>
- <li>Priority AI response queue</li>
- <li>Early access to new features</li>
- </ul>
- <a href="#waitlist" class="pricing-cta">Join the Waitlist</a>
- </div>
+      <!-- Weekly — the decoy, makes monthly look rational -->
+      <div class="pricing-card">
+        <div class="badge-empty"></div>
+        <div class="pricing-title">Weekly</div>
+        <div class="pricing-price">$9<span>.99/wk</span></div>
+        <div class="pricing-effective" style="color:var(--ts)">≈ $43.26/mo effective</div>
+        <div class="pricing-saving">Flexible · higher effective rate</div>
+        <ul class="pricing-features">
+          <li>Unlimited coaching chat</li>
+          <li>Screenshot analysis</li>
+          <li>Reactance &amp; Investment scoring</li>
+          <li>Timing calculator</li>
+          <li>3 Simulator sessions / day</li>
+          <li>Full Script Vault (50 scripts)</li>
+          <li>Daily Rizz Challenge</li>
+          <li>Profile &amp; Bio Optimizer</li>
+          <li class="dim">Unlimited Simulator sessions</li>
+          <li class="dim">Weekly coaching debrief</li>
+          <li class="dim">Attachment Style Coach</li>
+        </ul>
+        <a href="#waitlist" class="pricing-cta outline">Join the Waitlist</a>
+      </div>
 
- <!-- Annual — LTV maximizer, "half price" frame -->
- <div class="pricing-card annual">
- <span class="pricing-badge badge-green">Best Value</span>
- <div class="pricing-title">Annual</div>
- <div class="pricing-price">$179<span>.99/yr</span></div>
- <div class="pricing-effective">$15.00/mo — half the monthly price</div>
- <div class="pricing-saving"><strong>50% cheaper than monthly</strong></div>
- <ul class="pricing-features">
- <li>Everything in Monthly</li>
- <li>One decision. Twelve months of wins.</li>
- <li>Never think about billing again</li>
- <li>First access to every new feature</li>
- <li>Founding member badge</li>
- <li>Locks in current pricing forever</li>
- <li style="color:var(--ts);font-size:12px;padding-top:4px;border-top:none;border-bottom:1px solid var(--border)">Save $180 vs monthly billing</li>
- </ul>
- <a href="#waitlist" class="pricing-cta green">Join the Waitlist</a>
- </div>
+      <!-- Monthly — pre-selected, primary conversion target -->
+      <div class="pricing-card featured">
+        <span class="pricing-badge badge-primary">Most Popular</span>
+        <div class="pricing-title">Monthly</div>
+        <div class="pricing-price">$29<span>.99/mo</span></div>
+        <div class="pricing-effective">$29.99/mo — flat rate</div>
+        <div class="pricing-saving"><strong>31% cheaper than weekly</strong></div>
+        <ul class="pricing-features">
+          <li>Everything in Weekly</li>
+          <li>Unlimited Simulator sessions</li>
+          <li>Persistent match memory</li>
+          <li>Weekly coaching debrief</li>
+          <li>Attachment Style Coach</li>
+          <li>Conversation Momentum Scorer</li>
+          <li>Priority AI response queue</li>
+          <li>Early access to new features</li>
+        </ul>
+        <a href="#waitlist" class="pricing-cta">Join the Waitlist</a>
+      </div>
 
-</div>
-<p class="pricing-note">
- Free tier available forever — 3 coaching sessions/day · Simulator trial · limited Script Vault access.<br>
- Pricing locked: Weekly $9.99 · Monthly $29.99 · Annual $179.99 · All savings independently verified.
-</p>
+      <!-- Annual — LTV maximizer, "half price" frame -->
+      <div class="pricing-card annual">
+        <span class="pricing-badge badge-green">Best Value</span>
+        <div class="pricing-title">Annual</div>
+        <div class="pricing-price">$179<span>.99/yr</span></div>
+        <div class="pricing-effective">$15.00/mo — half the monthly price</div>
+        <div class="pricing-saving"><strong>50% cheaper than monthly</strong></div>
+        <ul class="pricing-features">
+          <li>Everything in Monthly</li>
+          <li>One decision. Twelve months of wins.</li>
+          <li>Never think about billing again</li>
+          <li>First access to every new feature</li>
+          <li>Founding member badge</li>
+          <li>Locks in current pricing forever</li>
+          <li style="color:var(--ts);font-size:12px;padding-top:4px;border-top:none;border-bottom:1px solid var(--border)">Save $180 vs monthly billing</li>
+        </ul>
+        <a href="#waitlist" class="pricing-cta green">Join the Waitlist</a>
+      </div>
 
- </div>
+    </div>
+    <p class="pricing-note">
+      Free tier available forever — 3 coaching sessions/day · Simulator trial · limited Script Vault access.<br>
+      Pricing locked: Weekly $9.99 · Monthly $29.99 · Annual $179.99 · All savings independently verified.
+    </p>
+  </div>
 </section>
 
 <!-- FAQ -->
-
 <section id="faq">
- <div class="wrap">
- <div class="faq-header reveal">
- <div class="section-eyebrow">FAQ</div>
- <div class="section-title">Real questions. Direct answers.</div>
- <p class="section-sub">No fluff. Every question below is an objection in disguise — here's the honest answer.</p>
- </div>
- <div class="faq-grid"><button class="faq-item" onclick="toggleFaq(this)">
- <div class="faq-q">Is this just a reply generator? <span class="faq-chevron">+</span></div>
- <div class="faq-a">No. A reply generator gives you a message without context. Rizz IQ reads the full conversation, scores her emotional state, tells you the timing, and explains the psychology behind every suggestion. You learn why it works — not just what to copy. The reply is the output of a coaching system, not the product itself.</div>
- </button>
- <button class="faq-item" onclick="toggleFaq(this)">
- <div class="faq-q">Are my screenshots stored anywhere? <span class="faq-chevron">+</span></div>
- <div class="faq-a">Never. Screenshots are analyzed in-memory and deleted immediately after processing. They are never stored in our database, never used for training, and never seen by a human. Your conversation data is encrypted end-to-end. Privacy is a hard requirement, not a marketing claim.</div>
- </button>
- <button class="faq-item" onclick="toggleFaq(this)">
- <div class="faq-q">What's the psychology actually based on? <span class="faq-chevron">+</span></div>
- <div class="faq-a">Cialdini's reactance and influence principles, attachment theory (Ainsworth/Bowlby), intermittent reinforcement research, and behavioral frameworks around scarcity and investment. Every suggestion cites the principle driving it. This isn't pickup advice — it's applied behavioral science made usable in real conversations.</div>
- </button>
- <button class="faq-item" onclick="toggleFaq(this)">
- <div class="faq-q">Is this ethical? I don't want to manipulate anyone. <span class="faq-chevron">+</span></div>
- <div class="faq-a">This is the right question to ask. Rizz IQ is built around genuine connection — understanding attraction, not exploiting psychology against someone's interests. Ethical guardrails are hardcoded into the AI. It refuses to suggest deception, coercion, or anything targeting vulnerability. The goal is to help you show up as a more calibrated, confident version of yourself.</div>
- </button>
- <button class="faq-item" onclick="toggleFaq(this)">
- <div class="faq-q">What platforms does it work on? <span class="faq-chevron">+</span></div>
- <div class="faq-a">Any text-based conversation — Hinge, Tinder, Bumble, Instagram DMs, iMessage, WhatsApp. If you can screenshot it or paste the text, Rizz IQ can read it. The vision AI auto-detects the platform from the screenshot. Your situation isn't different from everyone else's. It's readable.</div>
- </button>
- <button class="faq-item" onclick="toggleFaq(this)">
- <div class="faq-q">What if I don't get results? <span class="faq-chevron">+</span></div>
- <div class="faq-a">The free tier gives you full access to your first coaching session — before you spend anything. Upload a screenshot. See the score and the suggestions. You'll know within 60 seconds whether this works for you. We'd rather you decide with evidence than faith. If it doesn't land immediately, don't upgrade.</div>
- </button>
- </div>
- </div>
+  <div class="wrap">
+    <div class="faq-header reveal">
+      <div class="section-eyebrow">FAQ</div>
+      <div class="section-title">Real questions. Direct answers.</div>
+      <p class="section-sub">No fluff. Every question below is an objection in disguise — here's the honest answer.</p>
+    </div>
+    <div class="faq-grid">
+      <button class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Is this just a reply generator? <span class="faq-chevron">+</span></div>
+        <div class="faq-a">No. A reply generator gives you a message without context. Rizz IQ reads the full conversation, scores her emotional state, tells you the timing, and explains the psychology behind every suggestion. You learn why it works — not just what to copy. The reply is the output of a coaching system, not the product itself.</div>
+      </button>
+      <button class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Are my screenshots stored anywhere? <span class="faq-chevron">+</span></div>
+        <div class="faq-a">Never. Screenshots are analyzed in-memory and deleted immediately after processing. They are never stored in our database, never used for training, and never seen by a human. Your conversation data is encrypted end-to-end. Privacy is a hard requirement, not a marketing claim.</div>
+      </button>
+      <button class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What's the psychology actually based on? <span class="faq-chevron">+</span></div>
+        <div class="faq-a">Cialdini's reactance and influence principles, attachment theory (Ainsworth/Bowlby), intermittent reinforcement research, and behavioral frameworks around scarcity and investment. Every suggestion cites the principle driving it. This isn't pickup advice — it's applied behavioral science made usable in real conversations.</div>
+      </button>
+      <button class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Is this ethical? I don't want to manipulate anyone. <span class="faq-chevron">+</span></div>
+        <div class="faq-a">This is the right question to ask. Rizz IQ is built around genuine connection — understanding attraction, not exploiting psychology against someone's interests. Ethical guardrails are hardcoded into the AI. It refuses to suggest deception, coercion, or anything targeting vulnerability. The goal is to help you show up as a more calibrated, confident version of yourself.</div>
+      </button>
+      <button class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What platforms does it work on? <span class="faq-chevron">+</span></div>
+        <div class="faq-a">Any text-based conversation — Hinge, Tinder, Bumble, Instagram DMs, iMessage, WhatsApp. If you can screenshot it or paste the text, Rizz IQ can read it. The vision AI auto-detects the platform from the screenshot. Your situation isn't different from everyone else's. It's readable.</div>
+      </button>
+      <button class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What if I don't get results? <span class="faq-chevron">+</span></div>
+        <div class="faq-a">The free tier gives you full access to your first coaching session — before you spend anything. Upload a screenshot. See the score and the suggestions. You'll know within 60 seconds whether this works for you. We'd rather you decide with evidence than faith. If it doesn't land immediately, don't upgrade.</div>
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- FINAL CTA -->
-
 <section id="final-cta">
- <div class="wrap">
- <div class="final-cta-inner reveal">
- <div class="final-title">The conversation you're avoiding<br>could change everything.</div>
- <p class="final-sub">Join 2,400+ men who stopped guessing. Be first when we launch.</p>
- <form class="final-form" onsubmit="handleFinalWaitlist(event)">
- <input type="email" class="waitlist-input" placeholder="Your email" required id="finalEmail" style="border-radius:12px">
- <button type="submit" class="waitlist-btn">Start Free</button>
- </form>
- <p style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.05em;position:relative;z-index:1">No spam. Launch notification only.</p>
- </div>
- </div>
+  <div class="wrap">
+    <div class="final-cta-inner reveal">
+      <div class="final-title">The conversation you're avoiding<br>could change everything.</div>
+      <p class="final-sub">Join 2,400+ men who stopped guessing. Be first when we launch.</p>
+      <form class="final-form" onsubmit="handleFinalWaitlist(event)">
+        <input type="email" class="waitlist-input" placeholder="Your email" required id="finalEmail" style="border-radius:12px">
+        <button type="submit" class="waitlist-btn">Start Free</button>
+      </form>
+      <p style="margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.05em;position:relative;z-index:1">No spam. Launch notification only.</p>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
-
 <footer>
- <div class="wrap">
- <div class="footer-inner">
- <a href="#" class="footer-logo">Rizz <span class="iq">IQ</span></a>
- <ul class="footer-links">
- <li><a href="#">Privacy Policy</a></li>
- <li><a href="#">Terms of Service</a></li>
- <li><a href="mailto:tony@413vision.com">Contact</a></li>
- </ul>
- <p class="footer-copy">© 2026 413 Vision LLC · All rights reserved</p>
- </div>
- </div>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">Rizz <span class="iq">IQ</span></a>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#e89c878691a8dcd9db9e819b818786c68b8785">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 413 Vision LLC · All rights reserved</p>
+    </div>
+  </div>
 </footer>
 
-<script>
-function handleWaitlist(e) {
- e.preventDefault();
- document.getElementById('waitlistForm').style.display='none';
- document.getElementById('waitlistSuccess').style.display='flex';
- // DM-LAUNCH-04: Wire to Loops.so or Mailchimp
- console.log('Waitlist signup:', document.getElementById('waitlistEmail').value);
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Waitlist form handler ──
+// Sends email to /api/waitlist (Vercel serverless → Loops.so)
+async function submitWaitlist(email, source) {
+  try {
+    const res = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source }),
+    });
+    const data = await res.json();
+    return data.success;
+  } catch (err) {
+    console.error('Waitlist submission error:', err);
+    return false; // fail silently — still show success to user
+  }
 }
+
+function handleWaitlist(e) {
+  e.preventDefault();
+  const email = document.getElementById('waitlistEmail').value;
+  if (!email) return;
+  // Show success immediately — don't make user wait for API
+  document.getElementById('waitlistForm').style.display='none';
+  document.getElementById('waitlistSuccess').style.display='flex';
+  // Fire API call in background
+  submitWaitlist(email, 'hero');
+}
+
 function handleFinalWaitlist(e) {
- e.preventDefault();
- e.target.innerHTML='<p style="color:var(--success);font-family:\'Space Grotesk\',sans-serif;font-weight:600;font-size:15px;text-align:center">✓ You\'re on the list. We\'ll be in touch.</p>';
- console.log('Final CTA signup:', document.getElementById('finalEmail').value);
+  e.preventDefault();
+  const email = document.getElementById('finalEmail').value;
+  if (!email) return;
+  // Show success immediately
+  e.target.innerHTML='<p style="color:var(--success);font-family:\'Space Grotesk\',sans-serif;font-weight:600;font-size:15px;text-align:center">✓ You\'re on the list. We\'ll be in touch.</p>';
+  // Fire API call in background
+  submitWaitlist(email, 'final-cta');
 }
 function toggleFaq(el) {
- const open=el.classList.contains('open');
- document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
- if(!open) el.classList.add('open');
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open) el.classList.add('open');
 }
+/* score count-up removed — score rendered statically */
 const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-window.addEventListener('scroll',()=>{document.querySelector('nav').style.borderBottomColor=window.scrollY>40?'var(--border)':'rgba(30,42,64,0.5)';});
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.borderBottomColor=window.scrollY>40?'var(--border)':'rgba(30,42,64,0.5)';
+});
 </script>
-
 </body>
 </html>
