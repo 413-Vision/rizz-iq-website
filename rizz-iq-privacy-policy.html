@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Rizz IQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0F1E;
+    --surface: #141929;
+    --surface2: #1a2035;
+    --primary: #00AAFF;
+    --primary-dark: #0077CC;
+    --success: #00CC88;
+    --warning: #F5A623;
+    --error: #FF4444;
+    --accent: #A855F7;
+    --text: #F0F4FF;
+    --ts: #8B9CC8;
+    --tt: #5A6A8A;
+    --border: rgba(255,255,255,0.07);
+    --border-active: rgba(0,170,255,0.25);
+    --radius: 12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,15,30,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--primary); }
+  .nav-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ts);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  /* HERO */
+  .doc-hero {
+    padding: 64px 24px 48px;
+    max-width: 760px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--primary);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .doc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 40px);
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .doc-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .doc-meta-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ts);
+    letter-spacing: 0.06em;
+  }
+  .doc-meta-item strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  /* LAYOUT */
+  .doc-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+  .toc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ts);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .toc ol {
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 32px;
+  }
+  .toc li { list-style: decimal; }
+  .toc a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .toc a:hover { color: var(--text); }
+  @media (max-width: 540px) { .toc ol { grid-template-columns: 1fr; } }
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 28px 0;
+    border-left: 3px solid;
+    font-size: 14px;
+  }
+  .callout-blue { background: rgba(0,170,255,0.06); border-color: var(--primary); }
+  .callout-green { background: rgba(0,204,136,0.06); border-color: var(--success); }
+  .callout-purple { background: rgba(168,85,247,0.06); border-color: var(--accent); }
+  .callout-warning { background: rgba(245,166,35,0.06); border-color: var(--warning); }
+  .callout strong { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .callout-blue strong { color: var(--primary); }
+  .callout-green strong { color: var(--success); }
+  .callout-purple strong { color: var(--accent); }
+  .callout-warning strong { color: var(--warning); }
+  /* SECTIONS */
+  .doc-section {
+    padding: 48px 0 0;
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+  }
+  .doc-section:first-of-type { border-top: none; margin-top: 0; }
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--primary);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    scroll-margin-top: 80px;
+  }
+  h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    margin: 24px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  p { color: #C4CFEB; margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { color: #C4CFEB; margin-bottom: 8px; line-height: 1.65; }
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--text); font-weight: 500; }
+  /* DATA TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .data-table th {
+    background: var(--surface);
+    color: var(--ts);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    color: #C4CFEB;
+    vertical-align: top;
+  }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+  /* CONTACT CARD */
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border-active);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 32px;
+  }
+  .contact-card h3 { margin-top: 0; }
+  .contact-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; }
+  .contact-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ts); min-width: 80px; padding-top: 2px; }
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .footer-inner { max-width: 760px; margin: 0 auto; }
+  .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .footer-links a { color: var(--ts); font-size: 13px; text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--primary); }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--tt); letter-spacing: 0.05em; }
+  /* PRINT */
+  @media print {
+    body { background: white; color: black; }
+    nav, footer { display: none; }
+    .callout { border: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://getrizziq.com" class="nav-logo">Rizz <span>IQ</span></a>
+  <span class="nav-badge">Privacy Policy</span>
+</nav>
+
+<div class="doc-hero">
+  <div class="doc-eyebrow">413 Vision LLC · Legal</div>
+  <h1 class="doc-title">Privacy Policy</h1>
+  <p style="color: var(--ts); font-size: 15px; margin-bottom: 0;">This Privacy Policy explains how 413 Vision LLC ("we," "us," or "our") collects, uses, shares, and protects information in connection with the Rizz IQ mobile application and website (collectively, the "Service").</p>
+  <div class="doc-meta">
+    <div class="doc-meta-item"><strong>Effective Date:</strong> April 1, 2026</div>
+    <div class="doc-meta-item"><strong>Last Updated:</strong> April 1, 2026</div>
+    <div class="doc-meta-item"><strong>Entity:</strong> 413 Vision LLC (Colorado)</div>
+    <div class="doc-meta-item"><strong>Contact:</strong> privacy@413vision.com</div>
+  </div>
+</div>
+
+<div class="doc-wrap">
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#s1">Information We Collect</a></li>
+      <li><a href="#s2">How We Use Your Information</a></li>
+      <li><a href="#s3">Screenshot & Image Processing</a></li>
+      <li><a href="#s4">AI Processing & Third-Party LLMs</a></li>
+      <li><a href="#s5">How We Share Your Information</a></li>
+      <li><a href="#s6">Data Retention</a></li>
+      <li><a href="#s7">Security</a></li>
+      <li><a href="#s8">Children's Privacy</a></li>
+      <li><a href="#s9">Your Rights & Choices</a></li>
+      <li><a href="#s10">Push Notifications</a></li>
+      <li><a href="#s11">In-App Purchases & Billing</a></li>
+      <li><a href="#s12">California Residents (CCPA)</a></li>
+      <li><a href="#s13">International Users</a></li>
+      <li><a href="#s14">Changes to This Policy</a></li>
+      <li><a href="#s15">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Plain-Language Summary</strong>
+    We do not sell your personal data. Screenshots are analyzed in memory and never stored. Conversation coaching data is encrypted. You can delete your account and all associated data at any time. This is the full legal text — the plain-language version of each section is available in the app's Settings → Privacy screen.
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="doc-section" id="s1">
+    <div class="section-number">SECTION 01</div>
+    <h2>Information We Collect</h2>
+
+    <h3>1.1 Information You Provide Directly</h3>
+    <p>When you create an account, use the Service, or contact us, we may collect:</p>
+    <ul>
+      <li><strong>Account information:</strong> email address, username, and password (or OAuth token for Sign in with Apple / Google).</li>
+      <li><strong>Onboarding responses:</strong> answers to setup questions used to configure your coaching profile (e.g., communication style preferences, goals). These responses are stored in your user profile and used to personalize coaching outputs.</li>
+      <li><strong>Coaching session content:</strong> text messages you submit to the AI coach, conversation context you type or paste into the app, and coaching responses generated on your behalf.</li>
+      <li><strong>Profile optimizer inputs:</strong> dating profile text, bio content, and written prompts you submit for analysis via the Profile & Bio Optimizer feature.</li>
+      <li><strong>Support communications:</strong> any messages or attachments you send to our support team.</li>
+    </ul>
+
+    <h3>1.2 Information Collected Automatically</h3>
+    <p>When you use the Service, we automatically collect certain technical and behavioral data:</p>
+    <ul>
+      <li><strong>Device and app data:</strong> device type, operating system version, app version, device identifiers (not advertising IDs), time zone, and locale.</li>
+      <li><strong>Usage analytics:</strong> screens viewed, features used, session duration, button interactions, and coaching session counts. We use Mixpanel for analytics. Event data is pseudonymized and does not include the content of your coaching sessions.</li>
+      <li><strong>Error and performance data:</strong> crash reports, stack traces, and performance metrics collected via Sentry. These logs do not include conversation content but may include session identifiers.</li>
+      <li><strong>Subscription status:</strong> subscription tier, trial status, and entitlement data managed via RevenueCat. We do not collect or store payment card information.</li>
+      <li><strong>Push notification tokens:</strong> Firebase Cloud Messaging (FCM) tokens used to deliver push notifications, including Daily Rizz Challenges and coaching reminders.</li>
+    </ul>
+
+    <h3>1.3 Information We Do Not Collect</h3>
+    <div class="callout callout-green">
+      <strong>Screenshot Data — Critical Disclosure</strong>
+      Photographs and screenshots you upload for conversation analysis via the Vision Analysis feature are processed in memory by the OpenAI GPT-4o Vision API. These images are <em>never written to our database, never stored on our servers, and never retained by 413 Vision LLC after processing is complete.</em> Images are transmitted directly to the OpenAI API over TLS and are subject to OpenAI's data processing policies. See Section 3 for the full disclosure.
+    </div>
+    <p>We do not collect:</p>
+    <ul>
+      <li>Your actual dating app messages, the identity of any third party whose messages you submit, or any personal information about third parties.</li>
+      <li>Payment card numbers, bank account information, or full billing details (handled exclusively by Apple App Store / Google Play and RevenueCat).</li>
+      <li>Precise GPS location data.</li>
+      <li>Contacts, calendar, or microphone data.</li>
+      <li>Social media account credentials.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="doc-section" id="s2">
+    <div class="section-number">SECTION 02</div>
+    <h2>How We Use Your Information</h2>
+
+    <p>We use information collected for the following business purposes:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Purpose</th>
+          <th>Data Used</th>
+          <th>Legal Basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Provide and operate the Service</td>
+          <td>Account data, coaching session content, onboarding responses</td>
+          <td>Performance of contract</td>
+        </tr>
+        <tr>
+          <td>Personalize AI coaching outputs</td>
+          <td>Onboarding responses, archetype settings, prior session embeddings (pgvector)</td>
+          <td>Performance of contract / Legitimate interest</td>
+        </tr>
+        <tr>
+          <td>Process screenshots for conversation analysis</td>
+          <td>Images (in-memory only, see §3)</td>
+          <td>Performance of contract</td>
+        </tr>
+        <tr>
+          <td>Deliver push notifications</td>
+          <td>FCM token, notification preferences</td>
+          <td>Consent</td>
+        </tr>
+        <tr>
+          <td>Manage subscriptions and billing</td>
+          <td>User ID, subscription status (via RevenueCat)</td>
+          <td>Performance of contract</td>
+        </tr>
+        <tr>
+          <td>Product analytics and improvement</td>
+          <td>Pseudonymized usage events (Mixpanel)</td>
+          <td>Legitimate interest</td>
+        </tr>
+        <tr>
+          <td>Error monitoring and reliability</td>
+          <td>Crash logs, session identifiers (Sentry)</td>
+          <td>Legitimate interest</td>
+        </tr>
+        <tr>
+          <td>Enforce Terms of Use and prevent fraud</td>
+          <td>Account data, device data, usage patterns</td>
+          <td>Legal obligation / Legitimate interest</td>
+        </tr>
+        <tr>
+          <td>Respond to support inquiries</td>
+          <td>Support communications, account data</td>
+          <td>Performance of contract</td>
+        </tr>
+        <tr>
+          <td>Legal compliance</td>
+          <td>As required by applicable law</td>
+          <td>Legal obligation</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2.1 Persistent Memory via Vector Embeddings</h3>
+    <p>To improve coaching continuity across sessions, Rizz IQ maintains a persistent memory layer powered by <strong>pgvector</strong> (a PostgreSQL extension). When you use the coaching features, selected context from prior sessions is converted into numerical embeddings and stored in our database. These embeddings allow the AI coach to recall relevant context from prior conversations.</p>
+    <p>Embeddings are stored in association with your user account and are deleted when you delete your account. You may request deletion of your coaching memory at any time via Settings → Privacy → Clear Coaching Memory, without deleting your full account.</p>
+
+    <h3>2.2 We Do Not Train AI Models on Your Data</h3>
+    <p>Your coaching session content, onboarding responses, and submitted text are never used to train, fine-tune, or improve any AI model operated by 413 Vision LLC or any third-party AI provider, except as limited by the applicable sub-processor policies disclosed in Section 4. We do not use your personal data as training data for large language models.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="doc-section" id="s3">
+    <div class="section-number">SECTION 03</div>
+    <h2>Screenshot &amp; Image Processing</h2>
+
+    <div class="callout callout-warning">
+      <strong>Important — Third Party in Image Processing Flow</strong>
+      When you upload screenshots using the Vision Analysis feature, those images are transmitted to OpenAI's API for processing. 413 Vision LLC does not store the images, but they do pass through OpenAI's systems. By using the screenshot upload feature, you acknowledge this transmission.
+    </div>
+
+    <h3>3.1 How Screenshot Analysis Works</h3>
+    <p>The Vision Analysis feature allows you to upload screenshots of dating app conversations. The following describes the complete technical flow:</p>
+    <ol>
+      <li>You select up to 5 images from your device's local storage using the native OS image picker.</li>
+      <li>Images are uploaded over an encrypted (TLS 1.2+) connection to a Supabase Edge Function operated by 413 Vision LLC.</li>
+      <li>The Edge Function immediately forwards the image data to the <strong>OpenAI GPT-4o Vision API</strong> for text extraction and conversation analysis.</li>
+      <li>OpenAI returns a structured text response (extracted conversation content, speaker attribution, platform detection).</li>
+      <li><strong>Images are not written to any database or persistent storage.</strong> They exist only in server memory during the duration of the API call, which typically completes in under 10 seconds.</li>
+      <li>The structured text output (not the image) is then processed by our coaching logic and stored as part of your coaching session record.</li>
+    </ol>
+
+    <h3>3.2 What You Should Know Before Uploading Screenshots</h3>
+    <ul>
+      <li>Screenshots may contain the name, username, profile photo, and written messages of a third party (the person you are talking to). You are solely responsible for ensuring that uploading such content complies with the terms of service of the originating platform and applicable law.</li>
+      <li>Do not upload screenshots containing sensitive personal information beyond what is necessary for conversation coaching (e.g., do not upload screenshots containing financial information, Social Security numbers, or health data).</li>
+      <li>OpenAI's API data usage policies apply to image content during transmission. We recommend reviewing <a href="https://openai.com/policies/privacy-policy" target="_blank">OpenAI's Privacy Policy</a> for details on how they handle data in API requests.</li>
+    </ul>
+
+    <h3>3.3 Profile Optimizer Text Content</h3>
+    <p>The Profile &amp; Bio Optimizer feature accepts text input only (profile bios, prompts, headlines). This text is processed by the <strong>Anthropic Claude API</strong>. No images are used in the Profile Optimizer. Text input is not stored beyond the active session unless you save an analysis result to your profile audit history.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="doc-section" id="s4">
+    <div class="section-number">SECTION 04</div>
+    <h2>AI Processing &amp; Third-Party Sub-Processors</h2>
+
+    <p>Rizz IQ relies on the following third-party AI and infrastructure services to deliver the Service. These services act as data sub-processors and may receive personal data as part of service delivery:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Sub-Processor</th>
+          <th>Purpose</th>
+          <th>Data Transmitted</th>
+          <th>Privacy Policy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic, Inc.</strong></td>
+          <td>AI coaching responses (Claude API)</td>
+          <td>Session text, coaching context (no PII unless included by user)</td>
+          <td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI, LLC</strong></td>
+          <td>Screenshot conversation extraction (GPT-4o Vision)</td>
+          <td>Uploaded images (in-transit only, not stored by us)</td>
+          <td><a href="https://openai.com/policies/privacy-policy" target="_blank">openai.com/policies/privacy-policy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Supabase, Inc.</strong></td>
+          <td>Database, authentication, edge functions</td>
+          <td>Account data, session records, vector embeddings</td>
+          <td><a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>RevenueCat, Inc.</strong></td>
+          <td>Subscription management and entitlement</td>
+          <td>User ID, subscription status (no payment card data)</td>
+          <td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Mixpanel, Inc.</strong></td>
+          <td>Product analytics</td>
+          <td>Pseudonymized usage events</td>
+          <td><a href="https://mixpanel.com/privacy" target="_blank">mixpanel.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Sentry, Inc.</strong></td>
+          <td>Error monitoring</td>
+          <td>Crash reports, device info, session identifiers</td>
+          <td><a href="https://sentry.io/privacy/" target="_blank">sentry.io/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google Firebase (FCM)</strong></td>
+          <td>Push notifications</td>
+          <td>FCM device token</td>
+          <td><a href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Expo / Expo Application Services</strong></td>
+          <td>App build and over-the-air updates</td>
+          <td>Device info for update delivery</td>
+          <td><a href="https://expo.dev/privacy" target="_blank">expo.dev/privacy</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We have entered into data processing agreements with our sub-processors, where applicable, and require them to handle personal data in compliance with applicable privacy law.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="doc-section" id="s5">
+    <div class="section-number">SECTION 05</div>
+    <h2>How We Share Your Information</h2>
+
+    <p>We do not sell, rent, or trade your personal information to third parties for their own marketing purposes. We share your information only in the following circumstances:</p>
+
+    <h3>5.1 Service Providers</h3>
+    <p>We share data with the sub-processors listed in Section 4 solely to the extent necessary to operate the Service.</p>
+
+    <h3>5.2 Legal Requirements</h3>
+    <p>We may disclose your information if required by law, regulation, legal process, or governmental request, or when we believe disclosure is necessary to protect the rights, property, or safety of 413 Vision LLC, our users, or others.</p>
+
+    <h3>5.3 Business Transfers</h3>
+    <p>If 413 Vision LLC is involved in a merger, acquisition, asset sale, or similar transaction, your information may be transferred as part of that transaction. We will provide notice before your personal information is transferred and becomes subject to a different privacy policy.</p>
+
+    <h3>5.4 With Your Consent</h3>
+    <p>We may share information with third parties when you provide explicit consent to do so.</p>
+
+    <h3>5.5 Aggregated &amp; Anonymized Data</h3>
+    <p>We may share aggregated or de-identified information that cannot reasonably be used to identify you. For example, aggregate product usage statistics may be shared with investors, partners, or published publicly.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="doc-section" id="s6">
+    <div class="section-number">SECTION 06</div>
+    <h2>Data Retention</h2>
+
+    <p>We retain your personal information for as long as your account is active or as needed to provide the Service. Specific retention periods:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Data Type</th><th>Retention Period</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Account credentials and profile</td><td>Until account deletion + 30 days</td></tr>
+        <tr><td>Coaching session records (text)</td><td>Until account deletion or explicit deletion by user</td></tr>
+        <tr><td>Vector embeddings (coaching memory)</td><td>Until account deletion or memory cleared via Settings</td></tr>
+        <tr><td>Profile optimizer audit history</td><td>Until account deletion or explicit deletion by user</td></tr>
+        <tr><td>Screenshots (Vision Analysis)</td><td>Not retained — in-memory processing only</td></tr>
+        <tr><td>Usage analytics (Mixpanel)</td><td>Up to 36 months, pseudonymized</td></tr>
+        <tr><td>Error logs (Sentry)</td><td>90 days</td></tr>
+        <tr><td>Subscription records</td><td>7 years (legal/tax compliance)</td></tr>
+        <tr><td>Support communications</td><td>3 years after resolution</td></tr>
+      </tbody>
+    </table>
+
+    <p>When you delete your account, we will delete or anonymize your personal information within 30 days, except where we are required to retain it for legal or regulatory purposes (e.g., transaction records).</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="doc-section" id="s7">
+    <div class="section-number">SECTION 07</div>
+    <h2>Security</h2>
+
+    <p>We implement industry-standard technical and organizational safeguards to protect your information, including:</p>
+    <ul>
+      <li>TLS 1.2+ encryption for all data in transit.</li>
+      <li>AES-256 encryption for data at rest in Supabase (PostgreSQL).</li>
+      <li>Row-level security (RLS) policies ensuring users can only access their own data.</li>
+      <li>JWT-based authentication with token expiry and refresh rotation.</li>
+      <li>Access controls limiting internal access to personal data on a need-to-know basis.</li>
+      <li>Regular security dependency audits via automated tooling.</li>
+    </ul>
+
+    <p>No method of transmission over the Internet or electronic storage is 100% secure. While we implement commercially reasonable safeguards, we cannot guarantee absolute security. In the event of a data breach that poses a risk to your rights and freedoms, we will notify you as required by applicable law.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="doc-section" id="s8">
+    <div class="section-number">SECTION 08</div>
+    <h2>Children's Privacy</h2>
+
+    <div class="callout callout-purple">
+      <strong>Age Restriction</strong>
+      Rizz IQ is intended for users who are 18 years of age or older. We do not knowingly collect personal information from individuals under the age of 18.
+    </div>
+
+    <p>The Service is not directed to individuals under the age of 18 ("minors"). Our onboarding flow requires users to confirm they are 18 or older. We do not knowingly collect, use, or disclose personal information from minors.</p>
+
+    <p>If we become aware that we have inadvertently collected personal information from a minor, we will take prompt steps to delete such information from our records. If you are a parent or guardian and believe your minor child has provided personal information to us, please contact us immediately at <a href="mailto:privacy@413vision.com">privacy@413vision.com</a>.</p>
+
+    <p>This Service is not subject to COPPA (Children's Online Privacy Protection Act) because it is not directed to children under 13. However, we apply the same deletion policy to any user under 18 whose account comes to our attention.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="doc-section" id="s9">
+    <div class="section-number">SECTION 09</div>
+    <h2>Your Rights &amp; Choices</h2>
+
+    <p>Depending on your jurisdiction, you may have the following rights with respect to your personal information:</p>
+
+    <h3>9.1 Access &amp; Portability</h3>
+    <p>You may request a copy of the personal information we hold about you. We will provide this in a structured, machine-readable format within 30 days of a verified request.</p>
+
+    <h3>9.2 Correction</h3>
+    <p>You may update your account information directly in Settings → Profile. For other corrections, contact us at <a href="mailto:privacy@413vision.com">privacy@413vision.com</a>.</p>
+
+    <h3>9.3 Deletion</h3>
+    <p>You may delete your account at any time via Settings → Account → Delete Account. Account deletion triggers deletion of all associated personal data within 30 days, subject to legal retention requirements. You may also clear your coaching memory separately via Settings → Privacy → Clear Coaching Memory.</p>
+
+    <h3>9.4 Opt-Out of Analytics</h3>
+    <p>You may opt out of product analytics tracking via Settings → Privacy → Usage Analytics. Note that error monitoring (Sentry) cannot be disabled as it is necessary for app security and stability.</p>
+
+    <h3>9.5 Push Notifications</h3>
+    <p>You may disable push notifications at any time via your device's notification settings or via Settings → Notifications within the app.</p>
+
+    <h3>9.6 Withdrawing Consent</h3>
+    <p>Where our processing is based on consent, you may withdraw that consent at any time. Withdrawal of consent does not affect the lawfulness of processing carried out before withdrawal.</p>
+
+    <p>To exercise any of these rights, contact us at <a href="mailto:privacy@413vision.com">privacy@413vision.com</a> with the subject line "Privacy Rights Request." We will respond within 30 days. We may need to verify your identity before processing your request.</p>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="doc-section" id="s10">
+    <div class="section-number">SECTION 10</div>
+    <h2>Push Notifications</h2>
+
+    <p>Rizz IQ may send push notifications to your device, including Daily Rizz Challenges, coaching reminders, streak notifications, and product updates. Push notifications require your explicit permission, which is requested at first launch via a native OS permission dialog.</p>
+
+    <p>You may revoke push notification permissions at any time through your device operating system settings (iOS: Settings → Notifications → Rizz IQ; Android: Settings → Apps → Rizz IQ → Notifications). Revoking permissions does not affect your ability to use any other feature of the Service.</p>
+
+    <p>We use <strong>Firebase Cloud Messaging (FCM)</strong> and <strong>Expo Notifications</strong> to deliver push notifications. Your FCM device token is stored in our database associated with your account and is deleted when you delete your account or revoke notification permissions.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="doc-section" id="s11">
+    <div class="section-number">SECTION 11</div>
+    <h2>In-App Purchases &amp; Billing</h2>
+
+    <p>Rizz IQ offers premium subscriptions managed through the Apple App Store and Google Play Store. All payment processing, billing, and financial transactions are handled by Apple or Google, respectively, and are subject to their terms and privacy policies.</p>
+
+    <p><strong>413 Vision LLC does not collect, store, or process payment card numbers, bank account information, or full billing details.</strong></p>
+
+    <p>We use <strong>RevenueCat</strong> to manage subscription entitlements and receipt validation. RevenueCat receives your anonymized user ID and subscription status. RevenueCat does not receive payment card data. For RevenueCat's privacy practices, see <a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a>.</p>
+
+    <p>All refund requests are governed by the Apple App Store or Google Play refund policies, as applicable to the platform on which you subscribed.</p>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="doc-section" id="s12">
+    <div class="section-number">SECTION 12</div>
+    <h2>California Residents (CCPA / CPRA)</h2>
+
+    <p>If you are a California resident, the California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA) provides you with additional rights regarding your personal information.</p>
+
+    <h3>12.1 Categories of Personal Information Collected</h3>
+    <p>In the preceding 12 months, we have collected the following categories of personal information as defined by the CCPA: Identifiers (email, device ID); Internet or other electronic network activity information (usage analytics, session data); Inferences drawn from personal information (coaching profile, archetype preferences); Commercial information (subscription status). We do not collect sensitive personal information as defined by CPRA beyond account credentials.</p>
+
+    <h3>12.2 Right to Know, Delete, Correct, and Opt-Out</h3>
+    <p>California residents have the right to: (a) know what personal information is collected, used, shared, or sold; (b) delete personal information collected about them; (c) correct inaccurate personal information; (d) opt-out of the sale or sharing of personal information; and (e) non-discrimination for exercising CCPA rights.</p>
+
+    <h3>12.3 We Do Not Sell Personal Information</h3>
+    <p><strong>413 Vision LLC does not sell personal information</strong> as defined by the CCPA, including for cross-context behavioral advertising purposes. We do not share personal information with third parties for their direct marketing purposes.</p>
+
+    <h3>12.4 How to Exercise California Rights</h3>
+    <p>To exercise your California privacy rights, submit a verifiable consumer request to <a href="mailto:privacy@413vision.com">privacy@413vision.com</a> with the subject line "CCPA Rights Request." We will respond within 45 days. An authorized agent may submit a request on your behalf with written permission.</p>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="doc-section" id="s13">
+    <div class="section-number">SECTION 13</div>
+    <h2>International Users</h2>
+
+    <p>Rizz IQ is operated from the United States. If you access the Service from outside the United States, your information will be transferred to and processed in the United States, where data protection laws may differ from those in your jurisdiction.</p>
+
+    <p>By using the Service, you consent to the transfer of your information to the United States. We rely on Standard Contractual Clauses (SCCs) and other appropriate safeguards for transfers of personal data from the European Economic Area (EEA), United Kingdom, and Switzerland, where applicable.</p>
+
+    <p>This policy is not specifically directed at European Union residents and does not constitute a GDPR-compliant privacy notice. If you are an EU resident and have concerns about your data, please contact us at <a href="mailto:privacy@413vision.com">privacy@413vision.com</a>.</p>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="doc-section" id="s14">
+    <div class="section-number">SECTION 14</div>
+    <h2>Changes to This Policy</h2>
+
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make material changes, we will:</p>
+    <ul>
+      <li>Update the "Last Updated" date at the top of this policy.</li>
+      <li>Send a push notification or in-app notice for material changes affecting your rights.</li>
+      <li>For significant changes, request renewed consent where required by law.</li>
+    </ul>
+    <p>Your continued use of the Service after the effective date of an updated Privacy Policy constitutes your acceptance of the updated terms. We encourage you to periodically review this policy.</p>
+  </div>
+
+  <!-- SECTION 15 -->
+  <div class="doc-section" id="s15">
+    <div class="section-number">SECTION 15</div>
+    <h2>Contact Us</h2>
+
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+
+    <div class="contact-card">
+      <h3>413 Vision LLC — Privacy Contact</h3>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span><a href="mailto:privacy@413vision.com">privacy@413vision.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Product</span>
+        <span>Rizz IQ (getrizziq.com)</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Entity</span>
+        <span>413 Vision LLC — Colorado, United States</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Response</span>
+        <span>We aim to respond to all privacy inquiries within 10 business days.</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <ul class="footer-links">
+      <li><a href="https://getrizziq.com">getrizziq.com</a></li>
+      <li><a href="rizz-iq-terms-of-use.html">Terms of Use</a></li>
+      <li><a href="mailto:privacy@413vision.com">privacy@413vision.com</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 413 Vision LLC · All rights reserved · Privacy Policy v1.0</p>
+  </div>
+</footer>
+
+</body>
+</html>

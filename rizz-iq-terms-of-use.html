@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — Rizz IQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0F1E;
+    --surface: #141929;
+    --surface2: #1a2035;
+    --primary: #00AAFF;
+    --primary-dark: #0077CC;
+    --success: #00CC88;
+    --warning: #F5A623;
+    --error: #FF4444;
+    --accent: #A855F7;
+    --text: #F0F4FF;
+    --ts: #8B9CC8;
+    --tt: #5A6A8A;
+    --border: rgba(255,255,255,0.07);
+    --border-active: rgba(0,170,255,0.25);
+    --radius: 12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,15,30,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--primary); }
+  .nav-badge { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; color: var(--ts); background: var(--surface); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .doc-hero { padding: 64px 24px 48px; max-width: 760px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+  .doc-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--primary); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+  .doc-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(28px, 5vw, 40px); color: var(--text); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+  .doc-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+  .doc-meta-item { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ts); letter-spacing: 0.06em; }
+  .doc-meta-item strong { color: var(--text); font-weight: 500; }
+  .doc-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 28px; margin: 40px 0; }
+  .toc-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; color: var(--ts); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+  .toc ol { padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; }
+  .toc li { list-style: decimal; }
+  .toc a { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.15s; }
+  .toc a:hover { color: var(--text); }
+  @media (max-width: 540px) { .toc ol { grid-template-columns: 1fr; } }
+  .callout { border-radius: var(--radius); padding: 18px 22px; margin: 28px 0; border-left: 3px solid; font-size: 14px; }
+  .callout-blue { background: rgba(0,170,255,0.06); border-color: var(--primary); }
+  .callout-green { background: rgba(0,204,136,0.06); border-color: var(--success); }
+  .callout-red { background: rgba(255,68,68,0.06); border-color: var(--error); }
+  .callout-warning { background: rgba(245,166,35,0.06); border-color: var(--warning); }
+  .callout-purple { background: rgba(168,85,247,0.06); border-color: var(--accent); }
+  .callout strong { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .callout-blue strong { color: var(--primary); }
+  .callout-green strong { color: var(--success); }
+  .callout-red strong { color: var(--error); }
+  .callout-warning strong { color: var(--warning); }
+  .callout-purple strong { color: var(--accent); }
+  .doc-section { padding: 48px 0 0; border-top: 1px solid var(--border); margin-top: 48px; }
+  .doc-section:first-of-type { border-top: none; margin-top: 0; }
+  .section-number { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--primary); font-weight: 500; letter-spacing: 0.1em; margin-bottom: 8px; }
+  h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; color: var(--text); letter-spacing: -0.02em; margin-bottom: 18px; scroll-margin-top: 80px; }
+  h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; color: var(--text); margin: 24px 0 10px; letter-spacing: -0.01em; }
+  p { color: #C4CFEB; margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { color: #C4CFEB; margin-bottom: 8px; line-height: 1.65; }
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--text); font-weight: 500; }
+  .caps-block { font-size: 13px; line-height: 1.7; color: #C4CFEB; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; background: var(--surface); margin: 20px 0; }
+  .contact-card { background: var(--surface); border: 1px solid var(--border-active); border-radius: var(--radius); padding: 28px; margin-top: 32px; }
+  .contact-card h3 { margin-top: 0; }
+  .contact-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; }
+  .contact-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ts); min-width: 80px; padding-top: 2px; }
+  footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+  .footer-inner { max-width: 760px; margin: 0 auto; }
+  .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .footer-links a { color: var(--ts); font-size: 13px; text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--primary); }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--tt); letter-spacing: 0.05em; }
+  @media print { body { background: white; color: black; } nav, footer { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://getrizziq.com" class="nav-logo">Rizz <span>IQ</span></a>
+  <span class="nav-badge">Terms of Use</span>
+</nav>
+
+<div class="doc-hero">
+  <div class="doc-eyebrow">413 Vision LLC · Legal</div>
+  <h1 class="doc-title">Terms of Use</h1>
+  <p style="color: var(--ts); font-size: 15px; margin-bottom: 0;">These Terms of Use ("Terms") constitute a legally binding agreement between you and 413 Vision LLC ("Company," "we," "us," or "our") governing your access to and use of the Rizz IQ mobile application, website, and all related services (collectively, the "Service"). Please read these Terms carefully before using the Service.</p>
+  <div class="doc-meta">
+    <div class="doc-meta-item"><strong>Effective Date:</strong> April 1, 2026</div>
+    <div class="doc-meta-item"><strong>Last Updated:</strong> April 1, 2026</div>
+    <div class="doc-meta-item"><strong>Entity:</strong> 413 Vision LLC (Colorado)</div>
+    <div class="doc-meta-item"><strong>Contact:</strong> legal@413vision.com</div>
+  </div>
+</div>
+
+<div class="doc-wrap">
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#t1">Acceptance of Terms</a></li>
+      <li><a href="#t2">Eligibility</a></li>
+      <li><a href="#t3">Description of Service</a></li>
+      <li><a href="#t4">Account Registration</a></li>
+      <li><a href="#t5">Subscriptions & Billing</a></li>
+      <li><a href="#t6">Free Tier & Trial</a></li>
+      <li><a href="#t7">Acceptable Use</a></li>
+      <li><a href="#t8">AI Coaching — Disclaimers</a></li>
+      <li><a href="#t9">Screenshot Upload — User Obligations</a></li>
+      <li><a href="#t10">Intellectual Property</a></li>
+      <li><a href="#t11">User Content</a></li>
+      <li><a href="#t12">Privacy</a></li>
+      <li><a href="#t13">Third-Party Services</a></li>
+      <li><a href="#t14">Disclaimers of Warranty</a></li>
+      <li><a href="#t15">Limitation of Liability</a></li>
+      <li><a href="#t16">Indemnification</a></li>
+      <li><a href="#t17">Dispute Resolution & Arbitration</a></li>
+      <li><a href="#t18">Class Action Waiver</a></li>
+      <li><a href="#t19">Termination</a></li>
+      <li><a href="#t20">Governing Law</a></li>
+      <li><a href="#t21">General Provisions</a></li>
+      <li><a href="#t22">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Read Before Using</strong>
+    These Terms include a binding arbitration clause and class action waiver (Section 17–18) that affect your legal rights. By using Rizz IQ, you agree to resolve disputes through individual arbitration rather than court proceedings or class actions. Read Sections 17 and 18 carefully.
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="doc-section" id="t1">
+    <div class="section-number">SECTION 01</div>
+    <h2>Acceptance of Terms</h2>
+    <p>By downloading, installing, registering for, or using the Service in any manner, you agree to be bound by these Terms, our <a href="rizz-iq-privacy-policy.html">Privacy Policy</a>, and any additional guidelines or policies incorporated herein by reference (collectively, the "Agreement").</p>
+    <p>If you do not agree to these Terms, you must immediately cease using the Service, delete the application from your device, and cancel any active subscription.</p>
+    <p>We reserve the right to modify these Terms at any time. Material changes will be communicated via in-app notice or push notification. Your continued use of the Service after the effective date of any update constitutes acceptance of the revised Terms.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="doc-section" id="t2">
+    <div class="section-number">SECTION 02</div>
+    <h2>Eligibility</h2>
+
+    <div class="callout callout-warning">
+      <strong>Age Requirement — 18+</strong>
+      You must be at least 18 years of age to use Rizz IQ. If you are under 18, you are not permitted to create an account, use the Service, or submit any information to the Service.
+    </div>
+
+    <p>By using the Service, you represent and warrant that:</p>
+    <ul>
+      <li>You are at least 18 years of age.</li>
+      <li>You have the legal capacity to enter into a binding contract in your jurisdiction.</li>
+      <li>Your use of the Service does not violate any applicable law or regulation.</li>
+      <li>You are not located in a jurisdiction where access to or use of the Service is prohibited or restricted.</li>
+      <li>You have not been previously banned or suspended from using the Service.</li>
+    </ul>
+    <p>If we discover that a user is under 18, we will immediately terminate their account and delete all associated data.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="doc-section" id="t3">
+    <div class="section-number">SECTION 03</div>
+    <h2>Description of Service</h2>
+    <p>Rizz IQ is an AI-powered dating coaching application that provides users with conversation analysis, coaching guidance, reply suggestions, dating profile optimization, and related educational content about social dynamics and interpersonal communication ("Coaching Services").</p>
+
+    <p>The Service includes the following features (subject to subscription tier and availability):</p>
+    <ul>
+      <li><strong>AI Coach Chat:</strong> Conversational AI coaching sessions powered by the Anthropic Claude API.</li>
+      <li><strong>Vision Analysis:</strong> Screenshot upload and AI-powered conversation analysis powered by the OpenAI GPT-4o Vision API.</li>
+      <li><strong>Profile &amp; Bio Optimizer:</strong> AI-driven analysis and recommendations for dating app profiles.</li>
+      <li><strong>Script Vault:</strong> A curated library of conversation scripts and templates.</li>
+      <li><strong>Daily Rizz Challenge:</strong> Daily interactive exercises for developing social skills.</li>
+      <li><strong>Coaching Simulator:</strong> Simulated conversation practice environment.</li>
+      <li><strong>Playbook &amp; Archetypes:</strong> Educational content on communication styles and behavioral frameworks.</li>
+    </ul>
+
+    <p>We reserve the right to modify, add, or remove features at any time without liability. We will provide reasonable advance notice of material feature removals that affect paid subscribers.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="doc-section" id="t4">
+    <div class="section-number">SECTION 04</div>
+    <h2>Account Registration</h2>
+    <p>To access most features of the Service, you must create an account. You agree to:</p>
+    <ul>
+      <li>Provide accurate, current, and complete registration information.</li>
+      <li>Maintain the security of your account credentials and not share them with any third party.</li>
+      <li>Immediately notify us at <a href="mailto:legal@413vision.com">legal@413vision.com</a> of any unauthorized use of your account.</li>
+      <li>Accept responsibility for all activity occurring under your account.</li>
+      <li>Use only one account per person. Creating multiple accounts to circumvent restrictions is prohibited.</li>
+    </ul>
+    <p>You may authenticate using Sign In with Apple, Sign In with Google, or email/password. Your use of third-party authentication is subject to the respective provider's terms.</p>
+    <p>We reserve the right to refuse registration, terminate accounts, or remove content at our sole discretion, including for violations of these Terms.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="doc-section" id="t5">
+    <div class="section-number">SECTION 05</div>
+    <h2>Subscriptions &amp; Billing</h2>
+
+    <h3>5.1 Subscription Plans</h3>
+    <p>Rizz IQ offers premium subscription plans that unlock full access to the Service ("Premium"). Current subscription tiers and pricing are displayed in the app's paywall and on the website. Pricing is subject to change with reasonable notice to existing subscribers.</p>
+
+    <h3>5.2 Billing and Payment</h3>
+    <p>Subscriptions are billed through the Apple App Store or Google Play Store (the "App Store") on your chosen billing cycle (weekly, monthly, or annual). Payment is charged to the payment method associated with your App Store account at confirmation of purchase.</p>
+    <p>413 Vision LLC does not directly collect or process payment information. All billing is handled by Apple or Google pursuant to their respective terms and privacy policies.</p>
+
+    <h3>5.3 Auto-Renewal</h3>
+    <p>Subscriptions automatically renew at the end of each billing period unless canceled at least 24 hours before the end of the current period. Renewal fees are charged to your App Store account within 24 hours prior to the end of the current period.</p>
+
+    <h3>5.4 Cancellation</h3>
+    <p>You may cancel your subscription at any time through your App Store account settings (Apple: Settings → [Your Name] → Subscriptions; Google: Play Store → Subscriptions). Cancellation takes effect at the end of the current billing period. No partial refunds are issued for unused time in the current billing period except as required by applicable law or App Store policy.</p>
+
+    <h3>5.5 Refunds</h3>
+    <p>Refunds are processed through Apple or Google pursuant to their refund policies. 413 Vision LLC does not independently issue refunds for in-app purchases. If you believe you are entitled to a refund, contact Apple Support or Google Play Support directly. For issues with your account unrelated to billing, contact <a href="mailto:support@getrizziq.com">support@getrizziq.com</a>.</p>
+
+    <h3>5.6 Price Changes</h3>
+    <p>We may change subscription prices at any time. Price changes will not affect your current subscription period. We will provide notice of price changes, and your continued subscription after the effective date constitutes acceptance of the new price.</p>
+
+    <h3>5.7 Taxes</h3>
+    <p>Prices shown may not include applicable taxes. You are responsible for all applicable taxes associated with your subscription.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="doc-section" id="t6">
+    <div class="section-number">SECTION 06</div>
+    <h2>Free Tier &amp; Trial</h2>
+    <p>Rizz IQ offers a free tier with limited access to certain features, including a limited number of daily coaching sessions, a trial of the Simulator, and limited Script Vault access. Free tier features are subject to change.</p>
+    <p>Where offered, free trial periods are available only to new subscribers who have not previously used a trial for the same subscription product. If you do not cancel before the trial period ends, your payment method will be charged the applicable subscription fee. We reserve the right to modify or discontinue free tier offerings at any time.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="doc-section" id="t7">
+    <div class="section-number">SECTION 07</div>
+    <h2>Acceptable Use</h2>
+
+    <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree <strong>not</strong> to:</p>
+    <ul>
+      <li>Use the Service for any unlawful purpose or in violation of any applicable local, state, national, or international law or regulation.</li>
+      <li>Use the Service to harass, stalk, threaten, abuse, intimidate, manipulate, coerce, or harm any person.</li>
+      <li>Use AI-generated coaching content to engage in deceptive, fraudulent, or non-consensual conduct toward any third party.</li>
+      <li>Attempt to circumvent subscription paywalls, feature gates, or access controls through technical means.</li>
+      <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code of the Service.</li>
+      <li>Use automated bots, scripts, or other automated means to access the Service.</li>
+      <li>Interfere with or disrupt the integrity or performance of the Service, servers, or networks connected to the Service.</li>
+      <li>Attempt to gain unauthorized access to any portion of the Service or any related systems.</li>
+      <li>Upload malicious code, viruses, or any content designed to harm the Service or other users.</li>
+      <li>Use the Service to collect information about other users without their consent.</li>
+      <li>Impersonate any person or entity, or misrepresent your affiliation with any person or entity.</li>
+      <li>Violate the intellectual property rights of 413 Vision LLC or any third party.</li>
+      <li>Resell, sublicense, or commercially exploit the Service without our written consent.</li>
+      <li>Use the Service in any manner that could create liability for 413 Vision LLC.</li>
+    </ul>
+
+    <p>We reserve the right to investigate potential violations and, at our sole discretion, take any action we deem appropriate, including suspending or terminating your account without notice.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="doc-section" id="t8">
+    <div class="section-number">SECTION 08</div>
+    <h2>AI Coaching — Disclaimers &amp; Limitations</h2>
+
+    <div class="callout callout-blue">
+      <strong>Important — AI Coaching Is Not Professional Advice</strong>
+      Rizz IQ provides AI-generated educational content about communication and social dynamics. It is not a substitute for professional psychological, therapeutic, relationship, or legal advice.
+    </div>
+
+    <h3>8.1 Nature of AI Coaching</h3>
+    <p>The AI coaching features of Rizz IQ are powered by large language model technology (including but not limited to the Anthropic Claude API and OpenAI GPT-4o). AI-generated responses are created algorithmically based on your inputs and may not be accurate, complete, appropriate for your specific situation, or consistent across sessions.</p>
+
+    <h3>8.2 Not Professional Advice</h3>
+    <p>Nothing in the Service constitutes professional psychological counseling, therapy, relationship advice, legal advice, or medical advice. The coaching content is intended for entertainment and general educational purposes regarding communication skills. You should not rely on AI coaching outputs for decisions that may significantly affect your mental health, personal relationships, or legal rights.</p>
+
+    <h3>8.3 No Guarantee of Results</h3>
+    <p>413 Vision LLC makes no guarantee, warranty, or representation that use of the Service will result in any particular outcome, including improved dating success, relationship formation, or any change in third-party behavior. Human relationships are complex, and results will vary based on factors entirely outside our control.</p>
+
+    <h3>8.4 Ethical Use of Coaching Content</h3>
+    <p>The behavioral frameworks, scripts, and coaching suggestions provided by Rizz IQ are grounded in educational psychology and communication research. You agree to use this content ethically, with respect for the autonomy and dignity of all parties in your interactions. You acknowledge that using AI coaching outputs to manipulate, deceive, or harm any person is a violation of these Terms and may violate applicable law.</p>
+
+    <h3>8.5 AI Limitations</h3>
+    <p>AI systems can produce incorrect, biased, outdated, or inappropriate outputs. You are solely responsible for how you use, interpret, and act upon AI-generated coaching content. Always apply your own judgment before acting on any suggestion from the Service.</p>
+
+    <h3>8.6 Psychological Content Disclaimer</h3>
+    <p>References to psychological frameworks in the Service (including attachment theory, behavioral conditioning, influence principles, and related concepts) are provided for educational purposes only and are not peer-reviewed clinical guidance. The Service is not a mental health application and is not appropriate for individuals experiencing mental health crises, relationship abuse, or trauma.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="doc-section" id="t9">
+    <div class="section-number">SECTION 09</div>
+    <h2>Screenshot Upload — User Obligations</h2>
+
+    <p>The Vision Analysis feature allows you to upload screenshots of dating app conversations for AI analysis. By uploading screenshots, you represent, warrant, and agree that:</p>
+    <ul>
+      <li>You are the sender of the messages in the conversation or have a legitimate legal basis to submit the content for analysis.</li>
+      <li>Your submission of screenshots does not violate the terms of service of the originating platform (e.g., Hinge, Tinder, Bumble, Instagram).</li>
+      <li>You understand that screenshots may contain personal information about third parties (names, profile photos, messages), and that uploading such content does not grant 413 Vision LLC any rights over that third-party data.</li>
+      <li>You will not upload screenshots containing sensitive personal information of third parties beyond what is necessary for the coaching purpose (e.g., no financial, medical, or government ID information of third parties).</li>
+      <li>You will not upload screenshots for the purpose of stalking, harassing, or building profiles on any individual.</li>
+      <li>Uploaded images are transmitted to the OpenAI GPT-4o Vision API for processing, as disclosed in our Privacy Policy.</li>
+    </ul>
+
+    <p>413 Vision LLC expressly disclaims any liability for your use of third-party conversation content uploaded to the Service. You are solely responsible for ensuring your uploads comply with applicable law and platform terms.</p>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="doc-section" id="t10">
+    <div class="section-number">SECTION 10</div>
+    <h2>Intellectual Property</h2>
+
+    <h3>10.1 Our Intellectual Property</h3>
+    <p>The Service and all of its contents, including but not limited to software, code, text, graphics, logos, design, trademarks, trade names, user interface elements, audio, video, data compilations, and the "look and feel" of the Service (collectively, "Company IP"), are owned by or licensed to 413 Vision LLC and are protected by United States and international intellectual property laws.</p>
+
+    <p>The "Rizz IQ" name, logo, and brand elements are proprietary to 413 Vision LLC. "413 Vision" is a registered or common-law trademark of 413 Vision LLC.</p>
+
+    <h3>10.2 License to You</h3>
+    <p>Subject to your compliance with these Terms and payment of applicable fees, 413 Vision LLC grants you a limited, non-exclusive, non-transferable, revocable license to download, install, and use the Service for your personal, non-commercial purposes on devices you own or control.</p>
+
+    <p>This license does not include the right to: (a) sublicense or transfer the Service to any third party; (b) reproduce, modify, or create derivative works of the Service; (c) reverse engineer or attempt to extract the source code of the Service; or (d) remove any proprietary notices from the Service.</p>
+
+    <h3>10.3 Script Vault Content</h3>
+    <p>Scripts, templates, and written content in the Script Vault are proprietary content of 413 Vision LLC. You may use Script Vault content for personal use only. You may not reproduce, publish, distribute, or commercialize Script Vault content without our written permission.</p>
+
+    <h3>10.4 Feedback</h3>
+    <p>If you provide feedback, suggestions, or ideas regarding the Service ("Feedback"), you grant 413 Vision LLC a perpetual, irrevocable, worldwide, royalty-free license to use, reproduce, modify, and incorporate such Feedback into the Service or other products without any obligation or compensation to you.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="doc-section" id="t11">
+    <div class="section-number">SECTION 11</div>
+    <h2>User Content</h2>
+    <p>"User Content" means any text, data, or other materials you submit to the Service, including coaching session inputs, profile text submitted for analysis, and support communications.</p>
+    <p>You retain ownership of your User Content. By submitting User Content, you grant 413 Vision LLC a limited, non-exclusive, worldwide license to use, process, store, and transmit your User Content solely to the extent necessary to provide the Service.</p>
+    <p>You represent and warrant that your User Content: (a) does not infringe any third-party intellectual property rights; (b) does not violate any applicable law; (c) is not defamatory, obscene, or otherwise harmful; and (d) does not include personally identifying information about third parties that you are not authorized to submit.</p>
+    <p>We do not use your User Content to train AI models. See our <a href="rizz-iq-privacy-policy.html">Privacy Policy</a> for full details.</p>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="doc-section" id="t12">
+    <div class="section-number">SECTION 12</div>
+    <h2>Privacy</h2>
+    <p>Your use of the Service is also governed by our <a href="rizz-iq-privacy-policy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. Please review the Privacy Policy carefully to understand our practices regarding the collection, use, and disclosure of your personal information.</p>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="doc-section" id="t13">
+    <div class="section-number">SECTION 13</div>
+    <h2>Third-Party Services</h2>
+    <p>The Service integrates with and relies on third-party services, including but not limited to Anthropic (Claude API), OpenAI (GPT-4o Vision), Supabase, RevenueCat, Mixpanel, Sentry, Firebase, and Apple/Google app store platforms. Your use of these integrated services is subject to the respective third-party terms and privacy policies.</p>
+    <p>413 Vision LLC is not responsible for the availability, accuracy, content, products, or services provided by third-party services. We are not liable for any damages or losses arising from your use of third-party services, whether or not accessed through the Service.</p>
+    <p>The Service may contain links to third-party websites. These links are provided for convenience only. We do not endorse, control, or assume responsibility for the content or practices of any third-party website.</p>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="doc-section" id="t14">
+    <div class="section-number">SECTION 14</div>
+    <h2>Disclaimers of Warranty</h2>
+
+    <div class="caps-block">
+      THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, 413 VISION LLC EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO: (A) IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT; (B) ANY WARRANTY THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS; (C) ANY WARRANTY REGARDING THE ACCURACY, RELIABILITY, TIMELINESS, COMPLETENESS, OR APPROPRIATENESS OF ANY CONTENT OR AI-GENERATED OUTPUT PROVIDED THROUGH THE SERVICE; AND (D) ANY WARRANTY THAT THE SERVICE WILL MEET YOUR REQUIREMENTS OR ACHIEVE ANY PARTICULAR RESULT.
+
+      AI-GENERATED COACHING CONTENT IS NOT GUARANTEED TO BE ACCURATE, APPROPRIATE, OR EFFECTIVE. YOU USE THE SERVICE AT YOUR OWN RISK. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU.
+    </div>
+  </div>
+
+  <!-- SECTION 15 -->
+  <div class="doc-section" id="t15">
+    <div class="section-number">SECTION 15</div>
+    <h2>Limitation of Liability</h2>
+
+    <div class="caps-block">
+      TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL 413 VISION LLC, ITS MEMBERS, MANAGERS, EMPLOYEES, AGENTS, LICENSORS, OR SERVICE PROVIDERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO: DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, BUSINESS OPPORTUNITIES, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE SERVICE, WHETHER BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR ANY OTHER LEGAL THEORY, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+      IN NO EVENT SHALL 413 VISION LLC'S AGGREGATE LIABILITY TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICE EXCEED THE GREATER OF: (A) THE TOTAL AMOUNT YOU PAID TO 413 VISION LLC IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR (B) ONE HUNDRED DOLLARS ($100.00 USD).
+
+      SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR CERTAIN DAMAGES, SO THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU. IN SUCH JURISDICTIONS, OUR LIABILITY WILL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY LAW.
+    </div>
+  </div>
+
+  <!-- SECTION 16 -->
+  <div class="doc-section" id="t16">
+    <div class="section-number">SECTION 16</div>
+    <h2>Indemnification</h2>
+    <p>You agree to defend, indemnify, and hold harmless 413 Vision LLC and its members, managers, employees, agents, licensors, and service providers from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to:</p>
+    <ul>
+      <li>Your use of or inability to use the Service.</li>
+      <li>Your violation of these Terms.</li>
+      <li>Your violation of any applicable law or regulation.</li>
+      <li>Your User Content, including any claims that your User Content infringes or violates a third party's rights.</li>
+      <li>Your upload of screenshots or third-party conversation content.</li>
+      <li>Your use of AI coaching content in a manner that causes harm to any third party.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 17 -->
+  <div class="doc-section" id="t17">
+    <div class="section-number">SECTION 17</div>
+    <h2>Dispute Resolution &amp; Binding Arbitration</h2>
+
+    <div class="callout callout-red">
+      <strong>Binding Arbitration — Read Carefully</strong>
+      This section requires you to resolve most disputes with 413 Vision LLC through binding individual arbitration rather than in court. This affects your rights. Read this section carefully before agreeing to these Terms.
+    </div>
+
+    <h3>17.1 Informal Resolution</h3>
+    <p>Before initiating arbitration, you agree to first contact us at <a href="mailto:legal@413vision.com">legal@413vision.com</a> and attempt to resolve the dispute informally. We will attempt to resolve the dispute within 30 days of receiving your written description of the dispute and desired resolution. If we cannot reach informal resolution, either party may initiate arbitration.</p>
+
+    <h3>17.2 Binding Arbitration Agreement</h3>
+    <p>You and 413 Vision LLC agree that any dispute, claim, or controversy arising out of or relating to these Terms or the Service (a "Dispute"), except as excluded below, shall be resolved by binding arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, rather than in court. The arbitration shall be conducted in English and shall take place on a documents-only basis unless the arbitrator determines a hearing is necessary.</p>
+
+    <h3>17.3 Exclusions from Arbitration</h3>
+    <p>The following disputes are excluded from the arbitration requirement and may be brought in a court of competent jurisdiction: (a) claims for injunctive or other equitable relief arising from unauthorized use of the Service, intellectual property infringement, or violation of the Acceptable Use section; (b) small claims court actions where eligible; (c) claims where required by law to be heard in court.</p>
+
+    <h3>17.4 Arbitration Fees</h3>
+    <p>If your claim is for $10,000 or less, we agree that you may choose whether the arbitration will be conducted solely based on documents submitted to the arbitrator. We will pay all AAA filing, administration, and arbitrator fees for any arbitration we initiate. For arbitrations you initiate, AAA Consumer Rules govern the allocation of fees.</p>
+
+    <h3>17.5 Governing Rules</h3>
+    <p>This agreement to arbitrate is governed by the Federal Arbitration Act (FAA). The arbitrator has exclusive authority to resolve any dispute about the enforceability, interpretation, scope, or formation of this arbitration agreement, except for the class action waiver in Section 18, which is for a court to decide.</p>
+  </div>
+
+  <!-- SECTION 18 -->
+  <div class="doc-section" id="t18">
+    <div class="section-number">SECTION 18</div>
+    <h2>Class Action Waiver</h2>
+
+    <div class="caps-block">
+      YOU AND 413 VISION LLC AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS ACTION, CLASS ARBITRATION, CONSOLIDATED PROCEEDING, REPRESENTATIVE ACTION, OR PRIVATE ATTORNEY GENERAL PROCEEDING. UNLESS BOTH PARTIES AGREE, NO ARBITRATOR OR COURT MAY CONSOLIDATE MORE THAN ONE PERSON'S CLAIMS. IF THIS CLASS ACTION WAIVER IS FOUND UNENFORCEABLE FOR ANY CLAIM, THAT CLAIM MUST BE SEVERED FROM ARBITRATION AND BROUGHT IN COURT, WITH ALL OTHER CLAIMS REMAINING IN ARBITRATION.
+    </div>
+  </div>
+
+  <!-- SECTION 19 -->
+  <div class="doc-section" id="t19">
+    <div class="section-number">SECTION 19</div>
+    <h2>Termination</h2>
+
+    <h3>19.1 Termination by You</h3>
+    <p>You may terminate your account at any time by selecting "Delete Account" in Settings → Account. Upon account deletion, your license to use the Service terminates immediately. Subscription cancellation and account deletion are separate actions — deleting your account does not automatically cancel your subscription. You must cancel your subscription separately through your App Store account settings to avoid future charges.</p>
+
+    <h3>19.2 Termination by Us</h3>
+    <p>We may suspend or terminate your account and access to the Service, at our sole discretion, with or without cause, and with or without notice. Grounds for termination include, without limitation: violation of these Terms, suspected fraudulent or illegal activity, non-payment, or conduct that we determine to be harmful to other users or the Service.</p>
+
+    <h3>19.3 Effect of Termination</h3>
+    <p>Upon termination: (a) your license to use the Service terminates; (b) your access to all Service features is revoked; (c) we may delete your account data in accordance with our Privacy Policy; (d) provisions of these Terms that by their nature should survive termination will survive, including Sections 10, 14, 15, 16, 17, 18, and 20.</p>
+  </div>
+
+  <!-- SECTION 20 -->
+  <div class="doc-section" id="t20">
+    <div class="section-number">SECTION 20</div>
+    <h2>Governing Law</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the State of Colorado, United States, without regard to its conflict-of-law provisions. For any claims excluded from arbitration under Section 17.3, you agree to submit to the exclusive personal jurisdiction of the state and federal courts located in Colorado, and you waive any objection to the laying of venue in such courts.</p>
+  </div>
+
+  <!-- SECTION 21 -->
+  <div class="doc-section" id="t21">
+    <div class="section-number">SECTION 21</div>
+    <h2>General Provisions</h2>
+
+    <h3>21.1 Entire Agreement</h3>
+    <p>These Terms, together with the Privacy Policy and any additional terms incorporated by reference, constitute the entire agreement between you and 413 Vision LLC with respect to the Service and supersede all prior or contemporaneous communications, representations, or agreements.</p>
+
+    <h3>21.2 Severability</h3>
+    <p>If any provision of these Terms is found to be unlawful, void, or unenforceable, that provision shall be deemed severable from the remaining Terms, which shall continue in full force and effect.</p>
+
+    <h3>21.3 Waiver</h3>
+    <p>Our failure to enforce any provision of these Terms shall not constitute a waiver of our right to enforce such provision in the future. Any waiver must be made in writing and signed by an authorized representative of 413 Vision LLC.</p>
+
+    <h3>21.4 Assignment</h3>
+    <p>You may not assign or transfer these Terms or your rights under these Terms without our prior written consent. We may assign our rights and obligations under these Terms without restriction.</p>
+
+    <h3>21.5 Force Majeure</h3>
+    <p>We shall not be liable for any failure or delay in performance resulting from causes beyond our reasonable control, including acts of God, natural disasters, pandemic, government action, war, terrorism, labor disputes, or third-party service failures.</p>
+
+    <h3>21.6 No Third-Party Beneficiaries</h3>
+    <p>These Terms are for the sole benefit of you and 413 Vision LLC. No other person or entity shall have any rights or benefits under these Terms.</p>
+
+    <h3>21.7 App Store Terms</h3>
+    <p>If you download the Service through the Apple App Store, Apple Inc. and its subsidiaries are third-party beneficiaries of these Terms and, upon your acceptance, will have the right to enforce these Terms against you as a third-party beneficiary. Apple has no obligation to provide maintenance or support for the Service. In the event of a conflict between these Terms and Apple's App Store Terms of Service, Apple's terms shall prevail only to the extent of the conflict.</p>
+  </div>
+
+  <!-- SECTION 22 -->
+  <div class="doc-section" id="t22">
+    <div class="section-number">SECTION 22</div>
+    <h2>Contact</h2>
+
+    <p>Questions about these Terms should be directed to:</p>
+
+    <div class="contact-card">
+      <h3>413 Vision LLC — Legal Contact</h3>
+      <div class="contact-row">
+        <span class="contact-label">Legal</span>
+        <span><a href="mailto:legal@413vision.com">legal@413vision.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Support</span>
+        <span><a href="mailto:support@getrizziq.com">support@getrizziq.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Privacy</span>
+        <span><a href="mailto:privacy@413vision.com">privacy@413vision.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Entity</span>
+        <span>413 Vision LLC — Colorado, United States</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Website</span>
+        <span><a href="https://getrizziq.com">getrizziq.com</a></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <ul class="footer-links">
+      <li><a href="https://getrizziq.com">getrizziq.com</a></li>
+      <li><a href="rizz-iq-privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="mailto:legal@413vision.com">legal@413vision.com</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 413 Vision LLC · All rights reserved · Terms of Use v1.0</p>
+  </div>
+</footer>
+
+</body>
+</html>
