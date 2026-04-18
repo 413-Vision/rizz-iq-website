@@ -4,13 +4,9 @@
   "installCommand": null,
   "framework": null,
   "rewrites": [
-    {
-      "source": "/partners",
-      "destination": "/partners.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/privacy", "destination": "/rizz-iq-privacy-policy.html" },
+    { "source": "/terms", "destination": "/rizz-iq-terms-of-use.html" },
+    { "source": "/partners", "destination": "/partners.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
