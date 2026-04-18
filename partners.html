@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Program — Rizz IQ</title>
+<meta name="description" content="Earn 20% recurring commission every month your audience stays subscribed. No cap. No expiry. No contracts.">
+<meta property="og:title" content="Rizz IQ Partner Program — Earn 20% Recurring">
+<meta property="og:description" content="You get paid every time they don't freeze. 20% recurring commission. No cap. No expiry.">
+<meta property="og:url" content="https://getrizziq.com/partners">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── DESIGN TOKENS (matches index.html verbatim) ─── */
+:root{
+ --bg:#0A0F1E;--surface:#141929;--surface2:#1A2235;--border:#1E2A40;
+ --primary:#00AAFF;--primary-dark:#0077CC;
+ --pd:rgba(0,170,255,0.08);--pb:rgba(0,170,255,0.2);--pg:rgba(0,170,255,0.15);
+ --success:#00CC88;--warning:#F5A623;--error:#FF4444;
+ --accent:#A855F7;--streak:#FF6B35;
+ --tp:#FFFFFF;--ts:#8B9DC3;--tt:#4A5A7A;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--tp);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ─── ATMOSPHERE (matches index.html verbatim) ─── */
+.atmo{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.atmo-glow-top{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:1000px;height:700px;background:radial-gradient(ellipse,rgba(0,170,255,0.1) 0%,transparent 65%);}
+.atmo-glow-mid{position:absolute;top:45%;right:-15%;width:700px;height:700px;background:radial-gradient(ellipse,rgba(168,85,247,0.05) 0%,transparent 60%);}
+.atmo-glow-bot{position:absolute;bottom:0;left:-10%;width:600px;height:500px;background:radial-gradient(ellipse,rgba(0,170,255,0.06) 0%,transparent 65%);}
+.grid-overlay{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,170,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,170,255,0.022) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 140% 70% at 50% 0%,black 20%,transparent 70%);}
+
+/* ─── NAV (matches index.html verbatim) ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,15,30,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(30,42,64,0.5);transition:border-color 0.3s;}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em;text-decoration:none;color:var(--tp);}
+.nav-logo .iq{background:linear-gradient(135deg,#00AAFF,#00DDFF,#0077FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--ts);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--tp);}
+.nav-cta{background:var(--primary)!important;color:#fff!important;padding:8px 20px;border-radius:100px;font-family:'Space Grotesk',sans-serif!important;font-weight:600!important;font-size:13px!important;transition:opacity 0.2s,box-shadow 0.2s!important;}
+.nav-cta:hover{opacity:0.9!important;box-shadow:0 0 20px rgba(0,170,255,0.35)!important;}
+
+/* ─── LAYOUT (matches index.html verbatim) ─── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px;position:relative;z-index:1;}
+section{padding:100px 0;position:relative;z-index:1;}
+.section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;margin-bottom:16px;}
+.section-sub{font-size:16px;font-weight:300;color:var(--ts);line-height:1.75;max-width:560px;}
+
+/* ─── HERO ─── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;}
+.hero-inner{max-width:680px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);background:var(--pd);border:1px solid var(--pb);border-radius:100px;padding:5px 16px;margin-bottom:32px;opacity:0;transform:translateY(12px);animation:fadeUp 0.6s ease 0.1s forwards;}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--primary);box-shadow:0 0 8px var(--primary);animation:pdot 2s ease-in-out infinite;}
+@keyframes pdot{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6.5vw,82px);font-weight:700;letter-spacing:-0.035em;line-height:1.0;margin-bottom:16px;opacity:0;transform:translateY(16px);animation:fadeUp 0.7s ease 0.2s forwards;}
+.hero-h1 .accent{background:linear-gradient(135deg,#00AAFF 0%,#00DDFF 40%,#0066FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-program-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(18px,2.5vw,24px);font-weight:600;color:var(--ts);margin-bottom:10px;opacity:0;transform:translateY(12px);animation:fadeUp 0.7s ease 0.32s forwards;}
+.hero-tagline{font-size:18px;font-weight:300;color:var(--ts);line-height:1.8;margin-bottom:48px;opacity:0;transform:translateY(12px);animation:fadeUp 0.7s ease 0.44s forwards;}
+.hero-tagline .accent-text{color:var(--tp);font-weight:500;}
+
+/* ─── APPLY FORM (hero inline, mirrors waitlist pattern) ─── */
+.apply-wrap{opacity:0;transform:translateY(12px);animation:fadeUp 0.7s ease 0.56s forwards;}
+.apply-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;position:relative;overflow:hidden;max-width:580px;}
+.apply-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.apply-card-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;letter-spacing:-0.01em;margin-bottom:20px;}
+.apply-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.apply-field-full{grid-column:span 2;}
+.apply-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ts);margin-bottom:6px;display:block;}
+/* reuse .waitlist-input style */
+.apply-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--tp);outline:none;transition:border-color 0.2s,box-shadow 0.2s;appearance:none;-webkit-appearance:none;}
+.apply-input::placeholder{color:var(--tt);}
+.apply-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,170,255,0.12);}
+.apply-textarea{resize:vertical;min-height:80px;line-height:1.6;}
+.apply-select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B9DC3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+/* reuse .waitlist-btn style */
+.apply-submit{width:100%;margin-top:4px;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:14px 28px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:opacity 0.2s,box-shadow 0.2s,transform 0.15s;box-shadow:0 0 24px rgba(0,170,255,0.3);}
+.apply-submit:hover{opacity:0.92;box-shadow:0 0 36px rgba(0,170,255,0.45);transform:translateY(-1px);}
+.apply-success{display:none;align-items:center;gap:12px;background:rgba(0,204,136,0.08);border:1px solid rgba(0,204,136,0.25);border-radius:12px;padding:14px 20px;font-size:14px;color:var(--success);font-family:'Space Grotesk',sans-serif;font-weight:500;margin-top:12px;}
+.apply-error{display:none;align-items:center;gap:12px;background:rgba(255,68,68,0.07);border:1px solid rgba(255,68,68,0.25);border-radius:12px;padding:14px 20px;font-size:14px;color:var(--error);font-family:'Space Grotesk',sans-serif;font-weight:500;margin-top:12px;}
+/* combined platform + handle row */
+.apply-platform-row{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface2);transition:border-color 0.2s,box-shadow 0.2s;}
+.apply-platform-row:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,170,255,0.12);}
+.apply-platform-select{border:none;border-right:1px solid var(--border);background:var(--surface2);padding:11px 28px 11px 12px;font-family:'Inter',sans-serif;font-size:13px;color:var(--tp);outline:none;flex-shrink:0;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238B9DC3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;}
+.apply-platform-select option{background:var(--surface2);}
+.apply-handle-input{flex:1;min-width:0;border:none;background:transparent;padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--tp);outline:none;}
+.apply-handle-input::placeholder{color:var(--tt);}
+.secondary-cta{margin-top:16px;font-size:13px;color:var(--tt);font-family:'DM Mono',monospace;letter-spacing:0.04em;}
+.secondary-cta a{color:var(--ts);text-decoration:none;transition:color 0.2s;}
+.secondary-cta a:hover{color:var(--tp);}
+
+/* ─── THE NUMBERS ─── */
+#numbers{border-top:1px solid var(--border);}
+.numbers-headline-wrap{margin-bottom:56px;}
+.numbers-callout{background:linear-gradient(135deg,rgba(0,204,136,0.07) 0%,rgba(0,170,255,0.05) 100%);border:1px solid rgba(0,204,136,0.3);border-radius:24px;padding:48px 56px;text-align:center;position:relative;overflow:hidden;margin-bottom:40px;}
+.numbers-callout::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--success),transparent);}
+.numbers-callout::after{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(0,204,136,0.06) 0%,transparent 70%);pointer-events:none;}
+.numbers-big{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,60px);font-weight:700;letter-spacing:-0.04em;line-height:1;margin-bottom:12px;position:relative;z-index:1;}
+.numbers-big .green{color:var(--success);}
+.numbers-big .dim{color:var(--ts);}
+.numbers-qualifier{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ts);position:relative;z-index:1;margin-bottom:8px;}
+.numbers-trust{font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.08em;text-transform:uppercase;position:relative;z-index:1;}
+.numbers-plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.plan-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:28px 24px;text-align:center;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s;}
+.plan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--success),transparent);opacity:0;transition:opacity 0.25s;}
+.plan-card:hover{border-color:rgba(0,204,136,0.3);transform:translateY(-2px);}
+.plan-card:hover::before{opacity:1;}
+.plan-name{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ts);margin-bottom:10px;}
+.plan-sub-price{font-size:12px;color:var(--tt);margin-bottom:14px;}
+.plan-earn{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;letter-spacing:-0.03em;color:var(--success);line-height:1;margin-bottom:6px;}
+.plan-earn-unit{font-family:'DM Mono',monospace;font-size:10px;color:var(--ts);letter-spacing:0.06em;text-transform:uppercase;}
+
+/* ─── HOW IT WORKS (reuses index.html classes verbatim) ─── */
+#how{border-top:1px solid var(--border);}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.step-card{background:var(--surface);padding:44px 36px;position:relative;overflow:hidden;transition:background 0.25s;}
+.step-card:hover{background:var(--surface2);}
+.step-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--pd) 0%,transparent 60%);opacity:0;transition:opacity 0.25s;pointer-events:none;}
+.step-card:hover::after{opacity:1;}
+.step-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--primary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;position:relative;z-index:1;}
+.step-icon{font-size:36px;display:block;margin-bottom:20px;position:relative;z-index:1;}
+.step-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;position:relative;z-index:1;}
+.step-desc{font-size:14px;color:var(--ts);line-height:1.7;position:relative;z-index:1;}
+
+/* ─── COMMISSION STRUCTURE (pricing-card pattern) ─── */
+#commission{border-top:1px solid var(--border);}
+.commission-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:900px;margin:48px auto 0;}
+/* reuse .pricing-card, .pricing-badge, etc. */
+.pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;transition:transform 0.2s;display:flex;flex-direction:column;}
+.pricing-card:hover{transform:translateY(-3px);}
+.pricing-card.featured{border-color:var(--primary);background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);box-shadow:0 0 40px rgba(0,170,255,0.12);}
+.pricing-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.pricing-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:20px;width:fit-content;}
+.badge-primary{background:var(--pd);border:1px solid var(--pb);color:var(--primary);}
+.badge-empty{height:24px;margin-bottom:20px;}
+.pricing-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ts);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em;}
+.pricing-price{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;letter-spacing:-0.035em;line-height:1;margin-bottom:4px;}
+.pricing-price span{font-size:18px;color:var(--ts);font-weight:400;}
+.earn-line{font-family:'DM Mono',monospace;font-size:12px;color:var(--success);margin-bottom:28px;letter-spacing:0.03em;}
+.pricing-features{list-style:none;margin-bottom:0;flex:1;}
+.pricing-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ts);padding:8px 0;border-bottom:1px solid var(--border);line-height:1.5;}
+.pricing-features li:last-child{border-bottom:none;}
+.pricing-features li::before{content:'✓';color:var(--success);font-weight:600;flex-shrink:0;margin-top:1px;}
+.commission-note{text-align:center;margin-top:24px;font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.04em;line-height:1.8;}
+
+/* ─── FOUNDER NOTE ─── */
+#founder{border-top:1px solid var(--border);}
+.founder-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px 48px;display:flex;gap:40px;align-items:flex-start;position:relative;overflow:hidden;max-width:820px;}
+.founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.founder-photo{width:140px;height:140px;border-radius:50%;flex-shrink:0;border:2px solid var(--border);overflow:hidden;display:block;}
+.founder-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.founder-info{flex:1;}
+.founder-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:4px;}
+.founder-role{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);margin-bottom:20px;}
+/* TODO: Replace founder-bio text with real copy from founder before launch */
+.founder-bio{font-size:15px;color:var(--ts);line-height:1.8;margin-bottom:10px;}
+.founder-bio strong{color:var(--tp);font-weight:500;}
+.founder-sig{font-family:'DM Mono',monospace;font-size:11px;color:var(--tt);letter-spacing:0.04em;margin-top:20px;font-style:italic;}
+
+/* ─── WHO THIS IS FOR ─── */
+#who{border-top:1px solid var(--border);}
+.who-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:48px;}
+.who-block{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px 36px;position:relative;overflow:hidden;}
+.who-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.who-block.green::before{background:linear-gradient(90deg,transparent,var(--success),transparent);}
+.who-block-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:14px;}
+.who-block.green .who-block-eyebrow{color:var(--success);}
+.who-block-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;}
+.who-block-body{font-size:14px;color:var(--ts);line-height:1.8;}
+.who-block-body strong{color:var(--tp);font-weight:500;}
+.who-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.who-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ts);background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:4px 12px;}
+
+/* ─── FINAL CTA (matches index.html .final-cta-inner pattern) ─── */
+#final-cta{border-top:1px solid var(--border);text-align:center;}
+.final-cta-inner{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:28px;padding:80px 60px;position:relative;overflow:hidden;max-width:800px;margin:0 auto;}
+.final-cta-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.final-cta-inner::after{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(0,170,255,0.08) 0%,transparent 70%);pointer-events:none;}
+.final-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;position:relative;z-index:1;}
+.final-sub{font-size:16px;font-weight:300;color:var(--ts);margin-bottom:40px;line-height:1.7;position:relative;z-index:1;}
+.final-cta-btn{display:inline-block;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:opacity 0.2s,box-shadow 0.2s,transform 0.15s;box-shadow:0 0 24px rgba(0,170,255,0.3);position:relative;z-index:1;}
+.final-cta-btn:hover{opacity:0.92;box-shadow:0 0 40px rgba(0,170,255,0.45);transform:translateY(-2px);}
+.final-secondary{margin-top:16px;font-size:13px;color:var(--tt);font-family:'DM Mono',monospace;letter-spacing:0.04em;position:relative;z-index:1;}
+.final-secondary a{color:var(--ts);text-decoration:none;transition:color 0.2s;}
+.final-secondary a:hover{color:var(--tp);}
+
+/* ─── FOOTER (matches index.html verbatim) ─── */
+footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-index:1;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em;color:var(--tp);text-decoration:none;}
+.footer-logo .iq{background:linear-gradient(135deg,#00AAFF,#00DDFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer-links{display:flex;gap:28px;list-style:none;}
+.footer-links a{font-size:13px;color:var(--tt);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--ts);}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:var(--tt);letter-spacing:0.06em;text-transform:uppercase;}
+
+/* ─── ANIMATIONS (matches index.html verbatim) ─── */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+
+/* ─── RESPONSIVE (matches index.html breakpoints) ─── */
+@media(max-width:960px){
+ nav{padding:0 24px;}
+ .wrap{padding:0 24px;}
+ .steps-grid{grid-template-columns:1fr;}
+ .commission-grid{grid-template-columns:1fr;max-width:440px;}
+ .numbers-plan-grid{grid-template-columns:1fr 1fr;}
+ .who-inner{grid-template-columns:1fr;}
+ .founder-card{flex-direction:column;gap:24px;padding:36px 32px;}
+ .numbers-callout{padding:36px 32px;}
+}
+@media(max-width:640px){
+ .nav-links{display:none;}
+ .numbers-plan-grid{grid-template-columns:1fr;}
+ .apply-fields{grid-template-columns:1fr;}
+ .apply-field-full{grid-column:span 1;}
+ .apply-platform-row{flex-direction:row;}
+ .final-cta-inner{padding:48px 28px;}
+ .footer-inner{flex-direction:column;text-align:center;}
+ .footer-links{flex-wrap:wrap;justify-content:center;}
+ .final-cta-btn{width:100%;text-align:center;}
+ .numbers-big{font-size:clamp(24px,8vw,48px);}
+ .numbers-callout{padding:28px 24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="atmo">
+ <div class="atmo-glow-top"></div>
+ <div class="atmo-glow-mid"></div>
+ <div class="atmo-glow-bot"></div>
+</div>
+<div class="grid-overlay"></div>
+
+<!-- NAV -->
+<nav>
+ <a href="/" class="nav-logo">Rizz <span class="iq">IQ</span></a>
+ <ul class="nav-links">
+  <li><a href="/#how">How It Works</a></li>
+  <li><a href="/#features">Features</a></li>
+  <li><a href="/#pricing">Pricing</a></li>
+  <li><a href="#apply" class="nav-cta">Apply to Partner</a></li>
+ </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+ <div class="wrap">
+  <div class="hero-inner">
+   <div class="hero-badge">Partner Program · Creators &amp; Influencers</div>
+   <h1 class="hero-h1">
+    Stop guessing.<br>
+    <span class="accent">Start winning.</span>
+   </h1>
+   <p class="hero-program-name">The Rizz IQ Partner Program.</p>
+   <p class="hero-tagline">You get paid every time <span class="accent-text">they don't freeze.</span></p>
+
+   <!-- APPLY FORM -->
+   <!--
+     PARTNER-CTA-01: Wire applyForm to real backend before launch.
+     Currently logs to console. Recommended: Typeform embed, Tally.so, or
+     a Supabase edge function. Flag for backend integration.
+   -->
+   <div id="apply" class="apply-wrap">
+    <div class="apply-card">
+     <p class="apply-card-title">Apply to Partner →</p>
+     <form id="applyForm" onsubmit="handleApply(event)">
+      <div class="apply-fields">
+       <div>
+        <label class="apply-label" for="applyHandle">Primary platform &amp; handle</label>
+        <div class="apply-platform-row">
+         <select class="apply-platform-select" id="applyPlatform">
+          <option value="instagram" selected>Instagram</option>
+          <option value="tiktok">TikTok</option>
+          <option value="youtube">YouTube</option>
+          <option value="other">Other</option>
+         </select>
+         <input type="text" class="apply-handle-input" id="applyHandle" placeholder="yourhandle" required>
+        </div>
+       </div>
+       <div>
+        <label class="apply-label" for="applyEmail">Email</label>
+        <input type="email" class="apply-input" id="applyEmail" placeholder="you@email.com" required>
+       </div>
+       <div>
+        <label class="apply-label" for="applySize">Audience Size</label>
+        <select class="apply-input apply-select" id="applySize" required>
+         <option value="" disabled selected>Select range</option>
+         <option value="under-1k">Under 1K</option>
+         <option value="1k-10k">1K – 10K</option>
+         <option value="10k-100k">10K – 100K</option>
+         <option value="100k-plus">100K+</option>
+        </select>
+       </div>
+       <div class="apply-field-full">
+        <label class="apply-label" for="applyWhy">Why you're a fit (2–3 sentences)</label>
+        <textarea class="apply-input apply-textarea" id="applyWhy" placeholder="Tell us about your content and audience..." required rows="3"></textarea>
+       </div>
+      </div>
+      <button type="submit" class="apply-submit">Apply to Partner →</button>
+     </form>
+     <div class="apply-success" id="applySuccess">
+      <span>✓</span> Application received. We review every application and reach out within 48 hours.
+     </div>
+     <div class="apply-error" id="applyError">
+      <span>!</span> Something went wrong. Please try again, or email us at <a href="mailto:tony@atlasioapp.com" style="color:inherit;text-decoration:underline">tony@atlasioapp.com</a>.
+     </div>
+    </div>
+    <p class="secondary-cta">Already talking to us? <a href="https://instagram.com/getrizziq" target="_blank" rel="noopener">DM @getrizziq →</a></p>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- THE NUMBERS -->
+<section id="numbers">
+ <div class="wrap">
+  <div class="numbers-headline-wrap">
+   <p class="section-eyebrow reveal">The Numbers</p>
+   <h2 class="section-title reveal reveal-delay-1">What 100 subscribers looks like.</h2>
+   <p class="section-sub reveal reveal-delay-2">Monthly plan. No chasing. No contracts. Just commission — every month they stay subscribed.</p>
+  </div>
+  <div class="numbers-callout reveal">
+   <p class="numbers-qualifier">Monthly plan · 100 subscribers</p>
+   <p class="numbers-big"><span class="green">$600</span><span class="dim">/mo.</span> Passive.</p>
+   <p class="numbers-trust">No cap. No expiry. No catch.</p>
+  </div>
+  <div class="numbers-plan-grid reveal reveal-delay-1">
+   <div class="plan-card">
+    <p class="plan-name">Monthly Plan</p>
+    <p class="plan-sub-price">Subscriber pays $29.99/mo</p>
+    <p class="plan-earn">$6</p>
+    <p class="plan-earn-unit">per subscriber / mo</p>
+   </div>
+   <div class="plan-card">
+    <p class="plan-name">Weekly Plan</p>
+    <p class="plan-sub-price">Subscriber pays $9.99/wk</p>
+    <p class="plan-earn">~$2</p>
+    <p class="plan-earn-unit">per subscriber / wk</p>
+   </div>
+   <div class="plan-card">
+    <p class="plan-name">Annual Plan</p>
+    <p class="plan-sub-price">Subscriber pays $179.99/yr</p>
+    <p class="plan-earn">$36</p>
+    <p class="plan-earn-unit">upfront per subscriber</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+ <div class="wrap">
+  <p class="section-eyebrow reveal">How It Works</p>
+  <h2 class="section-title reveal reveal-delay-1">Three steps. Recurring income.</h2>
+  <div class="steps-grid reveal reveal-delay-2">
+   <div class="step-card">
+    <p class="step-num">01</p>
+    <span class="step-icon">🔗</span>
+    <h3 class="step-title">They join through your link.</h3>
+    <p class="step-desc">Your code gives your audience 20% off their first month. Share it once — it works in any bio, caption, or video, whether it's Instagram, TikTok, or YouTube. Never expires.</p>
+   </div>
+   <div class="step-card">
+    <p class="step-num">02</p>
+    <span class="step-icon">💸</span>
+    <h3 class="step-title">Every month they're subscribed, you get paid.</h3>
+    <p class="step-desc">20% recurring commission — no cap, no expiry. As long as they stay subscribed, the commission keeps coming.</p>
+   </div>
+   <div class="step-card">
+    <p class="step-num">03</p>
+    <span class="step-icon">🎯</span>
+    <h3 class="step-title">You stay in your lane.</h3>
+    <p class="step-desc">We handle the product, support, and billing. You handle your content. We're not asking you to become a salesperson.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- COMMISSION STRUCTURE -->
+<section id="commission">
+ <div class="wrap">
+  <p class="section-eyebrow reveal">Commission Structure</p>
+  <h2 class="section-title reveal reveal-delay-1">20% recurring. Every plan.</h2>
+  <p class="section-sub reveal reveal-delay-2">Paid every month your subscriber stays active. Your code gives your audience 20% off — so your recommendation comes with a real perk, not just a link.</p>
+  <div class="commission-grid">
+   <div class="pricing-card reveal">
+    <div class="badge-empty"></div>
+    <div class="pricing-title">Weekly</div>
+    <div class="pricing-price">$9<span>.99/wk</span></div>
+    <p class="earn-line">You earn ~$2/wk per subscriber</p>
+    <ul class="pricing-features">
+     <li>20% recurring commission</li>
+     <li>Your code = 20% off their first month</li>
+     <li>No cap, no contracts</li>
+    </ul>
+   </div>
+   <div class="pricing-card featured reveal reveal-delay-1">
+    <div class="pricing-badge badge-primary">Most Popular</div>
+    <div class="pricing-title">Monthly</div>
+    <div class="pricing-price">$29<span>.99/mo</span></div>
+    <p class="earn-line">You earn ~$6/mo per subscriber</p>
+    <ul class="pricing-features">
+     <li>20% recurring commission</li>
+     <li>Your code = 20% off their first month</li>
+     <li>No cap, no contracts</li>
+    </ul>
+   </div>
+   <div class="pricing-card reveal reveal-delay-2">
+    <div class="badge-empty"></div>
+    <div class="pricing-title">Annual</div>
+    <div class="pricing-price">$179<span>.99/yr</span></div>
+    <p class="earn-line">You earn $36 upfront per subscriber</p>
+    <ul class="pricing-features">
+     <li>20% commission, paid upfront</li>
+     <li>Your code = 20% off their first month</li>
+     <li>No cap, no contracts</li>
+    </ul>
+   </div>
+  </div>
+  <p class="commission-note reveal">No cap. No expiry. No contracts.</p>
+ </div>
+</section>
+
+<!-- FOUNDER NOTE -->
+<section id="founder">
+ <div class="wrap">
+  <p class="section-eyebrow reveal">From the Founder</p>
+  <div class="founder-card reveal reveal-delay-1">
+   <img
+    src="/assets/images/founder-tony.jpg"
+    alt="Tony, founder of Rizz IQ"
+    class="founder-photo"
+    width="500"
+    height="500"
+   >
+   <div class="founder-info">
+    <p class="founder-name">Tony Giap</p>
+    <p class="founder-role">Founder, Rizz IQ</p>
+    <p class="founder-bio">Every guy knows the moment. You got the number. You got the date. And in those early texts, some do too much, some do too little — and most don't know which one they're doing.</p>
+    <p class="founder-bio">I built Rizz IQ to take the anxiety out of that. Not just "what to say" — understanding the flow of a conversation, so what you send sounds like the best version of you, not a script.</p>
+    <p class="founder-bio">If your audience is putting in the work, this is real value for the part that trips them up most.</p>
+    <p class="founder-sig">— Tony, Founder</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section id="who">
+ <div class="wrap">
+  <p class="section-eyebrow reveal">Who This Is For</p>
+  <h2 class="section-title reveal reveal-delay-1">Built for creators who already get it.</h2>
+  <div class="who-inner">
+   <div class="who-block reveal">
+    <p class="who-block-eyebrow">Your audience</p>
+    <h3 class="who-block-title">Every guy in your DMs knows the moment she replied and they froze.</h3>
+    <p class="who-block-body">That's who Rizz IQ fixes. <strong>20% off their first month with your code.</strong> AI that reads her texts, scores her investment, and tells them exactly what to say — in under 4 seconds.</p>
+   </div>
+   <div class="who-block green reveal reveal-delay-1">
+    <p class="who-block-eyebrow">Your niche</p>
+    <h3 class="who-block-title">You post content for men who want to date better.</h3>
+    <p class="who-block-body">Cold approach. Social skills. Self-improvement. Dating advice. <strong>If your audience is in that world — this is for you.</strong> And now it's for you too.</p>
+    <div class="who-tags">
+     <span class="who-tag">Cold Approach</span>
+     <span class="who-tag">Social Skills</span>
+     <span class="who-tag">Dating Advice</span>
+     <span class="who-tag">Self-Improvement</span>
+     <span class="who-tag">Men's Lifestyle</span>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+ <div class="wrap">
+  <div class="final-cta-inner reveal">
+   <h2 class="final-title">Ready to get paid?</h2>
+   <p class="final-sub">20% recurring. Every plan. No cap. Apply now and we'll reach out within 48 hours.</p>
+   <a href="#apply" class="final-cta-btn">Apply to Partner →</a>
+   <p class="final-secondary">Already talking to us? <a href="https://instagram.com/getrizziq" target="_blank" rel="noopener">DM @getrizziq →</a></p>
+  </div>
+ </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+ <div class="wrap">
+  <div class="footer-inner">
+   <a href="/" class="footer-logo">Rizz <span class="iq">IQ</span></a>
+   <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Service</a></li>
+    <li><a href="mailto:tony@413vision.com">Contact</a></li>
+   </ul>
+   <p class="footer-copy">© 2026 413 Vision LLC · All rights reserved</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+async function handleApply(e) {
+ e.preventDefault();
+ const btn = e.target.querySelector('.apply-submit');
+ const errorEl = document.getElementById('applyError');
+
+ btn.disabled = true;
+ btn.textContent = 'Submitting\u2026';
+ errorEl.style.display = 'none';
+
+ try {
+  const res = await fetch('/api/apply', {
+   method: 'POST',
+   headers: { 'Content-Type': 'application/json' },
+   body: JSON.stringify({
+    email:       document.getElementById('applyEmail').value,
+    platform:    document.getElementById('applyPlatform').value,
+    handle:      document.getElementById('applyHandle').value,
+    audienceSize:document.getElementById('applySize').value,
+    whyFit:      document.getElementById('applyWhy').value,
+   }),
+  });
+
+  if (!res.ok) throw new Error(`status ${res.status}`);
+
+  document.getElementById('applyForm').style.display = 'none';
+  document.getElementById('applySuccess').style.display = 'flex';
+ } catch (err) {
+  console.error('Apply error:', err.message);
+  errorEl.style.display = 'flex';
+  btn.disabled = false;
+  btn.textContent = 'Apply to Partner \u2192';
+ }
+}
+
+// Scroll reveal — matches index.html IntersectionObserver verbatim
+const ro = new IntersectionObserver(entries => {
+ entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
+ });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Nav border on scroll — matches index.html verbatim
+window.addEventListener('scroll', () => {
+ document.querySelector('nav').style.borderBottomColor =
+  window.scrollY > 40 ? 'var(--border)' : 'rgba(30,42,64,0.5)';
+});
+</script>
+
+</body>
+</html>
