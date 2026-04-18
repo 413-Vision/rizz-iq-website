@@ -5,6 +5,10 @@
   "framework": null,
   "rewrites": [
     {
+      "source": "/partners",
+      "destination": "/partners.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
