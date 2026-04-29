@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Rizz IQ</title>
+<meta name="description" content="Get in touch with the Rizz IQ team. Support, billing, press, and partnership inquiries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0F1E;
+    --surface: #141929;
+    --surface2: #1a2035;
+    --primary: #00AAFF;
+    --primary-dark: #0077CC;
+    --pb: rgba(0,170,255,0.2);
+    --pd: rgba(0,170,255,0.08);
+    --success: #00CC88;
+    --warning: #F5A623;
+    --error: #FF4444;
+    --accent: #A855F7;
+    --tp: #F0F4FF;
+    --ts: #8B9CC8;
+    --tt: #5A6A8A;
+    --border: rgba(255,255,255,0.07);
+    --border-focus: rgba(0,170,255,0.4);
+    --radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--tp);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* ── GLOW BACKGROUND ── */
+  .bg-glow {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-glow::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(0,170,255,0.06) 0%, transparent 70%);
+  }
+  .bg-glow::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: -10%;
+    width: 500px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(168,85,247,0.04) 0%, transparent 70%);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,15,30,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(30,42,64,0.5);
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--tp);
+    text-decoration: none;
+  }
+  .nav-logo .iq {
+    background: linear-gradient(135deg, #00AAFF, #00DDFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ts);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--tp); }
+  .nav-cta {
+    background: var(--primary) !important;
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: opacity 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover {
+    opacity: 0.9 !important;
+    box-shadow: 0 0 20px rgba(0,170,255,0.35) !important;
+  }
+
+  /* ── LAYOUT ── */
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO ── */
+  .contact-hero {
+    padding: 80px 0 64px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 8px var(--primary);
+    animation: pdot 2s ease-in-out infinite;
+  }
+  @keyframes pdot { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-title .accent {
+    background: linear-gradient(135deg, #00AAFF 0%, #00DDFF 40%, #0066FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--ts);
+    line-height: 1.75;
+    max-width: 480px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.7s ease 0.25s forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  /* ── MAIN GRID ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 32px;
+    padding-bottom: 120px;
+    align-items: start;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.7s ease 0.4s forwards;
+  }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.4;
+  }
+  .form-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    color: var(--tp);
+  }
+  .form-subtitle {
+    font-size: 13px;
+    color: var(--ts);
+    margin-bottom: 32px;
+  }
+
+  /* ── FORM FIELDS ── */
+  .field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .field:last-child { margin-bottom: 0; }
+  label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ts);
+  }
+  input, select, textarea {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--tp);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  input::placeholder, textarea::placeholder {
+    color: var(--tt);
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(0,170,255,0.08);
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238B9CC8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  select option {
+    background: var(--surface);
+    color: var(--tp);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+  }
+
+  /* ── SUBMIT BUTTON ── */
+  .submit-btn {
+    width: 100%;
+    padding: 15px 24px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: opacity 0.2s, box-shadow 0.2s, transform 0.15s;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .submit-btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 28px rgba(0,170,255,0.35);
+    transform: translateY(-1px);
+  }
+  .submit-btn:active { transform: translateY(0); }
+
+  /* ── SUCCESS STATE ── */
+  .success-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px;
+    gap: 16px;
+  }
+  .success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(0,204,136,0.1);
+    border: 1px solid rgba(0,204,136,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .success-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--tp);
+    letter-spacing: -0.02em;
+  }
+  .success-sub {
+    font-size: 14px;
+    color: var(--ts);
+    max-width: 280px;
+    line-height: 1.65;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── INFO CARD ── */
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .info-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ts);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .info-row:first-of-type { padding-top: 0; }
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--pd);
+    border: 1px solid var(--pb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-icon svg { width: 16px; height: 16px; stroke: var(--primary); }
+  .info-content { flex: 1; }
+  .info-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--tt);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .info-value {
+    font-size: 13px;
+    color: var(--tp);
+    font-weight: 500;
+  }
+  .info-value a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .info-value a:hover { text-decoration: underline; }
+  .info-value .sub {
+    display: block;
+    font-size: 12px;
+    color: var(--ts);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  /* ── RESPONSE TIME CARD ── */
+  .response-card {
+    background: linear-gradient(135deg, rgba(0,170,255,0.05), rgba(0,170,255,0.02));
+    border: 1px solid var(--pb);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .response-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+    flex-shrink: 0;
+    animation: pdot 2s ease-in-out infinite;
+  }
+  .response-text {
+    font-size: 13px;
+    color: var(--ts);
+    line-height: 1.5;
+  }
+  .response-text strong {
+    color: var(--tp);
+    font-weight: 500;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--tp);
+    text-decoration: none;
+  }
+  .footer-logo .iq {
+    background: linear-gradient(135deg, #00AAFF, #00DDFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--tt);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--ts); }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--tt);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .wrap { padding: 0 24px; }
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .sidebar {
+      /* Move sidebar below form on mobile */
+      order: 2;
+    }
+    .form-card { order: 1; }
+  }
+  @media (max-width: 640px) {
+    .field-group { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .form-card { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo">Rizz <span class="iq">IQ</span></a>
+  <ul class="nav-links">
+    <li><a href="/#how">How it works</a></li>
+    <li><a href="/#features">Features</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/contact.html" style="color: var(--tp);">Contact</a></li>
+    <li><a href="/#waitlist" class="nav-cta">Get Early Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="wrap">
+    <div class="section-eyebrow">Get in touch</div>
+    <h1 class="hero-title">We're here to <span class="accent">help.</span></h1>
+    <p class="hero-sub">Drop us a message and we'll get back to you within one business day.</p>
+  </div>
+</section>
+
+<!-- CONTACT GRID -->
+<div class="wrap">
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <div class="form-title">Send us a message</div>
+      <div class="form-subtitle">Fill out the form below and we'll respond promptly.</div>
+
+      <div id="contactForm">
+        <div class="field-group">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Alex" required>
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Rivera" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="subject">What can we help with?</label>
+          <select id="subject" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option value="Support / Bug Report">Support / Bug Report</option>
+            <option value="Billing & Subscriptions">Billing &amp; Subscriptions</option>
+            <option value="Partnership">Partnership</option>
+            <option value="General / Other">General / Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+
+        <!-- TODO: Replace mailto with Resend serverless function post-launch
+             Pattern: POST /api/contact → Resend API → hello@getrizziq.com
+             Same pattern as /api/waitlist serverless function on Vercel.
+             Ref: DM-LAUNCH-05 -->
+        <a id="submitBtn" href="#" class="submit-btn" onclick="handleSubmit(event)">
+          Send Message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-state" id="successState">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Message sent!</div>
+        <p class="success-sub">Thanks for reaching out. We'll get back to you within one business day.</p>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="response-card">
+        <div class="response-dot"></div>
+        <div class="response-text">
+          <strong>Typically responds within 1 business day</strong>
+          Monday – Friday, 9am – 6pm MT
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">Contact Info</div>
+
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="info-content">
+            <div class="info-label">General & Support</div>
+            <div class="info-value">
+              <a href="mailto:hello@getrizziq.com">hello@getrizziq.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="info-content">
+            <div class="info-label">Support</div>
+            <div class="info-value">
+              <a href="mailto:support@getrizziq.com">support@getrizziq.com</a>
+              <span class="sub">Billing, account, and app issues</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            </svg>
+          </div>
+          <div class="info-content">
+            <div class="info-label">Partnerships</div>
+            <div class="info-value">
+              <a href="mailto:hello@getrizziq.com">hello@getrizziq.com</a>
+              <span class="sub">Collab, press, and brand inquiries</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="info-content">
+            <div class="info-label">Company</div>
+            <div class="info-value">
+              413 Vision LLC
+              <span class="sub">Colorado, United States</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">Quick Links</div>
+        <div class="info-row">
+          <div class="info-content">
+            <div class="info-value"><a href="/rizz-iq-privacy-policy.html">Privacy Policy</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-content">
+            <div class="info-value"><a href="/rizz-iq-terms-of-use.html">Terms of Use</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-content">
+            <div class="info-value"><a href="/#faq">FAQ</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">Rizz <span class="iq">IQ</span></a>
+      <ul class="footer-links">
+        <li><a href="/rizz-iq-privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/rizz-iq-terms-of-use.html">Terms of Use</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 413 Vision LLC · All rights reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll nav border
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.borderBottomColor =
+      window.scrollY > 40 ? 'var(--border)' : 'rgba(30,42,64,0.5)';
+  });
+
+  // Contact form handler
+  // TODO DM-LAUNCH-05: Replace mailto with POST /api/contact → Resend API
+  // Pattern mirrors /api/waitlist serverless function on Vercel.
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('email').value.trim();
+    const subject   = document.getElementById('subject').value;
+    const message   = document.getElementById('message').value.trim();
+
+    // Basic validation
+    if (!firstName || !email || !subject || !message) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    // Build mailto
+    const to      = 'hello@getrizziq.com';
+    const subLine = encodeURIComponent(`[${subject}] from ${firstName} ${lastName}`);
+    const body    = encodeURIComponent(
+      `Name: ${firstName} ${lastName}\nEmail: ${email}\nTopic: ${subject}\n\n${message}`
+    );
+
+    window.location.href = `mailto:${to}?subject=${subLine}&body=${body}`;
+
+    // Show success state after short delay
+    setTimeout(() => {
+      document.getElementById('contactForm').style.display = 'none';
+      const s = document.getElementById('successState');
+      s.style.display = 'flex';
+    }, 800);
+  }
+</script>
+
+</body>
+</html>
