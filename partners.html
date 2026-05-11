@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Partner Program — Rizz IQ</title>
-<meta name="description" content="Earn 20% recurring commission every month your audience stays subscribed. No cap. No expiry. No contracts.">
-<meta property="og:title" content="Rizz IQ Partner Program — Earn 20% Recurring">
-<meta property="og:description" content="You get paid every time they don't freeze. 20% recurring commission. No cap. No expiry.">
+<meta name="description" content="Earn 20% commission for 12 months on every active subscription. Up to $7,200 per cohort of 100 subscribers. Net 30 payouts.">
+<meta property="og:title" content="Rizz IQ Partner Program — Earn 20% for 12 Months">
+<meta property="og:description" content="You get paid every time they don't freeze. 20% commission for 12 months. Net 30 payouts.">
 <meta property="og:url" content="https://getrizziq.com/partners">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,6 +90,10 @@ section{padding:100px 0;position:relative;z-index:1;}
 .secondary-cta{margin-top:16px;font-size:13px;color:var(--tt);font-family:'DM Mono',monospace;letter-spacing:0.04em;}
 .secondary-cta a{color:var(--ts);text-decoration:none;transition:color 0.2s;}
 .secondary-cta a:hover{color:var(--tp);}
+/* ─── AGREEMENT CHECKBOX ─── */
+.apply-agree{display:flex;align-items:flex-start;gap:10px;margin:14px 0 4px;cursor:pointer;}
+.apply-agree input[type="checkbox"]{flex-shrink:0;margin-top:3px;width:16px;height:16px;accent-color:var(--primary);cursor:pointer;}
+.apply-agree-text{font-size:13px;color:var(--ts);line-height:1.6;cursor:pointer;}
 
 /* ─── THE NUMBERS ─── */
 #numbers{border-top:1px solid var(--border);}
@@ -132,8 +136,11 @@ section{padding:100px 0;position:relative;z-index:1;}
 .pricing-card:hover{transform:translateY(-3px);}
 .pricing-card.featured{border-color:var(--primary);background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);box-shadow:0 0 40px rgba(0,170,255,0.12);}
 .pricing-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent);}
+.pricing-card.featured-success{border-color:var(--success);box-shadow:0 0 40px rgba(0,204,136,0.12);}
+.pricing-card.featured-success::before{background:linear-gradient(90deg,transparent,var(--success),transparent);}
 .pricing-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:20px;width:fit-content;}
 .badge-primary{background:var(--pd);border:1px solid var(--pb);color:var(--primary);}
+.badge-success{background:rgba(0,204,136,0.08);border:1px solid rgba(0,204,136,0.25);color:var(--success);}
 .badge-empty{height:24px;margin-bottom:20px;}
 .pricing-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ts);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em;}
 .pricing-price{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;letter-spacing:-0.035em;line-height:1;margin-bottom:4px;}
@@ -158,6 +165,12 @@ section{padding:100px 0;position:relative;z-index:1;}
 .founder-bio{font-size:15px;color:var(--ts);line-height:1.8;margin-bottom:10px;}
 .founder-bio strong{color:var(--tp);font-weight:500;}
 .founder-sig{font-family:'DM Mono',monospace;font-size:11px;color:var(--tt);letter-spacing:0.04em;margin-top:20px;font-style:italic;}
+
+/* ─── FAQ ─── */
+#faq{border-top:1px solid var(--border);}
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:32px;max-width:760px;}
+.faq-q{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:-0.015em;line-height:1.3;margin-bottom:10px;color:var(--tp);}
+.faq-a{font-size:15px;color:var(--ts);line-height:1.75;}
 
 /* ─── WHO THIS IS FOR ─── */
 #who{border-top:1px solid var(--border);}
@@ -256,6 +269,7 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
  <div class="wrap">
   <div class="hero-inner">
    <div class="hero-badge">Partner Program · Creators &amp; Influencers</div>
+   <p class="section-eyebrow" style="color:var(--ts);opacity:0;transform:translateY(12px);animation:fadeUp 0.7s ease 0.15s forwards;">20% Commission · 12 Months · Net 30</p>
    <h1 class="hero-h1">
     Stop guessing.<br>
     <span class="accent">Start winning.</span>
@@ -301,14 +315,22 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
         </select>
        </div>
        <div class="apply-field-full">
-        <label class="apply-label" for="applyWhy">Why you're a fit (2–3 sentences)</label>
-        <textarea class="apply-input apply-textarea" id="applyWhy" placeholder="Tell us about your content and audience..." required rows="3"></textarea>
+        <label class="apply-label" for="applyBestPost">Link to your best-performing post in the last 90 days</label>
+        <input type="url" class="apply-input" id="applyBestPost" placeholder="https://instagram.com/p/..." required>
+       </div>
+       <div class="apply-field-full">
+        <label class="apply-label" for="applyEngagement">Typical engagement rate or view count</label>
+        <input type="text" class="apply-input" id="applyEngagement" placeholder="e.g., 50K average views, 8% engagement" required>
        </div>
       </div>
+      <label class="apply-agree">
+       <input type="checkbox" id="applyAgree" required>
+       <span class="apply-agree-text">I understand approved partners sign a partner agreement and accept FTC disclosure terms before receiving a tracking code.</span>
+      </label>
       <button type="submit" class="apply-submit">Apply to Partner →</button>
      </form>
      <div class="apply-success" id="applySuccess">
-      <span>✓</span> Application received. We review every application and reach out within 48 hours.
+      <span>✓</span> Application received. We review every application within 48 hours. Approved partners get a partner agreement, FTC disclosure terms, and a tracking code on the same call.
      </div>
      <div class="apply-error" id="applyError">
       <span>!</span> Something went wrong. Please try again, or email us at <a href="mailto:tony@atlasioapp.com" style="color:inherit;text-decoration:underline">tony@atlasioapp.com</a>.
@@ -327,12 +349,12 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
   <div class="numbers-headline-wrap">
    <p class="section-eyebrow reveal">The Numbers</p>
    <h2 class="section-title reveal reveal-delay-1">What 100 subscribers looks like.</h2>
-   <p class="section-sub reveal reveal-delay-2">Monthly plan. No chasing. No contracts. Just commission — every month they stay subscribed.</p>
+   <p class="section-sub reveal reveal-delay-2">Monthly plan. No chasing. No exclusivity. Just commission — every month they stay subscribed, for up to 12 months.</p>
   </div>
   <div class="numbers-callout reveal">
    <p class="numbers-qualifier">Monthly plan · 100 subscribers</p>
-   <p class="numbers-big"><span class="green">$600</span><span class="dim">/mo.</span> Passive.</p>
-   <p class="numbers-trust">No cap. No expiry. No catch.</p>
+   <p class="numbers-big"><span class="green">$600</span><span class="dim">/mo</span> for 12 months</p>
+   <p class="numbers-trust">Up to $7,200 per cohort. No cap. No exclusivity. No catch.</p>
   </div>
   <div class="numbers-plan-grid reveal reveal-delay-1">
    <div class="plan-card">
@@ -373,7 +395,7 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
     <p class="step-num">02</p>
     <span class="step-icon">💸</span>
     <h3 class="step-title">Every month they're subscribed, you get paid.</h3>
-    <p class="step-desc">20% recurring commission — no cap, no expiry. As long as they stay subscribed, the commission keeps coming.</p>
+    <p class="step-desc">20% commission for the first 12 months of every active subscription. Paid monthly via PayPal or Wise, Net 30 with a $50 minimum threshold.</p>
    </div>
    <div class="step-card">
     <p class="step-num">03</p>
@@ -389,8 +411,8 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
 <section id="commission">
  <div class="wrap">
   <p class="section-eyebrow reveal">Commission Structure</p>
-  <h2 class="section-title reveal reveal-delay-1">20% recurring. Every plan.</h2>
-  <p class="section-sub reveal reveal-delay-2">Paid every month your subscriber stays active. Your code gives your audience 20% off — so your recommendation comes with a real perk, not just a link.</p>
+  <h2 class="section-title reveal reveal-delay-1">20% commission. Every plan. 12 months.</h2>
+  <p class="section-sub reveal reveal-delay-2">Paid monthly while your subscriber stays active. Your code gives your audience 20% off their first billing period — so your recommendation comes with a real perk, not just a link.</p>
   <div class="commission-grid">
    <div class="pricing-card reveal">
     <div class="badge-empty"></div>
@@ -398,35 +420,37 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
     <div class="pricing-price">$9<span>.99/wk</span></div>
     <p class="earn-line">You earn ~$2/wk per subscriber</p>
     <ul class="pricing-features">
-     <li>20% recurring commission</li>
-     <li>Your code = 20% off their first month</li>
-     <li>No cap, no contracts</li>
+     <li>20% commission for 12 months</li>
+     <li>Your code = 20% off their first week</li>
+     <li>No cap. No exclusivity.</li>
     </ul>
    </div>
-   <div class="pricing-card featured reveal reveal-delay-1">
-    <div class="pricing-badge badge-primary">Most Popular</div>
-    <div class="pricing-title">Monthly</div>
-    <div class="pricing-price">$29<span>.99/mo</span></div>
-    <p class="earn-line">You earn ~$6/mo per subscriber</p>
-    <ul class="pricing-features">
-     <li>20% recurring commission</li>
-     <li>Your code = 20% off their first month</li>
-     <li>No cap, no contracts</li>
-    </ul>
-   </div>
-   <div class="pricing-card reveal reveal-delay-2">
-    <div class="badge-empty"></div>
+   <div class="pricing-card featured featured-success reveal reveal-delay-1">
+    <div class="pricing-badge badge-success">Best for Partners</div>
     <div class="pricing-title">Annual</div>
     <div class="pricing-price">$179<span>.99/yr</span></div>
     <p class="earn-line">You earn $36 upfront per subscriber</p>
     <ul class="pricing-features">
      <li>20% commission, paid upfront</li>
+     <li>Your code = 20% off year one (saves $35.99)</li>
+     <li>No cap. No exclusivity.</li>
+     <li>Zero churn risk — guaranteed payout</li>
+    </ul>
+   </div>
+   <div class="pricing-card reveal reveal-delay-2">
+    <div class="badge-empty"></div>
+    <div class="pricing-title">Monthly</div>
+    <div class="pricing-price">$29<span>.99/mo</span></div>
+    <p class="earn-line">You earn ~$6/mo per subscriber</p>
+    <ul class="pricing-features">
+     <li>20% commission for 12 months</li>
      <li>Your code = 20% off their first month</li>
-     <li>No cap, no contracts</li>
+     <li>No cap. No exclusivity.</li>
+     <li>Up to $72 per subscriber lifetime</li>
     </ul>
    </div>
   </div>
-  <p class="commission-note reveal">No cap. No expiry. No contracts.</p>
+  <p class="commission-note reveal">No cap. No exclusivity. Paid Net 30.</p>
  </div>
 </section>
 
@@ -449,6 +473,40 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
     <p class="founder-bio">I built Rizz IQ to take the anxiety out of that. Not just "what to say" — understanding the flow of a conversation, so what you send sounds like the best version of you, not a script.</p>
     <p class="founder-bio">If your audience is putting in the work, this is real value for the part that trips them up most.</p>
     <p class="founder-sig">— Tony, Founder</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<!-- DEMO STATE:
+     1. FAQ tracking answer (Q2) is intentionally generic until attribution stack is wired (RI-### TBD — Tapfiliate vs. RevenueCat + Supabase decision pending).
+     2. Application form combines bestPostUrl + engagementRate into existing whyFit field client-side (see handleApply in <script> below).
+        When attribution stack lands, split into dedicated Loops fields (partnerBestPost, partnerEngagement) and update api/apply.js. -->
+<section id="faq">
+ <div class="wrap">
+  <p class="section-eyebrow reveal">Frequently Asked</p>
+  <h2 class="section-title reveal reveal-delay-1">Everything you need to know.</h2>
+  <div class="faq-list reveal reveal-delay-2">
+   <div class="faq-item">
+    <h3 class="faq-q">How do I get paid?</h3>
+    <p class="faq-a">PayPal or Wise, paid monthly on Net 30 terms with a $50 minimum threshold. If your balance is under $50, it rolls to the next month. Annual plan commissions ($36 per subscriber) are paid upfront the first month after the subscription is confirmed and clears Apple's refund window.</p>
+   </div>
+   <div class="faq-item">
+    <h3 class="faq-q">How do you track which subscribers came from me?</h3>
+    <p class="faq-a">Approved partners get a unique promo code that delivers 20% off to their audience and attributes the subscription to you. The code works on every plan and never expires. Tracking runs through our backend tied to Apple's subscription receipts, so attribution stays accurate even if someone clicks your link today and subscribes a week later.</p>
+   </div>
+   <div class="faq-item">
+    <h3 class="faq-q">What happens if a subscriber refunds or cancels?</h3>
+    <p class="faq-a">If a subscriber refunds within Apple's 14-day window or charges back, the commission is reversed. After 14 days, you keep the commission even if they cancel later — you earned it. Commission stops on month 13 of each active subscription, regardless of whether they stay subscribed beyond that.</p>
+   </div>
+   <div class="faq-item">
+    <h3 class="faq-q">Can I promote other dating apps or coaching products at the same time?</h3>
+    <p class="faq-a">Yes. No exclusivity required. We're confident the product wins on merit, not lock-in. Promote whatever you want alongside Rizz IQ — just don't mislead your audience about how it works or fabricate results.</p>
+   </div>
+   <div class="faq-item">
+    <h3 class="faq-q">Do I need to disclose I'm a partner in my posts?</h3>
+    <p class="faq-a">Yes. The FTC requires clear disclosure on all sponsored content — "#ad", "#partner", or a visible "Paid partnership" tag works. We'll send you the exact language on approval. Disclosure protects both of us, and it's standard practice for every legitimate affiliate program.</p>
    </div>
   </div>
  </div>
@@ -486,7 +544,7 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
  <div class="wrap">
   <div class="final-cta-inner reveal">
    <h2 class="final-title">Ready to get paid?</h2>
-   <p class="final-sub">20% recurring. Every plan. No cap. Apply now and we'll reach out within 48 hours.</p>
+   <p class="final-sub">20% commission for 12 months. Every plan. Net 30. Apply now and we'll reach out within 48 hours.</p>
    <a href="#apply" class="final-cta-btn">Apply to Partner →</a>
    <p class="final-secondary">Already talking to us? <a href="https://instagram.com/getrizziq" target="_blank" rel="noopener">DM @getrizziq →</a></p>
   </div>
@@ -494,6 +552,7 @@ footer{border-top:1px solid var(--border);padding:48px 0;position:relative;z-ind
 </section>
 
 <!-- FOOTER -->
+<!-- TODO RI-### — Privacy Policy and Terms of Service links currently point to href="#". Real docs already exist at /privacy → rizz-iq-privacy-policy.html and /terms → rizz-iq-terms-of-use.html (see vercel.json rewrites). Wire these up before partner outreach goes live. Check that the consumer-facing docs cover the partner program (commission terms, FTC, payout) — may need a partner-specific addendum. BLOCKING for public partner launch. -->
 <footer>
  <div class="wrap">
   <div class="footer-inner">
@@ -518,6 +577,12 @@ async function handleApply(e) {
  btn.textContent = 'Submitting\u2026';
  errorEl.style.display = 'none';
 
+ // Combine new fields into existing whyFit body so api/apply.js stays untouched.
+ // When attribution stack lands, split into dedicated Loops fields and update api/apply.js.
+ const bestPost = document.getElementById('applyBestPost').value;
+ const engagement = document.getElementById('applyEngagement').value;
+ const whyFitCombined = `Best post: ${bestPost}\nEngagement: ${engagement}`;
+
  try {
   const res = await fetch('/api/apply', {
    method: 'POST',
@@ -527,7 +592,7 @@ async function handleApply(e) {
     platform:    document.getElementById('applyPlatform').value,
     handle:      document.getElementById('applyHandle').value,
     audienceSize:document.getElementById('applySize').value,
-    whyFit:      document.getElementById('applyWhy').value,
+    whyFit:      whyFitCombined,
    }),
   });
 
